@@ -91,16 +91,18 @@ function check(){
 	}
 	
 	var id = $("#userid").val();
-	var regId = /^[a-zA-z]{1}\w{6,11}$/;
+	var regId = /^[a-zA-z]{1}\w{4,11}$/;
 	var idresult = regId.test(id);
 	if(idresult){
 		$("#idlabel").text("")
 	}else{
-		$("#idlabel").text("Length of ID Must be 7 to 11 Characters. Only English or English + Number.")
+		$("#idlabel").text("Insert 5 to 11 Characters. Only English or English + Number.")
 		$("#idlabel").css("color", "red")
 	}
 	var idChkresult = $("#idChkStatus").val();
 	if(idresult==true && emailresult==true && passresult==true && telresult==true && password==passwordChk && idChkresult=="Y"){
+		$("#idlabel").text("Check")
+		$("#idlabel").css("color", "#32C634")
 		return true;
 	}else if($("#idChkStatus").val()=="N"){
 		$("#chkModal").modal();
@@ -203,7 +205,18 @@ function check(){
 <script>
 $(function(){
 	$("#double-check").on("click",function(){
-		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=400px, height=400px");
+		var id = $("#userid").val();
+		var regId = /^[a-zA-z]{1}\w{4,11}$/;
+		var idresult = regId.test(id);
+		if(idresult){
+			$("#idlabel").text("")
+		}else{
+			$("#idlabel").text("Insert 5 to 11 Characters. Only English or English + Number.")
+			$("#idlabel").css("color", "red")
+		}
+		if(idresult){
+		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=500px, height=220px");
+		}
 	});
 });
 </script>
