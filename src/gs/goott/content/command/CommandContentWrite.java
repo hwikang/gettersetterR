@@ -44,6 +44,20 @@ public class CommandContentWrite implements CommandService {
 		ContentDAO dao = new ContentDAO();
 		int cnt = dao.contentWrite(vo);
 		
+		System.out.println(path);
+		
+		/*Runtime run = Runtime.getRuntime();
+		String command = "C:\\ffmpeg\\bin\\ffmpeg.exe -i \""+path+"\"fileName+"\" -ss 00:05:00 -vcodec jpg -vframes 1 \""+fileName+"_%2d.png\"";
+
+		try {
+			run.exec("C:\\windows\\explorer.exe");
+			run.exec("cmd.exe chcp 65001");
+			run.exec(command);
+		}catch(Exception e) {
+			System.out.println("Å½»ö±â ¿ÀÇÂ ¿¡·¯"+e.getMessage());
+		}*/
+		
+		
 		return "upload.jsp";
 	}
 

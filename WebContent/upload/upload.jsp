@@ -99,11 +99,9 @@
 		var readURL = function(input) { //프로필 이미지 input 경로 변경
 	        if (input.files && input.files[0]) {
 	            var reader = new FileReader();
-
 	            reader.onload = function (e) {
 	                $('.avatar').attr('src', e.target.result);
 	            }
-	    
 	            reader.readAsDataURL(input.files[0]);
 	        }
 	    }
