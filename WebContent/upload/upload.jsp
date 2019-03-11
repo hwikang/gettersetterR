@@ -173,6 +173,9 @@
 			<input type="file" id="introVideo" name="filename"/><br/>
 			<b>Thumbnail</b><br/>
 			<input type="file" id="thumbnail" name="thumbnail"/><br/>
+			<b>Title</b><br/>
+			<input type="text" id="title" name="title" maxlength="30"><br/>
+			
 			<b>Name</b><br/>
 			<input type="text" id="profileName" name="userid" readonly value="${vo.userid }" maxlength="20"><br/>
 			<b>Teaching Subject</b><br/>

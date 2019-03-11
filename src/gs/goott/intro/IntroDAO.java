@@ -22,13 +22,17 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			if(rs.next()) {
 				delFileName = rs.getString(1);
 			}
-			sql = "update introtbl set filename=?, interest=?, description=?, thumbnail=?, introdate=sysdate where userid=?";
+			sql = "update introtbl set filename=?, interest=?, description=?, thumbnail=?, title=?, introdate=sysdate where userid=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getFilename());
-			pstmt.setString(2, vo.getInterestStr());
+			System.out.println(vo.getInterestStr().toLowerCase());
+			pstmt.setString(2, vo.getInterestStr().toLowerCase());			
 			pstmt.setString(3, vo.getDescription());
-			pstmt.setString(4, vo.getThumbnail());			
-			pstmt.setString(5, "khdrogba");
+			pstmt.setString(4, vo.getThumbnail());
+			System.out.println(vo.getTitle());
+			pstmt.setString(5, vo.getTitle());
+			
+			pstmt.setString(6, "khdrogba4");
 			cnt = pstmt.executeUpdate();
 			
 			if(delFileName!=null && !delFileName.equals("")) {
@@ -37,6 +41,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			}
 		}catch(Exception e) {
 			System.out.println("intro insert error"+e.getMessage());
+			e.printStackTrace();
 		}finally {
 			dbClose();
 		}
@@ -93,7 +98,6 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 		for(int i =0; i<interestArr.length;i++) {
 			System.out.println(interestArr[i]);
 		}
-		System.out.println(interestArr.length);
 		//
 		List<IntroVO> list = new ArrayList<IntroVO>();
 		try {
@@ -156,5 +160,26 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			dbClose();
 		}
 		return list;
+	}
+
+	@Override
+	public String getInterest(String userid) {
+		String interestStr ="";
+		try {
+			dbConn();
+			String sql = "select interest from membertbl where userid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				interestStr = rs.getString("interest");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getInterest error");
+		}finally{
+			dbClose();
+		}
+		return interestStr;
 	}
 }

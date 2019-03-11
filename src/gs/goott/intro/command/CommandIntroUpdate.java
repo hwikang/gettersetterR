@@ -32,6 +32,7 @@ public class CommandIntroUpdate implements CommandService {
 		vo.setUserid("zbass90");
 		vo.setInterest(mr.getParameterValues("interest"));
 		vo.setDescription(mr.getParameter("description"));		
+		vo.setTitle(mr.getParameter("title"));
 		
 		String fileName = "";
 		String thumbnailFilename ="";
