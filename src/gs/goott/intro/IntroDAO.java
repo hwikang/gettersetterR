@@ -22,12 +22,13 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			if(rs.next()) {
 				delFileName = rs.getString(1);
 			}
-			sql = "update introtbl set filename=?, interest=?, description=?, introdate=sysdate where userid=?";
+			sql = "update introtbl set filename=?, interest=?, description=?, thumbnail=?, introdate=sysdate where userid=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getFilename());
 			pstmt.setString(2, vo.getInterestStr());
 			pstmt.setString(3, vo.getDescription());
-			pstmt.setString(4, vo.getUserid());
+			pstmt.setString(4, vo.getThumbnail());			
+			pstmt.setString(5, "khdrogba");
 			cnt = pstmt.executeUpdate();
 			
 			if(delFileName!=null && !delFileName.equals("")) {

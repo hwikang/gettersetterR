@@ -25,17 +25,33 @@
 		
 	});
 
+	function check(){
+	var id = $("#userid").val();
+	var regId = /^[a-zA-z]{1}\w{4,11}$/;
+	var idresult = regId.test(id);
+		if(idresult){
+			
+			return true;
+		}else{
+			$("#usable").css("display", "none");
+			$("#unusable").css("display", "none");
+			$("#label").css("display", "block");
+			$("#label").text("[" +id+ "] is not usable. Insert 5 to 11 Characters. Only English or English + Number.");
+			return false;
+		}
+	}
 </script>
 </head>
 <body style="font-size:20px;font-weight:bold">
 	<div class="container">
-	
-		
+		<div class="col-sm-12">
+			<img src="<%=request.getContextPath()%>/img/logobig.png" style=width:180px;height:100px;cursor:pointer; id="logo" onclick="location.href='<%=request.getContextPath()%>/index.do'">
+		</div>
 		<hr/>
 		Insert ID and Push double-check Button.<br/>
 		<form method="post" action="<%=request.getContextPath()%>/signup/idCheck.do" >
 			ID: <input type="text" name="userid" id="userid" style="border-radius:15px"/>
-			    <input type="submit" value="Double-Check" id="doublechk"  style="background:#0056B3;color:white;border-style:outset;border-radius:15px;font-size:20px;cursor:pointer;margin-top:15px"/> <!-- 서브밋버튼 -->
+			    <input type="submit" value="Double-Check" id="doublechk" onclick="return check();" style="background:#0056B3;color:white;border-style:outset;border-radius:15px;font-size:20px;cursor:pointer;margin-top:15px"/> <!-- 서브밋버튼 -->
 		</form>
 		<hr/>
 		<c:if test="${cnt>0}"><!-- 사용 불가능한 아이디 일때 -->
@@ -49,14 +65,8 @@
 			</div>
 		</c:if>
 		
-		<c:if test="${userid==''}"><!-- 아이디 입력 없을때 -->
-			"Insert ID Please"
-			<script>
-			$("#usable").css("display", "none")
-			$("USETHISID").css("display", "none")
-			</script>
-			
-		</c:if>
+		<lable id=label style="display:none; color:red"></lable>
+		
 		<hr/>
 	</div>
 </body>

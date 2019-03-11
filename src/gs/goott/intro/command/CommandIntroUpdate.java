@@ -1,12 +1,15 @@
 package gs.goott.intro.command;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -31,14 +34,50 @@ public class CommandIntroUpdate implements CommandService {
 		vo.setDescription(mr.getParameter("description"));		
 		
 		String fileName = "";
-
+		String thumbnailFilename ="";
 		Enumeration fileList = mr.getFileNames();
-		if(fileList.hasMoreElements()) {
+		while(fileList.hasMoreElements()) {
 			String oldFile = (String)fileList.nextElement();
-			fileName = mr.getFilesystemName(oldFile);
+			System.out.println("oldFile="+oldFile);   //oldFile=filename  or  oldFile=thumbnail
+			if(oldFile.equals("filename")) {
+				fileName = mr.getFilesystemName(oldFile);
+			}else if(oldFile.equals("thumbnail")) {
+				thumbnailFilename = mr.getFilesystemName(oldFile);
+			}
+			
 		}
 		vo.setFilename(fileName);
-	
+		System.out.println("filename="+fileName);
+		
+		///////////////////////////////////thmbnail
+		//fileName 이 이미지형식일경우에만
+		//if(fileName.toLowerCase().contains("jpeg")||fileName.toLowerCase().contains("jpg")||fileName.toLowerCase().contains("gif")||fileName.toLowerCase().contains("png")) {
+			//path = "\\\\GOOTT-1-13-PC\\gettersetter\\Introduction";
+			//이미업로드가됬기떄문에 파일이 폴더안에존재함
+			File file = new File(path+"/"+thumbnailFilename);
+			long length = file.length();
+			System.out.println("file length="+length);
+			//파일의 크기만한 배열을만든다
+			byte[] thumbnailByte = new byte[(int)length];
+			
+			try {
+				FileInputStream fis = new FileInputStream(file);
+				//바이트 배열의 크기만큼 읽어서 바이트배열에 때려넣는다 
+				fis.read(thumbnailByte);
+				System.out.println("byte array="+thumbnailByte);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			byte[] thumbnailBase64 = Base64.encodeBase64(thumbnailByte);
+			System.out.println("thumbnailBase64="+thumbnailBase64);
+			//base64 인코딩된 이름
+			String thumbnail = new String(thumbnailBase64);
+			System.out.println("thumbnail="+thumbnail.substring(0,10));
+			vo.setThumbnail(thumbnail);
+		
+		////////////////////////////////////////////////////
+
 		IntroDAO dao = new IntroDAO();
 		int cnt = dao.introUpdate(vo,path);
 		

@@ -11,8 +11,9 @@ public interface SignupInterface {
 	//회원등록
 	public int signup(MemberVO vo);
 	//회원수정
+	public int profileUpdate(String userid, String data, String type);
 	//회원탈퇴
-	
+	public int profileDelete(String userid);
 	//회원 정보가져오기
 	public MemberVO getUserInfo(String userid);
 	//도토리충전		
@@ -23,5 +24,6 @@ public interface SignupInterface {
 	
 	public MemberVO getMemberRecord(String userid);
 
+	
 	
 }
