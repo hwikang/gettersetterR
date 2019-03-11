@@ -52,7 +52,7 @@
 		<div class="col-sm-2"> <!-- left col -->
 			<div class="text-center proFrm"> 
 			<form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do" enctype="multipart/form-data" class="form-horizontal">
-				<img src="img/profile-picture.jpg" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
+				<img src="==========" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
 				<input type="file" id="proImgUpload" name="profilechange" class="text-enter center-block file-upload hidden"/>
 				<input type="hidden" name="ischange" value="ok"/>
 				<!-- <button id="proImgBtn"class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add</button> -->
