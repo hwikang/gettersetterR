@@ -49,8 +49,8 @@ public class CommandmyProfileOk implements CommandService {
 			type = "userImage";
 		};
 		
-		// String userid = req.getSession().getAttribute("userid");
-		String userid = "hahaori";
+		String userid = (String)req.getSession().getAttribute("userid");
+		//String userid = "hahaori";
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.profileUpdate(userid, data, type);
 		MemberVO mem = dao.getUserInfo(userid);

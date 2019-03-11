@@ -15,7 +15,7 @@ $(function(){
 
 	            reader.onload = function (e) {
 	                $('.avatar').attr('src', e.target.result);
-	                localStorage.setItem("profile",e.target.result);
+	                //localStorage.setItem("profile",e.target.result);
 	            }
 	    
 	            reader.readAsDataURL(input.files[0]);
@@ -83,13 +83,13 @@ $(function(){
 			  title : "My Info"		  
 		  });
 		//프로필부분 ============================================================
-		  var con1 =localStorage.getItem("concern1");
-		  var con2 =localStorage.getItem("concern2");
-		  var con3 =localStorage.getItem("concern3");
+		 // var con1 =localStorage.getItem("concern1");
+		 // var con2 =localStorage.getItem("concern2");
+		 // var con3 =localStorage.getItem("concern3");
 		  
-		  $("#ConDiv").append(con1+", ");
-		  $("#ConDiv").append(con2+", ");
-		  $("#ConDiv").append(con3);
+		 // $("#ConDiv").append(con1+", ");
+		 // $("#ConDiv").append(con2+", ");
+		 // $("#ConDiv").append(con3);
 		  $("#changeBtn1").on("click", function(){
 			  $("#changeBtn1").css("display", "none");
 			  $("#c1").css("display", "block");
@@ -107,18 +107,20 @@ $(function(){
 			  $("#total").css("display", "block");
 		  })
 		  $("#cha11").on("click", function(){
-			  alert("Your pw is changed successfully");
-			  localStorage.setItem("pw", ("#pwCheck").val());
+			  alert("Your Password is Changed successfully");
+			 // localStorage.setItem("pw", ("#pwCheck").val());
 		  });
 		  $("#chaB").on("click", function(){
 			   var telcha = $("#telCha").val();
-			   localStorage.setItem("tel", telcha);
+			  // localStorage.setItem("tel", telcha);
 			   $("#telDiv").text(telcha);
-			   alert("Your tel is changed successfully")
+			  // alert("Your tel is changed successfully")
+			   
+			   alert("Your TelNum is Changed successfully");
 		  })
 		   $("#chaC").on("click", function(){
 			   var mailcha = $("#mailCha").val();
-			   localStorage.setItem("mail", mailcha);
+			  // localStorage.setItem("mail", mailcha);
 			   $("#mailDiv").text(mailcha)
 			   alert("Your e-mail is changed successfully")
 		  })
@@ -127,19 +129,19 @@ $(function(){
 			  
 			  	var list1btn1 = $("#list1btn1").text()
 				var list1btn2 = $("#list1btn2").text()
-				localStorage.setItem("concernA",  list1btn1+"-"+list1btn2);
+				//localStorage.setItem("concernA",  list1btn1+"-"+list1btn2);
 				var list2btn1 = $("#list2btn1").text()
 				var list2btn2 = $("#list2btn2").text()
-				localStorage.setItem("concernB", list2btn1+"-"+list2btn2);
+				//localStorage.setItem("concernB", list2btn1+"-"+list2btn2);
 				var list3btn1 = $("#list3btn1").text()
 				var list3btn2 = $("#list3btn2").text()
-				localStorage.setItem("concernC", list3btn1+"-"+list3btn2);
-				var conA =localStorage.getItem("concernA");
-				 var conB =localStorage.getItem("concernB");
-				 var conC =localStorage.getItem("concernC");
-				  $("#ConDiv").text(conA+", ");
-				  $("#ConDiv").append(conB+", ");
-				  $("#ConDiv").append(conC);
+				//localStorage.setItem("concernC", list3btn1+"-"+list3btn2);
+				//var conA =localStorage.getItem("concernA");
+				// var conB =localStorage.getItem("concernB");
+				// var conC =localStorage.getItem("concernC");
+				//  $("#ConDiv").text(conA+", ");
+				//  $("#ConDiv").append(conB+", ");
+				//  $("#ConDiv").append(conC);
 		  })
 		  // 관심사 선택start 
 		  
