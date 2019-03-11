@@ -32,7 +32,7 @@ public class CommandIndex implements CommandService {
 			 
 		 }else{ 			 
 			 System.out.println("로그인된상태"); 
-			 list = dao.getRecommendContents("bodybuild/acting");
+			 list = dao.getRecommendContents("Bodybuild/Acting");
 		 }
 		 
 		 req.setAttribute("list", list);
