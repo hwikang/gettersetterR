@@ -127,7 +127,7 @@ function check(){
 <div class="container-fluid">
 	<div class="row" id="row1" >
 		<div class="col-sm-12">
-			<img src="<%=request.getContextPath()%>/img/logo.jpg" style=width:300px;height:100px;cursor:pointer id="logo" onclick="location.href='main.html'">
+			<img src="<%=request.getContextPath()%>/img/logo.jpg" style=width:300px;height:100px;cursor:pointer id="logo" onclick="location.href='<%=request.getContextPath()%>/index.do'">
 		</div>
 	</div>
 	<!--  여기까지가 상단 로고와 프로필  -->
@@ -181,7 +181,7 @@ function check(){
 					<button type="button" id="facebook" class="btn rounded-circle" style=font-weight:bold; ><img src="<%=request.getContextPath()%>//img/facebook.jpg"/></button></a>
 					<a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com">
 					<button type="button" id="naver"class="btn rounded-circle"  style=font-weight:bold><img src="<%=request.getContextPath()%>/img/naver.jpg"/></button></a>
-					<a href="etc/카카오톡.lnk">
+					<a href="https://www.kakaocorp.com/service/KakaoTalk">
 					<button type="button" id="kakao"class="btn rounded-circle"  style=font-weight:bold><img src="<%=request.getContextPath()%>/img/kakao.jpg"/></button></a>
 				</div>
 			</div>
@@ -215,7 +215,7 @@ $(function(){
 			$("#idlabel").css("color", "red")
 		}
 		if(idresult){
-		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=500px, height=220px");
+		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=500px, height=350px");
 		}
 	});
 });

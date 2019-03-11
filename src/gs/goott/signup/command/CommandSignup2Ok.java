@@ -25,7 +25,7 @@ public class CommandSignup2Ok implements CommandService {
 
 		//멀티파트리퀘스트
 		String path = "\\\\GOOTT-1-13-PC\\gettersetter\\Users\\Thumbnails";
-		//String path= req.getServletContext().getRealPath("/profileImage"); 톰캣의 절대경로로 파일을 저장.
+		//String path= req.getServletContext().getRealPath("/profileImage"); //톰캣의 절대경로로 파일을 저장.
 		//톰캣 절대경로=> D:\workspaceWeb\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\gettersetter\profileImage
 		System.out.println("path="+path);
 		int Max_size = 1024*1024*20; //20mb로 제한

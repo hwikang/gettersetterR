@@ -166,8 +166,43 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 		return vo;
 	}
 
-	
+	// È¸¿øÁ¤º¸ ¼öÁ¤ 
+	public int profileUpdate(String userid, String data, String type) {
+			int cnt = 0;
+			try {
+				dbConn();
+				String sql = "update membertbl set "+type+"=? where userid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, data);
+				pstmt.setString(2, userid);					
+				cnt = pstmt.executeUpdate();
+					
+			}catch(Exception e) {
+				System.out.println("Error"+e.getMessage());
+			}finally {
+				dbClose();
+			}
+				return cnt;
 	}
+	//È¸¿ø Å»Åð
+	public int profileDelete(String userid){
+		int cnt =0;
+		try {
+			dbConn();
+			String sql = "delete from membertbl where userid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			cnt = pstmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("Error"+e.getMessage());
+		}finally {
+			dbClose();
+		}
+			return cnt;
+		
+	}
+	
+}
 
 
 
