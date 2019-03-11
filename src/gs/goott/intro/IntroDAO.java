@@ -135,11 +135,15 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 				IntroVO vo = new IntroVO();
 				vo.setIntroNo(rs.getInt(1));
 				vo.setUserid(rs.getString(2));
+				vo.setFilename(rs.getString(3));
+				vo.setInterestStr(rs.getString(4));
+				
 				vo.setDescription(rs.getString(5));
-				vo.setThumbnail(rs.getString(7));
+				vo.setThumbnail(rs.getString(6));
+				vo.setIntrodate(rs.getString(7));
 				vo.setTitle(rs.getString(8));
 				vo.setFollower(rs.getInt(9));
-				
+				vo.setPrice(rs.getDouble(10));
 				list.add(vo);
 			}
 			

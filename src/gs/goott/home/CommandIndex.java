@@ -35,7 +35,8 @@ public class CommandIndex implements CommandService {
 			 list = dao.getRecommendContents("bodybuild/acting");
 		 }
 		 
-		
+		 req.setAttribute("list", list);
+		System.out.println(list.size());
 		
 		return "index.jsp";
 	}

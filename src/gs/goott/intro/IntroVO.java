@@ -11,7 +11,7 @@ public class IntroVO {
 	private String thumbnail;
 	private String title;
 	private int follower;
-	
+	private Double price;
 	
 	public IntroVO() {}
 	public int getIntroNo() {
@@ -82,6 +82,13 @@ public class IntroVO {
 	}
 	public void setFollower(int follower) {
 		this.follower = follower;
-	}	
+	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
 	
 }

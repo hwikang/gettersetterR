@@ -16,7 +16,28 @@
 <script type="text/javascript" src="contentsData.js"></script>
 </head>
 <body>
-${cnt }
+
+<script>
+	var recommendedData =[] ;
+<c:forEach var ="i" items="${list}">
+	
+recommendedData.push(
+				["${i.introNo}",
+		"${i.userid}",
+		"${i.filename}",
+		"${i.interestStr}",
+		"${i.description}",
+		"${i.introdate}",
+		"${i.thumbnail}",
+		"${i.title}",
+		"${i.follower}",
+		"${i.price}"		
+		])
+	
+</c:forEach>
+</script>
+${loginStatus}
+
 <!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
 	<nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
@@ -27,13 +48,13 @@ ${cnt }
 				<ul class="nav justify-content-end align-items-center">
 	
 					<!-- 미 로그인상태 -->
-					<c:if test="${cnt!=1 }">
+					<c:if test="${loginStatus!=1 }">
 						
 						<li id="login" class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">login</a></li>
 						<li id="signUp" class="nav-item"><a href="<%=request.getContextPath()%>/signup/signup.do" class="nav-link">SignUp</a></li>
 					</c:if>
 					<!-- 로그인상태 -->
-					<c:if test="${cnt==1}">
+					<c:if test="${loginStatus==1}">
 						<li id="myAcorn" class="d-flex" >
 							<p class="p-0">${vo.myAcorn}</p>
 							<img src="img/acorn.png" class="p-0"/>
@@ -245,7 +266,8 @@ ${cnt }
 			}
 		} 
 		//6개만 잘라내기
-		var recommendedData = dataAll.slice(0,6);
+		
+		
 		
 		function createRecomendedContents(){
 			
@@ -253,8 +275,8 @@ ${cnt }
 			
 			for(var i =0; i<6; i++){
 				
-				txt +="<a href='contentOp_01.html' class='col-6 col-sm-4 pb-4'><div class='card w-100'><img src='"+recommendedData[i][1]+"' class='card-img-top'>"
-				txt +="<div class='card-body'><h4 class='card-title'>"+recommendedData[i][3]+"</h4><p class='card-text'>Setter : "+recommendedData[i][0]+"</p><p class='card-text'>Buy : "+recommendedData[i][4]+"</p><p class='card-text'>Price : $"+recommendedData[i][5]+"</p></div></div></a>"	
+				txt +="<a href='contentOp_01.html' class='col-6 col-sm-4 pb-4'><div class='card w-100'><img src='data:image/jpeg;base64,"+recommendedData[i][6]+"' class='card-img-top'>"
+				txt +="<div class='card-body'><h4 class='card-title'>"+recommendedData[i][7]+"</h4><p class='card-text'>Setter : "+recommendedData[i][1]+"</p><p class='card-text'>Followers : "+recommendedData[i][8]+"</p><p class='card-text'>Price : $"+recommendedData[i][9]+"</p></div></div></a>"	
 			}
 			document.getElementById("recommendContents").innerHTML=txt;
 	
