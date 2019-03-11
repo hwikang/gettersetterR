@@ -32,10 +32,14 @@ public class CommandIndex implements CommandService {
 			 
 		 }else{ 			 
 			 System.out.println("로그인된상태"); 
-			 list = dao.getRecommendContents("bodybuild/acting");
+			 System.out.println((String)session.getAttribute("userid"));
+			 String interestStr = dao.getInterest((String)session.getAttribute("userid"));
+			 System.out.println(interestStr);
+			 list = dao.getRecommendContents(interestStr);
 		 }
 		 
-		
+		 req.setAttribute("list", list);
+		System.out.println(list.size());
 		
 		return "index.jsp";
 	}

@@ -166,7 +166,7 @@
 		<div style="margin-top:50px">Profile Picture</div>
 			<div class="text-center proFrm" id="formDiv">
 				<div id=malpung style="max-width:100%">
-				<img src="<%=request.getContextPath()%>/img/profile.jpg" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"style="float:left;max-width:130px;max-height:";/>
+				<img src="<%=request.getContextPath()%>/img/profile.jpg" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"style="float:left;max-width:130px;max-height:"/>
 				<div id="badge"  style="float:left;width:40%;height:130px;background:#EEE;text-align:center;margin-left:30px" ><br/><a style="color:red">Warning!</a><br/>If you upload improper photo,<br/> you may be restricted in your activities.<br/><div id=warning><img src="<%=request.getContextPath()%>/img/sexual.png" class="rounded-circle"><img src="<%=request.getContextPath()%>/img/violence.png" class="rounded-circle"><img src="<%=request.getContextPath()%>/img/horrible.png" class="rounded-circle"></div> </div>
 				</div>
 				 
@@ -219,7 +219,9 @@
 			<input type="submit" class="btn btn-outline-primary" id="join" value="◎JOIN US" />
 
 	</div><!-- list-group end -->
+	</div>
 	</form>
+	
 	<!-- 회사 정보 -->
 	<div id="footer" class="row align-items-center">
 		<div class="col-12 col-md-2"></div>
@@ -234,8 +236,6 @@
 	</div>
 	
 
-	
-</div>
 </body>
 <script>
 var interestArr = [];

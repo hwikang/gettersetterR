@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 	.border{border:1px solid white !important}
 	.list-group{width:90%}
@@ -96,36 +97,39 @@
 		$("#content2>div:nth-child(2)").css("position","relative").css("left","20px");
 		
 		/* upload 모달 */
-		var readURL = function(input) { //프로필 이미지 input 경로 변경
-	        if (input.files && input.files[0]) {
-	            var reader = new FileReader();
-
-	            reader.onload = function (e) {
-	                $('.avatar').attr('src', e.target.result);
-	            }
-	    
-	            reader.readAsDataURL(input.files[0]);
-	        }
-	    }
-		$(".file-upload").on('change', function(){
-	        readURL(this);
-	    });
+		
+		$(".file-upload").on("change", function(){
+			$("#video-element source").attr("src",URL.createObjectURL($("#proImgUpload").prop("files")[0]));
+		});
+		
+		
+		$("#uploadFrm").submit(function(){  //업로드 input 값에 따른 제한 설정
+			if($("#imgUpload").attr("src")=="../img/click.jpg"){
+				swal("Please attach the video!", "You clicked the button!", "error");
+				return false;
+			}
+			if($("#uploadIst option:selected").val()=="Please select a subject"){
+				swal("Please select a subject!", "You clicked the button!", "error");
+				return false;
+			}
+			if($("#uploadTitle").val()=="" || $("#uploadTitle").val()==null){
+				swal("Please enter a title!", "You clicked the button!", "error");
+				return false;
+			}
+			if($("#uploadDes").val()=="" || $("#uploadDes").val()==null){
+				swal("Please enter a description!", "You clicked the button!", "error");
+				return false;
+			}
+			swal("Good job!", "You clicked the button!", "success");
+			return true;
+		});		
+		
 		
 		$('.proImg').on('click', function() {
 	        $('#proImgUpload').click();
 	    });
 		
-		/* if(localStorage.getItem("id")==none){
-			$("#myInfo>a>img").attr("src","../img/profile.jpg");
-		}else{
-			$("#myInfo>a>img").attr("src",localStorage.getItem("id"));
-		} */
 		
-		$(document).on("click","#logOut",function(){
-			localStorage.setItem("loginMode","guest");
-
-	
-		});		
 	});
 </script>
 </head>
@@ -173,6 +177,11 @@
 		<form action="<%=request.getContextPath()%>/upload/introUpdate.do" method="post" enctype="multipart/form-data">
 			<b>Intro Video</b><br/>
 			<input type="file" id="introVideo" name="filename"/><br/>
+			<b>Thumbnail</b><br/>
+			<input type="file" id="thumbnail" name="thumbnail"/><br/>
+			<b>Title</b><br/>
+			<input type="text" id="title" name="title" maxlength="30"><br/>
+			
 			<b>Name</b><br/>
 			<input type="text" id="profileName" name="userid" readonly value="${vo.userid }" maxlength="20"><br/>
 			<b>Teaching Subject</b><br/>
@@ -250,7 +259,7 @@
 <!-- 얿로드 모달 -->
 <div id="uploadModal" class="modal fade">
 	<div class="modal-dialog">	
-		<form action="<%=request.getContextPath()%>/upload/contentWrite.do" method="post" enctype="multipart/form-data">
+		<form action="<%=request.getContextPath()%>/upload/contentWrite.do" id="uploadFrm" name="uploadFrm" method="post" enctype="multipart/form-data">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">New Video</h4>
@@ -258,12 +267,16 @@
 			</div>
 			<div class="modal-body">
 				<div class="text-center proFrm">
-				<img src="../img/click.jpg" class=" proImg img-thumbnail img-fluid file-upload avatar" alt="avatar"/>
+				<video id="video-element" controls>
+					<source src=""/>
+				</video>
+				<canvas id="canvas-element"></canvas>
+				<img src="../img/click.jpg" class=" proImg img-thumbnail img-fluid file-upload avatar" id="imgUpload" alt="avatar"/>
 				<input type="file" name="filename"id="proImgUpload"class="text-enter center-block file-upload hidden"/>
 				</div>
 				<hr/>
 				<div class="input-group" style="width:100%">
-					<select class="custom-select" name="interest">
+					<select class="custom-select" id="uploadIst" name="interest">
 					  <option selected>Please select a subject</option>
 					  <c:forTokens var="contentSubject" items="Acting,Art,Bodybuild,Climbing,Dancing,Economy,History,Philosophy,Soccer" delims=",">
 						  <option value="${contentSubject }">${contentSubject }</option>
@@ -272,11 +285,11 @@
 				</div>    
 				<div> <!-- 제목 -->
 					<br/><b>Title</b>
-					<br/><input type="text" maxlength="50" name="title"style="width:100%">
+					<br/><input type="text" maxlength="50" id="uploadTitle"name="title"style="width:100%">
 				</div>
 				<div> <!-- 설명 -->
 					<br/><b>Description</b>
-					<br/><textarea maxlength="1000" name="description" style="width:100%"></textarea>
+					<br/><textarea maxlength="1000" id="uploadDes"name="description" style="width:100%"></textarea>
 				</div>
 			</div>
 			<div class="modal-footer">

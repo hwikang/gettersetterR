@@ -91,16 +91,18 @@ function check(){
 	}
 	
 	var id = $("#userid").val();
-	var regId = /^[a-zA-z]{1}\w{6,11}$/;
+	var regId = /^[a-zA-z]{1}\w{4,11}$/;
 	var idresult = regId.test(id);
 	if(idresult){
 		$("#idlabel").text("")
 	}else{
-		$("#idlabel").text("Length of ID Must be 7 to 11 Characters. Only English or English + Number.")
+		$("#idlabel").text("Insert 5 to 11 Characters. Only English or English + Number.")
 		$("#idlabel").css("color", "red")
 	}
 	var idChkresult = $("#idChkStatus").val();
 	if(idresult==true && emailresult==true && passresult==true && telresult==true && password==passwordChk && idChkresult=="Y"){
+		$("#idlabel").text("Check")
+		$("#idlabel").css("color", "#32C634")
 		return true;
 	}else if($("#idChkStatus").val()=="N"){
 		$("#chkModal").modal();
@@ -125,7 +127,7 @@ function check(){
 <div class="container-fluid">
 	<div class="row" id="row1" >
 		<div class="col-sm-12">
-			<img src="<%=request.getContextPath()%>/img/logo.jpg" style=width:300px;height:100px;cursor:pointer id="logo" onclick="location.href='main.html'">
+			<img src="<%=request.getContextPath()%>/img/logo.jpg" style=width:300px;height:100px;cursor:pointer id="logo" onclick="location.href='<%=request.getContextPath()%>/index.do'">
 		</div>
 	</div>
 	<!--  여기까지가 상단 로고와 프로필  -->
@@ -179,7 +181,7 @@ function check(){
 					<button type="button" id="facebook" class="btn rounded-circle" style=font-weight:bold; ><img src="<%=request.getContextPath()%>//img/facebook.jpg"/></button></a>
 					<a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com">
 					<button type="button" id="naver"class="btn rounded-circle"  style=font-weight:bold><img src="<%=request.getContextPath()%>/img/naver.jpg"/></button></a>
-					<a href="etc/카카오톡.lnk">
+					<a href="https://www.kakaocorp.com/service/KakaoTalk">
 					<button type="button" id="kakao"class="btn rounded-circle"  style=font-weight:bold><img src="<%=request.getContextPath()%>/img/kakao.jpg"/></button></a>
 				</div>
 			</div>
@@ -203,7 +205,18 @@ function check(){
 <script>
 $(function(){
 	$("#double-check").on("click",function(){
-		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=400px, height=400px");
+		var id = $("#userid").val();
+		var regId = /^[a-zA-z]{1}\w{4,11}$/;
+		var idresult = regId.test(id);
+		if(idresult){
+			$("#idlabel").text("")
+		}else{
+			$("#idlabel").text("Insert 5 to 11 Characters. Only English or English + Number.")
+			$("#idlabel").css("color", "red")
+		}
+		if(idresult){
+		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=500px, height=350px");
+		}
 	});
 });
 </script>

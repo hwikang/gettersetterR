@@ -10,4 +10,5 @@ public interface IntroInterface {
 	public IntroVO selectIntroVO(String userid);  //setter모드 cotent 선택
 	
 	public List<IntroVO> getRecommendContents(String interest); //메인에서 추천 세터(컨텐츠) 뿌려주기용
+	public String getInterest(String userid);//유저의 interest 알아오기
 }
