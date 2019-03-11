@@ -97,12 +97,37 @@
 		$("#content2>div:nth-child(2)").css("position","relative").css("left","20px");
 		
 		/* upload 모달 */
+		/* var readURL = function(input) { //프로필 이미지 input 경로 변경
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	            reader.onload = function (e) {
+	               $(".avatar").hide();// $('.avatar').attr('src', e.target.result);
+	               
+	            }
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+		$(".file-upload").on('change', function(){
+	        readURL(this);
+	    });
+		 */		 
+		$('.proImg').on('click', function() {
+	        $('#proImgUpload').click();
+	    });
 		
 		$(".file-upload").on("change", function(){
 			$("#video-element source").attr("src",URL.createObjectURL($("#proImgUpload").prop("files")[0]));
 		});
 		
+		/* if(localStorage.getItem("id")==none){
+			$("#myInfo>a>img").attr("src","../img/profile.jpg");
+		}else{
+			$("#myInfo>a>img").attr("src",localStorage.getItem("id"));
+		} */
 		
+		$(document).on("click","#logOut",function(){
+			localStorage.setItem("loginMode","guest");
+		});
 		$("#uploadFrm").submit(function(){  //업로드 input 값에 따른 제한 설정
 			if($("#imgUpload").attr("src")=="../img/click.jpg"){
 				swal("Please attach the video!", "You clicked the button!", "error");
@@ -122,14 +147,7 @@
 			}
 			swal("Good job!", "You clicked the button!", "success");
 			return true;
-		});		
-		
-		
-		$('.proImg').on('click', function() {
-	        $('#proImgUpload').click();
-	    });
-		
-		
+		});
 	});
 </script>
 </head>
