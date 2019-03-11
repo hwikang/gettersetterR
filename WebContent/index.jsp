@@ -77,8 +77,7 @@ ${loginStatus}
 			<li class="nav-item col-12"><a href="my_profile.html" class="nav-link">My Profile</a>
 			<li class="nav-item col-12"><a href="logout.do"  class="nav-link" id="logOut">log Out</a>
 			<li class="nav-item col-12"><a href="payment.html"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-			<li class="nav-item col-12" ><a href="main_setter.html" class="nav-link" id="setterMode">Setter Mode</a>
-			
+			<li class="nav-item col-12" ><a href="upload/setter.do" class="nav-link" id="setterMode">Setter Mode</a>
 		</ul>
 	</div>
 

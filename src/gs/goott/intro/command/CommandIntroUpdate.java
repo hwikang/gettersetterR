@@ -8,6 +8,7 @@ import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
@@ -29,7 +30,12 @@ public class CommandIntroUpdate implements CommandService {
 		DefaultFileRenamePolicy pol = new DefaultFileRenamePolicy();
 		MultipartRequest mr = new MultipartRequest(req, path, maxSize, "UTF-8", pol);		
 		IntroVO vo = new IntroVO();
-		vo.setUserid("zbass90");
+		
+		HttpSession session = req.getSession(); //세션은 req로 해도 받아오네...
+		//System.out.println("userid="+(String)session.getAttribute("userid"));
+		vo.setUserid((String)session.getAttribute("userid"));
+		
+		
 		vo.setInterest(mr.getParameterValues("interest"));
 		vo.setDescription(mr.getParameter("description"));		
 		vo.setTitle(mr.getParameter("title"));
@@ -48,12 +54,11 @@ public class CommandIntroUpdate implements CommandService {
 			
 		}
 		vo.setFilename(fileName);
-		System.out.println("filename="+fileName);
-		
+		System.out.println("filename="+fileName);  //첨부안하면 null 나옴
+		System.out.println("thumbnailFilename="+thumbnailFilename);
 		///////////////////////////////////thmbnail
 		//fileName 이 이미지형식일경우에만
-		//if(fileName.toLowerCase().contains("jpeg")||fileName.toLowerCase().contains("jpg")||fileName.toLowerCase().contains("gif")||fileName.toLowerCase().contains("png")) {
-			//path = "\\\\GOOTT-1-13-PC\\gettersetter\\Introduction";
+		if(!thumbnailFilename.equals("") && thumbnailFilename !=null) {
 			//이미업로드가됬기떄문에 파일이 폴더안에존재함
 			File file = new File(path+"/"+thumbnailFilename);
 			long length = file.length();
@@ -76,7 +81,7 @@ public class CommandIntroUpdate implements CommandService {
 			String thumbnail = new String(thumbnailBase64);
 			System.out.println("thumbnail="+thumbnail.substring(0,10));
 			vo.setThumbnail(thumbnail);
-		
+		}
 		////////////////////////////////////////////////////
 
 		IntroDAO dao = new IntroDAO();
@@ -87,7 +92,7 @@ public class CommandIntroUpdate implements CommandService {
 		req.setAttribute("cnt", cnt);
 		req.setAttribute("vo", vo2);		
 			
-		return "upload.jsp";
+		return "uploadOk.jsp";
 	}
 
 }
