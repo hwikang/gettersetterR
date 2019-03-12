@@ -12,16 +12,10 @@ public class Commandpayment implements CommandService {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// 도토리 충전페이지
-		/*MemberVO vo = new MemberVO();
-		
-		String userid = req.getParameter("userid");
-		int myAcorn = Integer.parseInt(req.getParameter("myAcorn"));
-		
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.buyAcorn(userid, myAcorn);
-		req.setAttribute("cnt",cnt);
-		*/
+		String userid = (String)req.getSession().getAttribute("userid");
+		MemberDAO dao1 = new MemberDAO();
+		MemberVO vo = dao1.getUserInfo(userid);
+		req.setAttribute("vo",vo);
 		return "payment.jsp";
 	}
 
