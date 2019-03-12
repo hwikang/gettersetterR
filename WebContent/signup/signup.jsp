@@ -215,7 +215,7 @@ $(function(){
 			$("#idlabel").css("color", "red")
 		}
 		if(idresult){
-		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=500px, height=350px");
+		window.open("<%=request.getContextPath()%>/signup/idCheck.do?userid="+$("#userid").val(),"idCheck","width=500px, height=280px");
 		}
 	});
 });

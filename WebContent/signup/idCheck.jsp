@@ -45,7 +45,7 @@
 <body style="font-size:20px;font-weight:bold">
 	<div class="container">
 		<div class="col-sm-12">
-			<img src="<%=request.getContextPath()%>/img/logobig.png" style=width:180px;height:100px;cursor:pointer; id="logo" onclick="location.href='<%=request.getContextPath()%>/index.do'">
+			<img src="<%=request.getContextPath()%>/img/logobig.png" style=width:110px;height:50px;cursor:pointer;margin-left:155px id="logo" onclick="location.href='<%=request.getContextPath()%>/index.do'">
 		</div>
 		<hr/>
 		Insert ID and Push double-check Button.<br/>

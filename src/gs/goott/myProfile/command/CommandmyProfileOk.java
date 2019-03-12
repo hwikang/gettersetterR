@@ -1,10 +1,15 @@
 package gs.goott.myProfile.command;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -45,16 +50,36 @@ public class CommandmyProfileOk implements CommandService {
 			int Max_size = 1024*1024*20; //20mb·Î Á¦ÇÑ
 			DefaultFileRenamePolicy pol = new DefaultFileRenamePolicy();
 			MultipartRequest mr = new MultipartRequest(req,path,Max_size,"UTF-8",pol);
-			data = mr.getFilesystemName("profilechange"); 
+			String fileName = "";
+			Enumeration fileList = mr.getFileNames();
+			String oldfile = (String)fileList.nextElement();
+			fileName = mr.getFilesystemName(oldfile); 
+			
 			type = "userImage";
+			File file =new File(path+"/"+fileName);
+			long length = file.length();
+			byte[] imageByte = new byte[(int)length];
+			try {
+				
+				FileInputStream fis = new FileInputStream(file);
+				fis.read(imageByte);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			byte[] imageBase64 = Base64.encodeBase64(imageByte);
+			String userimage = new String(imageBase64);
+			System.out.println(userimage);
+			data = userimage;
+			
+			
 		};
-		
 		String userid = (String)req.getSession().getAttribute("userid");
 		//String userid = "hahaori";
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.profileUpdate(userid, data, type);
 		MemberVO mem = dao.getUserInfo(userid);
-		req.setAttribute("mem", mem);
+		req.setAttribute("mem", mem); 
 		return "myProfile.jsp";
 		
 	}
