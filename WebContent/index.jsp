@@ -63,7 +63,7 @@ ${loginStatus}
 						<li id="myInfo" class="nav-item">
 							<a href="#" class="nav-link" data-toggle="popover" 
 							data-placement="left" data-title="My Info" 
-							data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${mem.userImage}" class="rounded-circle" id="profile"></a>
+							data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle" id="profile"></a>
 						</li>
 					</c:if>
 				</ul>
