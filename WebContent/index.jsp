@@ -215,7 +215,7 @@ ${loginStatus}
 		function createRecomendedContents(){			
 			var txt="";			
 			for(var i =0; i<6; i++){				
-				txt +="<a href='contentOp_01.html' class='col-6 col-sm-4 pb-4'><div class='card w-100'><img src='data:image/jpeg;base64,"+recommendedData[i][6]+"' class='card-img-top'>"
+				txt +="<a href='<%=request.getContextPath()%>/intro/intro.do?introNo="+recommendedData[i][0]+"' class='col-6 col-sm-4 pb-4'><div class='card w-100'><img src='data:image/jpeg;base64,"+recommendedData[i][6]+"' class='card-img-top'>"
 				txt +="<div class='card-body'><h4 class='card-title'>"+recommendedData[i][7]+"</h4><p class='card-text'>Setter : "+recommendedData[i][1]+"</p><p class='card-text'>Followers : "+recommendedData[i][8]+"</p><p class='card-text'>Price : $"+recommendedData[i][9]+"</p></div></div></a>"	
 			}
 			document.getElementById("recommendContents").innerHTML=txt;	
