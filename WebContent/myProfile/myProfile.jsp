@@ -256,10 +256,12 @@ $("#deleteBtn").click(function(){
 	            reader.readAsDataURL(input.files[0]);
 	        }
 	    }
+		
 		$(".file-upload").on('change', function(){ //업로드가 되면 
 	        readURL(this);
 	        $("#apply").css("display", "block")  //apply버튼 나옴.
 	    });
+		
 		$('.proImg').on('click', function() {  //그림부분
 	       $('#proImgUpload').click();
 		});
@@ -269,7 +271,7 @@ $("#deleteBtn").click(function(){
 		$("#apply").click(function(){  //submit이 되는 apply버튼을 누르면 apply버튼이 다시 사라지게
 			$("#apply").css("display", "none");
 		})
-
+	
 	
 </script>
 
