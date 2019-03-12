@@ -32,7 +32,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			System.out.println(vo.getTitle());
 			pstmt.setString(5, vo.getTitle());
 			System.out.println(vo.getUserid());
-			pstmt.setString(6, vo.getUserid());
+			pstmt.setString(6, "khdrogba49");
 			cnt = pstmt.executeUpdate();
 			
 			if(delFileName!=null && !delFileName.equals("")) {
@@ -185,5 +185,54 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			dbClose();
 		}
 		return interestStr;
+	}
+
+	@Override
+	public List<IntroVO> getContent(String interest,String search) {
+		List<IntroVO> list = new ArrayList<IntroVO>();
+		String sql ="";
+		try {
+			dbConn();
+			System.out.println("interest="+interest);
+			//관심사,키워드 둘다 0
+			if((interest.equals("")||interest.equals("all")) && search.equals("")) {
+				sql = "select * from introtbl";
+				pstmt = con.prepareStatement(sql);
+			}
+			//관심사만존재
+			else if(search.equals("")&&( !interest.equals("") && !interest.equals("all"))) {
+				sql = "select * from introtbl where interest=?";	
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, interest);
+			}
+			//키워드만존재
+			else {
+				sql = "select * from introtbl where title like '%"+search+"%' or description like '%"+search+"%'";
+				pstmt = con.prepareStatement(sql);
+			}
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				IntroVO vo = new IntroVO();
+				vo.setIntroNo(rs.getInt("introno"));
+				vo.setUserid(rs.getString("userid"));
+				vo.setFilename(rs.getString("filename"));
+				vo.setInterestStr(rs.getString("interest"));				
+				vo.setDescription(rs.getString("description"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setIntrodate(rs.getString("introdate"));
+				vo.setTitle(rs.getString("title"));
+				vo.setFollower(rs.getInt("follower"));
+				vo.setPrice(rs.getFloat("price"));
+				list.add(vo);				
+			}
+			System.out.println("list size in getConents method="+list.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getCONTENT error");
+		}finally {
+			dbClose();
+		}
+		return list;
 	}
 }

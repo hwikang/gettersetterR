@@ -11,15 +11,21 @@ import javax.servlet.http.HttpSession;
 import gs.goott.controller.CommandService;
 import gs.goott.intro.IntroDAO;
 import gs.goott.intro.IntroVO;
+import gs.goott.signup.MemberDAO;
+import gs.goott.signup.MemberVO;
 
 public class CommandIndex implements CommandService {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		
-		System.out.println(session.getAttribute("loginStatus"));
-		
+		System.out.println("logstatus="+session.getAttribute("loginStatus"));
+		////////인덱스페이지에서 우측상단에 이미지 파일 불러오기 위해.${mem.userImage}
+		String userid = (String)req.getSession().getAttribute("userid");
+		MemberDAO dao1 = new MemberDAO();
+		MemberVO mem = dao1.getUserInfo(userid);
+		req.setAttribute("mem",mem);
+		/////////////////////////////////////
 		//session.setAttribute("loginStatus",0);
 		
 		//6개의 가장핫한세터추천

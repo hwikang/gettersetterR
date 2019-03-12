@@ -63,7 +63,7 @@ ${loginStatus}
 						<li id="myInfo" class="nav-item">
 							<a href="#" class="nav-link" data-toggle="popover" 
 							data-placement="left" data-title="My Info" 
-							data-popover-content="#myInfoPopover"><img src="img/profile.jpg" class="rounded-circle" id="profile"></a>
+							data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${mem.userImage}" class="rounded-circle" id="profile"></a>
 						</li>
 					</c:if>
 				</ul>
@@ -248,7 +248,7 @@ ${loginStatus}
 			var category=["Bodybuild", "Soccer", "Climbing", "Acting", "Dancing", "Art", "Economy", "Philosophy","History"];
 			var txt =  "";			
 			for(var i=0;i<category.length;i++){
-				 txt += "<a href='"+category[i]+".html' class='col-md-1'><div>"+category[i]+"</div></a>";		 
+				 txt += "<a href='<%=request.getContextPath()%>/content/content.do?interest="+category[i]+"' class='col-md-1'><div>"+category[i]+"</div></a>";		 
 			}
 			document.getElementById("categoryDiv").innerHTML=txt;
 			
