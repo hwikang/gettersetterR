@@ -118,7 +118,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 						<h5 class="modal-title">
-						Please Insert Number(0~100)Only<br/>
+						Please Insert Number(0~120)Only<br/>
 						<button type="button" class="btn" style="background:#0069D9;color:white" data-dismiss="modal">Close</button>
 						</h5>
 						</div>
@@ -131,7 +131,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 						<h5 class="modal-title">
-						Please Select Different Concern <br/>
+						Please Select Different Interest <br/>
 						<button type="button" class="btn" style="background:#0069D9;color:white" data-dismiss="modal">Close</button>
 						</h5>
 						</div>
@@ -180,7 +180,7 @@
 					<div class="btn-group" id="sport"> <!-- 관심분야설정 -->
 						<div class="btn dropdown-toggle result" data-toggle="dropdown" style="background:#00069C;color:white">SPORTS</div>
 						<div class="dropdown-menu btn" style="background:#4EA8D8">
-						<a class="dropdown-item" id="bodybuilding1" >BODYBUILDING</a>
+						<a class="dropdown-item" id="bodybuild1" >BODYBUILD</a>
 						<a class="dropdown-item" id="soccer1">SOCCER</a>
 						<a href="#" class="dropdown-item" id="climbing1">CLIMBING</a>
 						</div>

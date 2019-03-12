@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="path" value="${pageContext.request.contextPath }" />
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -30,7 +30,7 @@
 					<!-- ìì´ëê°ì£¼ê¸° -->
 						<a href="#" class="nav-link nav-link-blk" data-toggle="popover" 
 						data-placement="left" data-title="My Info" 
-						data-popover-content="#myInfoPopover"><img src="${path }/profileImage/${mem.userImage}" class="rounded-circle avatar" id="profile"></a>  					</li>
+						data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${mem.userImage}" class="rounded-circle avatar" id="profile"></a></li>
 						<%-- <img src="${path }/profileImage/${mem.userImage}"/> --%>
 				</ul>
 			</div>
@@ -39,9 +39,8 @@
 	<!-- myinfo popover -->
 	<div id="myInfoPopover" style="display:none" >
 		<ul class="nav row">
-			<li class="nav-item col-12"><a href="my_profile.html" class="nav-link nav-link-blk">My Profile</a>
-			<li class="nav-item col-12"><a href="main.html"  class="nav-link nav-link-blk" id="logOut">Log Out</a>
-			<li class="nav-item col-12" ><a href="main_setter.html" class="nav-link nav-link-blk" id="setterMode">Setter Mode</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/index.do"  class="nav-link nav-link-blk" id="logOut">Log Out</a>
+			<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/upload/setter.do" class="nav-link nav-link-blk" id="setterMode">Setter Mode</a>
 			
 		</ul>
 	</div>
@@ -53,8 +52,9 @@
 		<div class="col-sm-2"> <!-- left col -->
 			<div class="text-center proFrm"> 
 			<form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do" enctype="multipart/form-data" class="form-horizontal">
-				<img src="==========" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
-				<input type="file" id="proImgUpload" name="profilechange" class="text-enter center-block file-upload hidden"/>
+				<img src="data:image/jpeg;base64,${mem.userImage}" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
+				
+				<input type="file" id="proImgUpload" name="userimage" class="text-enter center-block file-upload hidden"/>
 				<input type="hidden" name="ischange" value="ok"/>
 				<!-- <button id="proImgBtn"class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add</button> -->
 				<button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">Apply to Profile</button>
@@ -87,7 +87,7 @@
 											<div class="btn-group" id="sport"> <!-- ê´ì¬ë¶ì¼ì¤ì  -->
 												<div class="btn dropdown-toggle result" data-toggle="dropdown" style="background:#00069C;color:white">SPORTS</div>
 												<div class="dropdown-menu btn" style="background:#4EA8D8">
-												<a href="#" class="dropdown-item" id="bodybuilding1" >BODYBUILDING</a>
+												<a href="#" class="dropdown-item" id="bodybuild1" >BODYBUILD</a>
 												<a href="#" class="dropdown-item" id="soccer1">SOCCER</a>
 												<a href="#" class="dropdown-item" id="climbing1">CLIMBING</a>
 												</div>
@@ -127,8 +127,9 @@
 									</div>
 									<form method="post" id="delete" action="<%=request.getContextPath()%>/myProfile/myProfileDeleteOk.do" >
 									 
-									<button type="button" id = deleteBtn style="background:red;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;margin-top:100px" >Delete my Account including my Information</button> Warning : If you Delete your Account, you can't get back your Information.
-									<!-- <div><button id=que>Do you really want Delete Account? you can't get back your Information.</button><button id=quecan>Cancel</button></div> -->
+									<button type="button" id = deleteBtn style="background:red;color:white;border-style:outset;font-size:20px;cursor:pointer;border-radius:10px;margin-top:60px;" >! Delete my Account including my Information</button> 
+									<br/>Warning : If you Delete your Account, you can't get back your Account including your Information.
+									
 									</form>
 						
 						</div>
@@ -196,14 +197,26 @@
 			</p>
 		</div>
 		<div class="col-12 col-md-4">
-			<p onclick="swal('hi')">
+			<p>
 				Recruit | How to use | App-download
 			</p>
 		</div>
 	</div>
 </footer>
-
-
+<!-- interest 중복 선택시 나오는 모달 -->
+<div id="overlapModal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+						<h5 class="modal-title">
+						Please Select Different Interest <br/>
+						<button type="button" class="btn" style="background:#0069D9;color:white" data-dismiss="modal">Close</button>
+						</h5>
+						</div>
+						
+					</div>
+				</div>
+		</div>	
 </body>
 
 <script>
@@ -217,7 +230,15 @@ $("#closeBtn").on('click', function(){
 	document.getElementById("interest").innerHTML += str;
 	document.getElementById("interform").submit();
 });
-
+$("#deleteBtn").click(function(){
+	var con_test = confirm("Do you really want delete your account?");
+	if(con_test == true){
+	  location.href="<%=request.getContextPath()%>/myProfile/myProfileDeleteOk.do";
+	  alert("! Your Account is Deleted from GetterSetter completely !")
+	}
+	else if(con_test == false){
+	}
+})
 </script>
 
 </html> 

@@ -11,9 +11,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="main.css"/>
-<script type="text/javascript" src="contentsData.js"></script>
-
 <%@ include file="/jspf/header.jspf" %>
 <style>
 	/* body{font-size:0.9em; margin:8px 8px} */
@@ -53,28 +50,28 @@
 		}); */
 		$("#purchase>div>b>input[type=radio]:first-child").click(function(){
 			$("#preview").html("5acorns x 3dollor = 15dollors");
-			$("#buyAcorn").val("$15");
+			$("#buyAcorn").val("15");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(2)").click(function(){
 			$("#preview").html("10acorns x 3dollor = 30dollors");
-			$("#buyAcorn").val("$30");
+			$("#buyAcorn").val("30");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(3)").click(function(){
 			$("#preview").html("30acorns x 3dollor = 90dollors");
-			$("#buyAcorn").val("$90");
+			$("#buyAcorn").val("90");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(4)").click(function(){
 			$("#preview").html("50acorns x 3dollor = 150dollors");
-			$("#buyAcorn").val("$150");
+			$("#buyAcorn").val("150");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(5)").click(function(){
 			$("#preview").html("100acorns x 3dollor = 300dollors");
-			$("#buyAcorn").val("$300");
+			$("#buyAcorn").val("300");
 		});
 		$("#acornTxt").keyup(function(){
 			var num = $("#acornTxt").val();
 			$("#preview").html(num+"acorns x 3dollor = "+num*3+"dollors");
-			$("#buyAcorn").val("$"+num*3);
+			$("#buyAcorn").val(""+num*3);
 			
 			var reg = /[0-9]{1,5}/;
 			var result = reg.test(num);
@@ -170,7 +167,7 @@
 						<div class="row">
 							<div id="total" class="col-lg-6">
 								<div><h5>TOTAL</h5></div>
-								<div><input type="label" id="buyAcorn" name="buyAcorn" value="$15"/></div>
+								<div><input type="label" id="buyAcorn" name="buyAcorn" value="15"/></div>
 							</div>
 							<!--  <a href="paymentOk.html" class="btn btn-primary col-lg-1 btn-sm" id="buyBtn">BUY</a>-->
 							<input type="submit" value="BUY" class="btn btn-primary col-lg-1 btn-sm" id="buyBtn"/>
