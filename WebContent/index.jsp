@@ -36,7 +36,7 @@ recommendedData.push(
 	
 </c:forEach>
 </script>
-${loginStatus}
+
 
 <!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
 

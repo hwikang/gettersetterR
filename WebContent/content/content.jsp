@@ -259,15 +259,15 @@
 			}
 			createContents();
 				//프로필 
-				$(function(){
+				/* $(function(){
 					var profile = localStorage.getItem("profile");
 					$("#profile").attr('scr', profile);
-				});
+				}); */
 				</script>
 	</div>
 	<!-- 회사정보 -->
 	<div id="companyInfoDiv" class="border row align-items-center">
-		<div class="col-12 col-md-4"><img src="../img/logo.jpg"/></div>
+		<div class="col-12 col-md-4"><img src="<%=request.getContextPath()%>/index.do"/></div>
 		<div class="col-12 col-md-4">
 			<p>GetterSetter|CEO:A-TownOG|TEL:02-333-3333|EMAIL:Gese@gmail.com|Business Code:428-34-23442|Address:		
 			</p>

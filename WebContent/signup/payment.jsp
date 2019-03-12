@@ -93,7 +93,6 @@
 
 </script>
 </head>
-<%-- <%@ include file="/jspf/header.jspf" %> --%>
 <body>
 
 	<!-- 로그인기능모달 -->

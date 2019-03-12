@@ -136,20 +136,20 @@
 <body>
 <nav class="navbar">
 	<div id="nameTag" class="row">
-		<a href="main.html" class="col-4 p-0"><img src="../img/logo.jpg"></a> <!-- 로고 -->
+		<a href="<%=request.getContextPath()%>/index.do" class="col-4 p-0"><img src="<%=request.getContextPath()%>/img/logo.jpg"></a> <!-- 로고 -->
 		<div class="col-1 col-xl-3 p-0"></div>		
 		<ul class="nav justify-content-end col-12 col-md-6 col-xl-4 p-0 row align-items-center"> 
-			<li class="nav-item col-2"><a href="main.html" class="nav-link">getter</a></li>
-			<li class="nav-item col-2"><a href="main_setter.html" class="nav-link">setter</a></li>
+			<li class="nav-item col-2"><a href="<%=request.getContextPath()%>/index.do" class="nav-link">getter</a></li>
+			<li class="nav-item col-2"><a href="<%=request.getContextPath()%>/upload/setter.do" class="nav-link">setter</a></li>
 			<li class="nav-item col-2"><a href="#" class="nav-link" data-toggle="modal" data-target="#uploadModal">upload</a></li> 
 			<li id="myAcorn" class="d-flex" >
-						<img src="../img/acorn.png" class="p-0"/>
+						<img src="<%=request.getContextPath()%>/img/acorn.png" class="p-0"/>
 						<p class="p-0"></p>
 					</li>		
 			<li id="myInfo" class="nav-item col-2">
 				<a href="#" class="nav-link" data-toggle="popover" 
 				data-placement="left" data-title="My Info" 
-				data-popover-content="#myInfoPopover"><img src="../img/profile.jpg" class="rounded-circle" id="profile"></a>
+				data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle" id="profile"></a>
 			</li>
 		</ul>
 	
@@ -159,10 +159,10 @@
 <!-- myinfo popover -->
 <div id="myInfoPopover" style="display:none" >
 	<ul class="nav row">
-		<li class="nav-item col-12"><a href="my_profile_html" class="nav-link">My Profile</a>
-		<li class="nav-item col-12"><a href="main.html"  class="nav-link" id="logOut">LogOut</a>
-		<li class="nav-item col-12"><a href="payment.html"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-		<li class="nav-item col-12" ><a href="main.html" class="nav-link getterMode">Getter Mode</a>
+		<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/myProfile/myProfile.do" class="nav-link">My Profile</a>
+		<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/index.do"  class="nav-link" id="logOut">LogOut</a>
+		<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/payment/payment.do"  class="nav-link" id="buyAcorn">Buy Acorn</a>
+		<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/index.do" class="nav-link getterMode">Getter Mode</a>
 	</ul>
 </div>
 
@@ -210,7 +210,7 @@
 	<!-- 업로드 -->
 	<div class="row">
 		<div id="load" class="col-lg-7 row">
-			<a href="#" class="col-sm-12 justify-content-center"><img src="../img/upload2.jpg" data-toggle="modal" data-target="#uploadModal"></a>
+			<a href="#" class="col-sm-12 justify-content-center"><img src="<%=request.getContextPath()%>/img/upload2.jpg" data-toggle="modal" data-target="#uploadModal"></a>
 		</div>
 		<!-- 강의 리스트 -->
 		<div id="list" class="col-lg-5">
@@ -286,11 +286,11 @@
 </div>
 <!-- 두번째 컨텐츠 -->
 <div id="content2" class="row">
-	<div class="col-lg-4"><img src="../img/achievement.jpg"></div>
+	<div class="col-lg-4"><img src="<%=request.getContextPath()%>/img/achievement.jpg"></div>
 	<div class="col-lg-4"></div>
 	<div class="col-lg-4"></div>
 </div>
-<div id="graph"><br/><img src="../img/graph.jpg"></div>
+<div id="graph"><br/><img src="<%=request.getContextPath()%>/img/graph.jpg"></div>
 
 
 </body>

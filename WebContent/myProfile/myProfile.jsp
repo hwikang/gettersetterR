@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ include file="../jspf/header.jspf" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="myProfile.css" type="text/css"/>
 </head>
-<header>
+<%-- <header>
 	<nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
 			<!-- ë¡ê³ ê° ë¤ì´ê° div -->
@@ -31,7 +31,7 @@
 						<a href="#" class="nav-link nav-link-blk" data-toggle="popover" 
 						data-placement="left" data-title="My Info" 
 						data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle avatar" id="profile"></a></li>
-						<%-- <img src="${path }/profileImage/${vo.userImage}"/> --%>
+						<img src="${path }/profileImage/${vo.userImage}"/>
 				</ul>
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 		</ul>
 	</div>
 	<div style="margin-bottom:2%"></div>
-</header>
+</header> --%>
 <body>
 <div class="container-fluid"> <!-- Main Div -->
 	<div class="row"> <!-- row Div -->
@@ -55,10 +55,10 @@
 				<img src="data:image/jpeg;base64,${vo.userImage}" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
 				
 				<input type="file" id="proImgUpload" name="userimage" class="text-enter center-block file-upload hidden"/>
-				<input type="hidden" name="ischange" value="ok"/>
+				<input type="hidden" name="ischange" value="ok"/><br/>
 				<button type="button" id="proImgBtn" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;"data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add</button><br/>
 				After You Add Image, Press &lt;Apply to Profile&gt;button to Save your Image.
-				<button id="apply" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;display:none">Apply to Profile</button>
+				<button id="apply" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;display:none;margin-left:50px">Apply to Profile</button>
 			</form>
 			</div>
 		</div> <!--left col(3) -->
@@ -199,7 +199,7 @@
 		</div>
 		<div class="col-12 col-md-4">
 			<p>
-				Recruit | How to use | App-download
+				<a href="#">Recruit</a> |<a href="#"> How to use</a> |<a href="#"> App-download</a>
 			</p>
 		</div>
 	</div>

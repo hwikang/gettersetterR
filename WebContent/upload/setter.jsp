@@ -107,19 +107,19 @@
 	<nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
 			<!-- 로고가 들어갈 div -->
-			<div id="logoDiv" ><a href="main.html"><img src="../img/logo.jpg"/></a></div>
+			<div id="logoDiv" ><a href="<%=request.getContextPath()%>/index.do"><img src="<%=request.getContextPath()%>/img/logo.jpg"/></a></div>
 				<!-- 멤버 : 로그인,회원가입 -->													
 			<div id="memberDiv"><!-- 우측정렬 -->
 				<ul class="nav justify-content-end align-items-center">
 					<li id="mySetter" class="nav-item"><a href="upload.do" class="nav-link">My Setter</a></li>
 					<li id="myAcorn" class="d-flex" >
-						<img src="../img/acorn.png" class="p-0"/>
+						<img src="<%=request.getContextPath()%>/img/acorn.png" class="p-0"/>
 						<p class="p-0"></p>
 					</li>		
 					<li id="myInfo" class="nav-item">
 							<a href="#" class="nav-link" data-toggle="popover" 
 							data-placement="left" data-title="My Info" 
-							data-popover-content="#myInfoPopover"><img src="../img/profile.jpg" class="rounded-circle" id="profile"></a>
+							data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle" id="profile"></a>
 					</li>
 				</ul>
 			</div>
@@ -129,9 +129,9 @@
 	<!-- myinfo popover -->
 	<div id="myInfoPopover" style="display:none" >
 		<ul class="nav row">
-			<li class="nav-item col-12"><a href="my_profile.html" class="nav-link">My Profile</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/myProfile/myProfile.do" class="nav-link">My Profile</a>
 			<li class="nav-item col-12"><a href="<%=request.getContextPath() %>/logout.do"  class="nav-link" id="logOut">Log Out</a>
-			<li class="nav-item col-12"><a href="payment.html"  class="nav-link" id="buyAcorn">Buy Acorn</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/signup/payment.do"  class="nav-link" id="buyAcorn">Buy Acorn</a>
 			<li class="nav-item col-12" ><a href="<%=request.getContextPath() %>/index.do" class="nav-link getterMode">Getter Mode</a>
 		</ul>
 	</div>
@@ -183,7 +183,7 @@
 		
 			<div class="col-6 row justify-content-center" id="actionText">
 				<h3 class="col-12">Upload your Content Right Now!</h3>
-				<a href="upload.html" class="btn btn-light col-11" style="font-family: 'Montserrat', sans-serif;"><b>Upload Now</b></a>
+				<a href="<%=request.getContextPath()%>/upload/upload.do" class="btn btn-light col-11" style="font-family: 'Montserrat', sans-serif;"><b>Upload Now</b></a>
 			</div>
 			<div class="col-6" ></div>
 		</div>
