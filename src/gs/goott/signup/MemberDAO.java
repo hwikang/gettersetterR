@@ -80,28 +80,6 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 	}
 
 	
-	@Override
-	public MemberVO getMemberRecord(String userid) {
-		MemberVO vo = new MemberVO();
-		try {
-			dbConn();
-			String sql = "select * from membertbl where userid=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, userid);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {				
-				vo.setUserid(rs.getString(2));
-				vo.setMyAcorn(rs.getInt(8));				
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("get member records error!");
-		}finally {
-			dbClose();
-		}
-		return vo;
-	}
 
 	@Override
 	public int signup(MemberVO vo) {

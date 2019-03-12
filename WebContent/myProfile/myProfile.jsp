@@ -271,7 +271,7 @@ $("#deleteBtn").click(function(){
 		$("#apply").click(function(){  //submit이 되는 apply버튼을 누르면 apply버튼이 다시 사라지게
 			$("#apply").css("display", "none");
 		})
-
+	
 	
 </script>
 
