@@ -144,16 +144,16 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 			pstmt.setString(1,userid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				vo.setUserno(rs.getInt(1));
-				vo.setUserid(rs.getString(2));
-				vo.setUserpwd(rs.getString(3));
-				vo.setTel(rs.getString(4));
-				vo.setEmail(rs.getString(5));
-				vo.setUserImage(rs.getString(6));
-				vo.setInterestStr(rs.getString(7));
-				vo.setMyAcorn(rs.getInt(8));
-				vo.setContentPrice(rs.getInt(9));
-				vo.setUserLevel(rs.getInt(11));
+				vo.setUserno(rs.getInt("userno"));
+				vo.setUserid(rs.getString("userid"));
+				vo.setUserpwd(rs.getString("userpwd"));
+				vo.setTel(rs.getString("tel"));
+				vo.setEmail(rs.getString("email"));
+				vo.setUserImage(rs.getString("userimage"));
+				vo.setInterestStr(rs.getString("interest"));
+				vo.setMyAcorn(rs.getInt("myacorn"));
+				vo.setContentPrice(rs.getInt("contentprice"));
+				vo.setUserLevel(rs.getInt("userlevel"));
 				
 			}
 		} catch (Exception e) {
