@@ -18,7 +18,7 @@ public class CommandIndex implements CommandService {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		
-		System.out.println(session.getAttribute("loginStatus"));
+		System.out.println("logstatus="+session.getAttribute("loginStatus"));
 		
 		//session.setAttribute("loginStatus",0);
 		

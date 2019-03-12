@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<%@ include file="/jspf/SearchbarHeader.jspf" %>
 <style>
 	body{height:1000px;font-family: 'Montserrat', sans-serif;}
 	/*header*/
@@ -106,45 +107,7 @@
 <body>
 <div id="container">
 	<div id="listhead" class="row">
-	 	<a href="main.html" class="col-2"><div id="logoDiv">	<!-- 링크추가 -->
-	 		<img src=../img/logo.jpg>
-	 	</div></a>	
-	 	<!-- 검색기능 -->
-	 	<div id="searchDiv" class="col-xl-8 col-md-7">
-				<!-- padding용 -->
-				<div></div>
-				<!-- 검색창DIV -->								
-				<%String interest = request.getParameter("interest"); %>
-				<form method="get" action="<%=request.getContextPath()%>/content/content.do">
-					<div id="searchInput">
-						<input type="text" placeholder="Input Keyword" id="searchBar" name="search"/>
-						<input id="searchButton" type="submit" value="Get"/>
-					</div>
-				</form>
-		</div>
-		<!-- 우측상단 myprofile 이미지 -->
- 		<div id="memberDiv" class="col-md-2"><!-- 우측정렬 -->
-			<ul class="nav justify-content-end align-items-center">	
-				<li id="myAcorn" class="d-flex" >
-					<img src="../img/acorn.png" class="p-0"/>
-					<p class="p-0"></p>
-				</li>		
-				<li id="myInfo" class="nav-item">
-					<a href="#" class="nav-link" data-toggle="popover" 
-					data-placement="left" data-title="My Info" 
-					data-popover-content="#myInfoPopover"><img src="../img/profile-picture.jpg"id="profile" class="rounded-circle"></a>
-				</li>
-			</ul>
-		</div>	
-		<!-- myinfo popover -->
-		<div id="myInfoPopover" style="display:none" >
-			<ul class="nav row">
-				<li class="nav-item col-12"><a href="my_profile.html" class="nav-link">My Profile</a>
-				<li class="nav-item col-12"><a href="main.html"  class="nav-link" id="logOut">Log Out</a>
-				<li class="nav-item col-12"><a href="payment.html"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-				<li class="nav-item col-12" ><a href="main_setter.html" class="nav-link" id="setterMode">Setter Mode</a>		
-			</ul>
-		</div>
+	 	
 		<script>
 		/*팝오버 실행*/
 		  $('#myInfo').popover({
