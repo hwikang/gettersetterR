@@ -20,9 +20,8 @@ public class CommandIndex implements CommandService {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		
-<<<<<<< HEAD
 		System.out.println("logstatus="+session.getAttribute("loginStatus"));
-=======
+
 		////////인덱스페이지에서 우측상단에 이미지 파일 불러오기 위해.${mem.userImage}
 		String userid = (String)req.getSession().getAttribute("userid");
 		MemberDAO dao1 = new MemberDAO();
@@ -30,8 +29,7 @@ public class CommandIndex implements CommandService {
 		req.setAttribute("mem",mem);
 		/////////////////////////////////////
 		
-		System.out.println(session.getAttribute("loginStatus"));
->>>>>>> bae9a8211dc0635cca82165c84866a37936a4f15
+
 		
 		//session.setAttribute("loginStatus",0);
 		
