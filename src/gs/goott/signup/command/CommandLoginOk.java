@@ -29,7 +29,7 @@ public class CommandLoginOk implements CommandService {
 		//로그인정보 흩뿌리기
 		System.out.println("cnt="+cnt);
 		if(cnt==1) {
-			vo = dao.getMemberRecord(userid);
+			vo = dao.getUserInfo(userid);
 			req.setAttribute("cnt", cnt);
 			req.setAttribute("vo", vo);
 			
@@ -38,6 +38,7 @@ public class CommandLoginOk implements CommandService {
 			session.setAttribute("loginStatus", 1);
 			//로그인 아이디 세션
 			session.setAttribute("userid", vo.getUserid());
+			session.setAttribute("vo",vo);
 		}
 		return "loginOk.jsp";
 

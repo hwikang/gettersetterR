@@ -20,9 +20,6 @@ public interface SignupInterface {
 	public int buyAcorn(String userid,int buyAcorn, int myAcorn);	
 	
 	
-	//도토리구매
-	
-	public MemberVO getMemberRecord(String userid);
 
 	
 	
