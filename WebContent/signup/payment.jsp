@@ -11,8 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="main.css"/>
-<script type="text/javascript" src="contentsData.js"></script>
+<%@ include file="/jspf/header.jspf" %>
 <style>
 	/* body{font-size:0.9em; margin:8px 8px} */
 /* 	#nameTag{width:100%}
@@ -51,28 +50,28 @@
 		}); */
 		$("#purchase>div>b>input[type=radio]:first-child").click(function(){
 			$("#preview").html("5acorns x 3dollor = 15dollors");
-			$("#buyAcorn").val("$15");
+			$("#buyAcorn").val("15");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(2)").click(function(){
 			$("#preview").html("10acorns x 3dollor = 30dollors");
-			$("#buyAcorn").val("$30");
+			$("#buyAcorn").val("30");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(3)").click(function(){
 			$("#preview").html("30acorns x 3dollor = 90dollors");
-			$("#buyAcorn").val("$90");
+			$("#buyAcorn").val("90");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(4)").click(function(){
 			$("#preview").html("50acorns x 3dollor = 150dollors");
-			$("#buyAcorn").val("$150");
+			$("#buyAcorn").val("150");
 		});
 		$("#purchase>div>b>input[type=radio]:nth-child(5)").click(function(){
 			$("#preview").html("100acorns x 3dollor = 300dollors");
-			$("#buyAcorn").val("$300");
+			$("#buyAcorn").val("300");
 		});
 		$("#acornTxt").keyup(function(){
 			var num = $("#acornTxt").val();
 			$("#preview").html(num+"acorns x 3dollor = "+num*3+"dollors");
-			$("#buyAcorn").val("$"+num*3);
+			$("#buyAcorn").val(""+num*3);
 			
 			var reg = /[0-9]{1,5}/;
 			var result = reg.test(num);
@@ -98,49 +97,7 @@
 </head>
 <%-- <%@ include file="/jspf/header.jspf" %> --%>
 <body>
-${cnt }
-<!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
-	<nav class="navbar row">
-		<div id="menuDiv" class="container col-md-12">			
-			<!-- 로고가 들어갈 div -->
-			<div id="logoDiv" ><a href="<%=request.getContextPath()%>/index.do"><img src="../img/logo.jpg"/></a></div>
-				<!-- 멤버 : 로그인,회원가입 -->													
-			<div id="memberDiv"><!-- 우측정렬 -->
-				<ul class="nav justify-content-end align-items-center">
-	
-					<!-- 미 로그인상태 -->
-					<c:if test="${cnt!=1 }">
-						
-						<li id="login" class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">login</a></li>
-						<li id="signUp" class="nav-item"><a href="<%=request.getContextPath()%>/signup/signup.do" class="nav-link">SignUp</a></li>
-					</c:if>
-					<!-- 로그인상태 -->
-					<c:if test="${cnt==1}">
-						<li id="myAcorn" class="d-flex" >
-							<p class="p-0">${vo.myAcorn}</p>
-							<img src="../img/acorn.png" class="p-0"/>
-							
-						</li>									<!--  수정 -->	
-						<li id="myInfo" class="nav-item">
-							<a href="#" class="nav-link" data-toggle="popover" 
-							data-placement="left" data-title="My Info" 
-							data-popover-content="#myInfoPopover"><img src="../img/profile.jpg" class="rounded-circle" id="profile"></a>
-						</li>
-					</c:if>
-				</ul>
-			</div>
-		</div>
-	</nav>
-<!-- myinfo popover -->
-	<div id="myInfoPopover" style="display:none" >
-		<ul class="nav row">
-			<li class="nav-item col-12"><a href="../my_profile.html" class="nav-link">My Profile</a>
-			<li class="nav-item col-12"><a href="#"  class="nav-link" id="logOut">log Out</a>
-			<li class="nav-item col-12"><a href="payment.do"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-			<li class="nav-item col-12" ><a href="../main_setter.html" class="nav-link" id="setterMode">Setter Mode</a>
-			
-		</ul>
-	</div>
+
 	<!-- 로그인기능모달 -->
 	<!-- login form  -->
 	<form action="<%=request.getContextPath()%>/loginOk.do" method="post">
@@ -210,7 +167,7 @@ ${cnt }
 						<div class="row">
 							<div id="total" class="col-lg-6">
 								<div><h5>TOTAL</h5></div>
-								<div><input type="label" id="buyAcorn" name="buyAcorn" value="$15"/></div>
+								<div><input type="label" id="buyAcorn" name="buyAcorn" value="15"/></div>
 							</div>
 							<!--  <a href="paymentOk.html" class="btn btn-primary col-lg-1 btn-sm" id="buyBtn">BUY</a>-->
 							<input type="submit" value="BUY" class="btn btn-primary col-lg-1 btn-sm" id="buyBtn"/>

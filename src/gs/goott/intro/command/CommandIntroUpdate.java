@@ -56,6 +56,7 @@ public class CommandIntroUpdate implements CommandService {
 		vo.setFilename(fileName);
 		System.out.println("filename="+fileName);  //첨부안하면 null 나옴
 		System.out.println("thumbnailFilename="+thumbnailFilename);
+		vo.setThumbnailfileName(thumbnailFilename);
 		///////////////////////////////////thmbnail
 		//fileName 이 이미지형식일경우에만
 		if(!thumbnailFilename.equals("") && thumbnailFilename !=null) {

@@ -10,7 +10,8 @@ public class ContentVO {
 	private int views;
 	private String uploadDate;
 	private String interest;
-	public ContentVO() {}
+	private float videoLength;
+	public ContentVO() {}	
 	
 	public int getContentNo() {
 		return contentNo;
@@ -66,6 +67,13 @@ public class ContentVO {
 	}
 	public void setInterest(String interest) {
 		this.interest = interest;
+	}
+	public float getVideoLength() {
+		return videoLength;
+	}
+
+	public void setVideoLength(float videoLength) {
+		this.videoLength = videoLength;
 	}
 	
 }

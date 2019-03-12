@@ -52,7 +52,7 @@
 	.proFrm{position:relative; width:100%; height:300px; border:1px solid #eee}
 	#proImgUpload{position: absolute; left:-9999px;}
 	
-	.proImg{width:50%; cursor:pointer; border:0px solid white; position:relative; top:130px}
+	.proImg{width:50%; cursor:pointer; border:0px solid white; position:absolute; left:80px}
 	#proImgBtn{width:100px;	height:30px; line-height:1; margin-top:5px; cursor:pointer; font-size:0.8em;}
 	
 	/* content2 */
@@ -99,12 +99,14 @@
 		/* upload 모달 */
 		
 		$(".file-upload").on("change", function(){
-			$("#video-element source").attr("src",URL.createObjectURL($("#proImgUpload").prop("files")[0]));
+			$("#imgUpload").attr("src","");
+			$("#imgUpload").css("display","none");
+			$("#video-element source").attr("src", URL.createObjectURL($("#proImgUpload").prop("files")[0]));
 		});
 		
 		
 		$("#uploadFrm").submit(function(){  //업로드 input 값에 따른 제한 설정
-			if($("#imgUpload").attr("src")=="../img/click.jpg"){
+			if($("#proImgUpload").val()==null || $("#proImgUpload").val()==""){
 				swal("Please attach the video!", "You clicked the button!", "error");
 				return false;
 			}
@@ -123,9 +125,7 @@
 			swal("Good job!", "You clicked the button!", "success");
 			return true;
 		});		
-		
-		
-		$('.proImg').on('click', function() {
+		$("#imgUpload").on('click', function() {
 	        $('#proImgUpload').click();
 	    });
 		
@@ -177,17 +177,19 @@
 		<form action="<%=request.getContextPath()%>/upload/introUpdate.do" method="post" enctype="multipart/form-data">
 			<b>Intro Video</b><br/>
 			<input type="file" id="introVideo" name="filename"/><br/>
+			<input type="hidden" id="beforeFileName"value="${introVO.filename}"/>
 			<b>Thumbnail</b><br/>
 			<input type="file" id="thumbnail" name="thumbnail"/><br/>
+			<input type="hidden" id="beforeThumbnail" value="${introVO.thumbnailFileName}"/>
 			<b>Title</b><br/>
-			<input type="text" id="title" name="title" maxlength="30"><br/>
+			<input type="text" id="title" name="title" value="${introVO.title }"maxlength="30"><br/>
 			
-			<b>Name</b><br/>
-			<input type="text" id="profileName" name="userid" readonly value="${vo.userid }" maxlength="20"><br/>
+			<b>Name</b><br/>${introVO.interestStr }
+			<input type="text" id="profileName" name="userid" value="${introVO.userid }" readonly value="${vo.userid }" maxlength="20"><br/>
 			<b>Teaching Subject</b><br/>
-			<c:forTokens var="ts" items="Acting,Art,Bodybuild,Climbing,Dancing,Economy,History,Philosophy,Soccer" delims=",">
+			<c:forTokens var="ts" items="acting,art,bodybuild,climbing,dancing,economy,history,philosophy,soccer" delims=",">
 				<input type="checkbox" id="${ts }" name="interest" value="${ts }"
-					<c:forTokens var="ss" items="${vo.interestStr }" delims="/">
+					<c:forTokens var="ss" items="${introVO.interestStr }" delims="/">
 						<c:if test="${ts==ss}">
 							checked
 						</c:if>
@@ -195,7 +197,7 @@
 				/>${ts }
 			</c:forTokens><br/>
 			<b>Your Profile</b><br/>
-			<textarea id="profileTxt" name="description" maxlength="500" >${vo.description}</textarea>
+			<textarea id="profileTxt" name="description" maxlength="500" >${introVO.description}</textarea>
 			<input type="submit" class="btn btn-primary btn-sm" value="done"/>	
 		</form>
 	</div>
@@ -214,7 +216,7 @@
 		<div id="list" class="col-lg-5">
 			<ul class="list-group">
 				<li class="list-group-item">
-					<div>
+					<div>					
 						<a href="contentOp_01.html"><img src="../img/actingThumb1.jpg"></a>
 						<div><b>Class for Action</b></div>
 						<div>
@@ -229,29 +231,9 @@
 							<div>12:45</div>
 							<div>09:13</div>
 							<a href="contentOp_01.html"><button class="btn btn-sm btn-primary">more</button></a>
-						</div>
-						
+						</div>						
 					</div>
-				</li>
-				<li class="list-group-item">
-					<div>
-						<a href="contentOp_02.html"><img src="../img/actingThumb2.jpg"></a>
-						<div><b>About Speech</b></div>
-						<div>
-							<div><a href="#">chap1. orientation</a></div>
-							<div><a href="#">chap2. pronunciation</a></div>
-							<div><a href="#">chap3. facial stretches</a></div>
-							<div><a href="#">chap4. shoulder stretches</a></div>
-						</div>
-						<div>
-							<div>01:58</div>
-							<div>21:03</div>
-							<div>15:23</div>
-							<div>14:34</div>
-							<a href="contentOp_02.html"><button class="btn btn-sm btn-primary">more</button></a>
-						</div>
-					</div>
-				</li>
+				</li>				
 			</ul>
 		</div>
 	</div>
