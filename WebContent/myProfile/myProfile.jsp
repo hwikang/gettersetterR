@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
@@ -10,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="myProfile.js"></script>
 <script src="main.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -19,13 +21,13 @@
 <header>
 	<nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
-			<!-- 로고가 들어갈 div -->
+			<!-- ë¡ê³ ê° ë¤ì´ê° div -->
 			<a href="<%=request.getContextPath()%>/index.do"><div id="logoDiv"><img src="<%=request.getContextPath()%>/img/logo.jpg"/></div></a>
-				<!-- 멤버 : 로그인,회원가입 -->													
-			<div id="memberDiv"><!-- 우측정렬 -->
+				<!-- ë©¤ë² : ë¡ê·¸ì¸,íìê°ì -->													
+			<div id="memberDiv"><!-- ì°ì¸¡ì ë ¬ -->
 				<ul class="nav justify-content-end align-items-center">
 					<li id="myInfo" class="nav-item">
-					<!-- 아이디값주기 -->
+					<!-- ìì´ëê°ì£¼ê¸° -->
 						<a href="#" class="nav-link nav-link-blk" data-toggle="popover" 
 						data-placement="left" data-title="My Info" 
 						data-popover-content="#myInfoPopover"><img src="${path }/profileImage/${mem.userImage}" class="rounded-circle avatar" id="profile"></a>  					</li>
@@ -51,11 +53,11 @@
 		<div class="col-sm-2"> <!-- left col -->
 			<div class="text-center proFrm"> 
 			<form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do" enctype="multipart/form-data" class="form-horizontal">
-				<img src="img/profile-picture.jpg" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
+				<img src="==========" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
 				<input type="file" id="proImgUpload" name="profilechange" class="text-enter center-block file-upload hidden"/>
 				<input type="hidden" name="ischange" value="ok"/>
 				<!-- <button id="proImgBtn"class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add</button> -->
-				<button>Apply to Profile</button>
+				<button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">Apply to Profile</button>
 			</form>
 			</div>
 		</div> <!--left col(3) -->
@@ -75,14 +77,14 @@
 						<div class="tab-pane fade show active" id="profile-1">
 						
 						<div class="tab-pane fade show active" id="profile-1">
-							<div>ID : ${mem.userid}</div>
-							PASSWORD <div id=pwDiv><button id = "changeBtn1" class="btn btn-outline-primary" >Change</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c1>Insert new PW<input type=password id=pwCha>Check Again<input type=password id=pwCheck name="pwchange"><button class="btn btn-danger" id="cha11">Change</button></div></div><br/></form>
-							<div>TEL : ${mem.tel}</div><button id = "changeBtn2" class="btn btn-outline-primary">Change</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c2><input type=text id=telCha name="telchange"><button class="btn btn-danger" id="chaB">Change</button></div><br/><br/></form>
-							<div>E-MAIL : ${mem.email}</div><button id = "changeBtn3" class="btn btn-outline-primary">Change</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c3><input type=text id=mailCha name="emailchange"><button class="btn btn-danger" id="chaC">Change</button></div><br/><br/></form>
-							<div>Interest : ${mem.interestStr }</div><button id = "changeBtn4" class="btn btn-outline-primary">Change</button><br/>
+							<div style="font-weight:bold;font-size:20px">ID : ${mem.userid}</div>
+							<div id=pwDiv><button id = "changeBtn1" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" >PASSWORD CHANGE</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c1>Insert new PW<input type=password id=pwCha style="border-style:inset; border-radius:10px">Check Again<input type=password id=pwCheck name="pwchange" style="border-style:inset; border-radius:10px"><button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" id="cha11">Submit</button></div></div><br/></form>
+							<div style="font-weight:bold;font-size:20px">TEL : ${mem.tel}</div><button id = "changeBtn2" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">TEL CHANGE</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c2><input type=text id=telCha name="telchange" style="border-style:inset; border-radius:10px"><button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" id="chaB">Submit</button></div><br/><br/></form>
+							<div style="font-weight:bold;font-size:20px">E-MAIL : ${mem.email}</div><button id = "changeBtn3" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">E-MAIL CHANGE</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c3><input type=text id=mailCha name="emailchange" style="border-style:inset; border-radius:10px"><button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" id="chaC">Submit</button></div><br/><br/></form>
+							<div style="font-weight:bold;font-size:20px">Interest : ${mem.interestStr }</div><button id = "changeBtn4" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">INTEREST CHANGE</button><br/>
 									<div id="total">
-										<div id=div1 > <!-- 관심분야 선택영역 -->
-											<div class="btn-group" id="sport"> <!-- 관심분야설정 -->
+										<div id=div1 > <!-- ê´ì¬ë¶ì¼ ì íìì­ -->
+											<div class="btn-group" id="sport"> <!-- ê´ì¬ë¶ì¼ì¤ì  -->
 												<div class="btn dropdown-toggle result" data-toggle="dropdown" style="background:#00069C;color:white">SPORTS</div>
 												<div class="dropdown-menu btn" style="background:#4EA8D8">
 												<a href="#" class="dropdown-item" id="bodybuilding1" >BODYBUILDING</a>
@@ -90,7 +92,7 @@
 												<a href="#" class="dropdown-item" id="climbing1">CLIMBING</a>
 												</div>
 											</div><br/>
-											<div class="btn-group" id="arts"><!-- 관심분야설정 -->
+											<div class="btn-group" id="arts"><!-- ê´ì¬ë¶ì¼ì¤ì  -->
 												<div class="btn dropdown-toggle result" data-toggle="dropdown"style="background:#00764B;color:white" >ARTS</div>
 													<div class="dropdown-menu btn" style="background:#91D94F">
 													<a href="#" class="dropdown-item" id="acting2">ACTING</a>
@@ -98,7 +100,7 @@
 													<a href="#" class="dropdown-item" id="art2">ART</a>
 													</div>
 											</div><br/>	
-											<div class="btn-group" id="humanities"><!-- 관심분야설정 -->
+											<div class="btn-group" id="humanities"><!-- ê´ì¬ë¶ì¼ì¤ì  -->
 												<div class="btn dropdown-toggle result" data-toggle="dropdown"style="background:#2F2F2F;color:white" >HUMANITIES</div>
 													<div class="dropdown-menu btn" style="background:#D6D8DB">
 													<a href="#" class="dropdown-item" id="economy3">ECONOMY</a>
@@ -107,7 +109,7 @@
 													</div>
 											</div>	
 										</div>	
-										<div id="div2"> <!-- 관심분야 결과영역 -->
+										<div id="div2"> <!-- ê´ì¬ë¶ì¼ ê²°ê³¼ìì­ -->
 											<ul>
 												<li id=list1><div id ="list1btn1" class="btn result" ></div><div class="btn result" id="list1btn2" style="background:white;"></div><button class="btn btn-danger dbutton result" id="delete1">X</button></li>
 												<li id=list2><div id ="list2btn1" class="btn result" ></div><div class="btn result" id="list2btn2" style="background:white;"></div><button class="btn btn-danger dbutton result" id="delete2">X</button></li>
@@ -117,7 +119,7 @@
 										<form method="post" id="interform" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do" >
 										<div id="interest">
 										<input type="hidden" name="interestchange" value="ok"/>
-										<button id = closeBtn class="btn btn-outline-primary">Insert & Close</button>
+										<button id = closeBtn style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">Submit & Close</button>
 										</div>
 										</form>
 										</div>
@@ -125,7 +127,8 @@
 									</div>
 									<form method="post" id="delete" action="<%=request.getContextPath()%>/myProfile/myProfileDeleteOk.do" >
 									 
-									<button id = deleteBtn  class="btn btn-outline-primary" >Delete my Account including my Information</button> 
+									<button type="button" id = deleteBtn style="background:red;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;margin-top:100px" >Delete my Account including my Information</button> Warning : If you Delete your Account, you can't get back your Information.
+									<!-- <div><button id=que>Do you really want Delete Account? you can't get back your Information.</button><button id=quecan>Cancel</button></div> -->
 									</form>
 						
 						</div>
@@ -193,18 +196,20 @@
 			</p>
 		</div>
 		<div class="col-12 col-md-4">
-			<p>
-				recruit | how to use | app-download
+			<p onclick="swal('hi')">
+				Recruit | How to use | App-download
 			</p>
 		</div>
 	</div>
 </footer>
+
+
 </body>
 
 <script>
 var interestArr = [];
 $("#closeBtn").on('click', function(){
-	//배열값으로 파라미터 전송
+	//ë°°ì´ê°ì¼ë¡ íë¼ë¯¸í° ì ì¡
 	var str ="";
 	$.map(interestArr,function(a){
 		str += "<input type='hidden' name='interest' value='"+a+"'/>"
@@ -212,83 +217,7 @@ $("#closeBtn").on('click', function(){
 	document.getElementById("interest").innerHTML += str;
 	document.getElementById("interform").submit();
 });
-$(".dbutton").on('click', function(){
-	var id = $(this).attr("id");
-	var type = id.substr(id.length-1,1); // id가 delete2 => '2'
-	
-	var index = interestArr.indexOf(id);
-	interestArr.splice(index,1);
-	
-	if(type == '1'){
-		$("#list1").css("display","none");
-	}else if(type == '2'){
-		$("#list2").css("display","none");
-	}
-	else if(type == '3'){
-		$("#list3").css("display","none");
-	}
-	
-}); 
-$(".dropdown-item").on('click', function(){
-	var id = $(this).attr("id");
-	var type = id.substr(id.length-1,1); // id가 soccer1 => '1'
-	id = id.substr(0, id.length-1); // id가 soccer1 => 'soccer'
-	
-	
-	var big;
-	var bc;
-	var list1val;
-	var list2val;
-	var list3val;
-	if($("#list1").css("display")=="block"){
-		list1val = $("#list1btn2").text();
-	}
-	if($("#list2").css("display")=="block"){
-		list2val = $("#list2btn2").text();
-	}
-	if($("#list3").css("display")=="block"){
-		list3val = $("#list3btn2").text();
-	}
-	
-	if((list1val == id.toUpperCase()|| list2val == id.toUpperCase()|| list3val == id.toUpperCase())){
-		$("#overlapModal").modal();
-		return; // 중복체크 이 시점에서 함수 종료  $(".dropdown-item").on('click', function(){}) 에 해당하는 함수부분. 이 아래 함수부분은 실행 안됨.
-	}
-	
-	
-	if(type == '1'){
-		big = "SPORTS";
-		bc = "#00069C";
-	}else if(type == '2'){
-		big = "ARTS";
-		bc = "#00764B";
-	}
-	else if(type == '3'){
-		big = "HUMANITIES";
-		bc = "#2F2F2F";
-	}
-	
-	interestArr.push(id);
-	
-	if($("#list1").css("display")=="none"){
-		
-		$("#list1btn1").text(big);
-		$("#list1btn1").css("background",bc);
-		$("#list1btn2").text(id.toUpperCase());
-		$("#list1").css("display", "block")
-	}else if($("#list2").css("display")=="none"){
-		$("#list2btn1").text(big);
-		$("#list2btn1").css("background",bc);
-		$("#list2btn2").text(id.toUpperCase());
-		$("#list2").css("display", "block");
-		}
-		else if($("#list3").css("display")=="none"){
-		$("#list3btn1").text(big);
-		$("#list3btn1").css("background",bc);
-		$("#list3btn2").text(id.toUpperCase());
-		$("#list3").css("display", "block");
-		}
-	
-	});
+
 </script>
+
 </html> 

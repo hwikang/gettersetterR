@@ -18,13 +18,14 @@ public class CommandpaymentOk implements CommandService {
 
 		String userid = req.getParameter("userid");
 		//구매하려는 acorn 수
+
 		int buyAcorn = Integer.parseInt(req.getParameter("buyAcorn"));
-		
+	
 		MemberDAO dao = new MemberDAO();
 		//vo정보 불러오기
 		vo = dao.getUserInfo(userid);
 		//id, 구매수(buyacorn), myacorn
-		int cnt = dao.buyAcorn(userid,buyAcorn,vo.getMyAcorn());
+		int cnt = dao.buyAcorn(userid, buyAcorn,vo.getMyAcorn());
 		req.setAttribute("cnt",cnt);
 		req.setAttribute("userid",vo.getUserid());
 		req.setAttribute("myAcorn",vo.getMyAcorn());
