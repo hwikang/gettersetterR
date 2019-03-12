@@ -56,9 +56,7 @@
 			<li><a href="#">4</a></li>
 			<li><a href="#">5</a></li>
 		</ul>
-		</div>
-		
-		
+		</div>		
 		<h4 id="eva">Instructor Evaluation</h4><hr/>
 		<div class="row">
 			<div class="col-sm-1"></div>

@@ -36,8 +36,6 @@ recommendedData.push(
 
 
 <!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
-
-	
 	
 	<!-- 로그인기능모달 -->
 	<!-- login form  -->
