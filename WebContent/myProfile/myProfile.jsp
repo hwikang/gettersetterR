@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="../jspf/header.jspf" %>
+<%@ include file="/jspf/header.jspf" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="myProfile.css" type="text/css"/>
-</head>
-<%-- <header>
+<%-- </head>
+<header>
 	<nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
 			<!-- ë¡ê³ ê° ë¤ì´ê° div -->
@@ -26,12 +26,17 @@
 				<!-- ë©¤ë² : ë¡ê·¸ì¸,íìê°ì -->													
 			<div id="memberDiv"><!-- ì°ì¸¡ì ë ¬ -->
 				<ul class="nav justify-content-end align-items-center">
+				<li id="myAcornNum" class="d-flex" >
+							
+							<p class="p-0">${vo.myAcorn}</p>
+							<img src="<%=request.getContextPath() %>/img/acorn.png" class="p-0"/>
+							
+						</li>
 					<li id="myInfo" class="nav-item">
 					<!-- ìì´ëê°ì£¼ê¸° -->
 						<a href="#" class="nav-link nav-link-blk" data-toggle="popover" 
 						data-placement="left" data-title="My Info" 
 						data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle avatar" id="profile"></a></li>
-						<img src="${path }/profileImage/${vo.userImage}"/>
 				</ul>
 			</div>
 		</div>
@@ -39,13 +44,13 @@
 	<!-- myinfo popover -->
 	<div id="myInfoPopover" style="display:none" >
 		<ul class="nav row">
-			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/index.do"  class="nav-link nav-link-blk" id="logOut">Log Out</a>
-			<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/upload/setter.do" class="nav-link nav-link-blk" id="setterMode">Setter Mode</a>
-			
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/index.do"  class="nav-link" id="logOut">Log Out</a>
+			<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/upload/setter.do" class="nav-link" id="setterMode">Setter Mode</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/signup/payment.do"  class="nav-link" id="payment">Buy Acorn</a>
 		</ul>
 	</div>
 	<div style="margin-bottom:2%"></div>
-</header> --%>
+</header>  --%>
 <body>
 <div class="container-fluid"> <!-- Main Div -->
 	<div class="row"> <!-- row Div -->

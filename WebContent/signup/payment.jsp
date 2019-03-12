@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<%@ include file="../jspf/SearchbarHeader.jspf" %>
+<%@ include file="/jspf/SearchbarHeader.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
