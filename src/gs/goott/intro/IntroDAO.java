@@ -13,16 +13,18 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 	public int introUpdate(IntroVO vo, String path) {
 		int cnt = 0;
 		String delFileName ="";
+		String delThumbName ="";
 		try {
 			dbConn();
-			String sql ="select filename from introtbl where userid=?";
+			String sql ="select filename, thumbnailFileName from introtbl where userid=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				delFileName = rs.getString(1);
+				delThumbName = rs.getString(2);
 			}
-			sql = "update introtbl set filename=?, interest=?, description=?, thumbnail=?, title=?, introdate=sysdate where userid=?";
+			sql = "update introtbl set filename=?, interest=?, description=?, thumbnail=?, title=?, introdate=sysdate, thumbnailFileName=? where userid=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getFilename());
 			System.out.println(vo.getInterestStr().toLowerCase());
@@ -32,12 +34,20 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			System.out.println(vo.getTitle());
 			pstmt.setString(5, vo.getTitle());
 			System.out.println(vo.getUserid());
-			pstmt.setString(6, "khdrogba49");
+			pstmt.setString(6, vo.getThumbnailFileName());
+			pstmt.setString(7, vo.getUserid());
 			cnt = pstmt.executeUpdate();
 			
+			System.out.println("delFileName="+delFileName+"\ndelThumbName"+delThumbName);
 			if(delFileName!=null && !delFileName.equals("")) {
 				File f = new File(path,delFileName);
-				f.delete();
+				File f2 = new File(path,delThumbName);
+				if(vo.getBeforeFileName()==delFileName) {
+					f.delete();
+				}
+				if(vo.getBeforeThumbnail()==delThumbName) {
+					f2.delete();
+				}
 			}
 		}catch(Exception e) {
 			System.out.println("intro insert error"+e.getMessage());

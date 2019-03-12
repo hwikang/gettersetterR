@@ -13,6 +13,8 @@ public class IntroVO {
 	private String title;
 	private int follower;
 	private Float price;
+	private String beforeFileName;
+	private String beforeThumbnail;
 	
 	public IntroVO() {}
 	public int getIntroNo() {
@@ -94,8 +96,20 @@ public class IntroVO {
 	public String getThumbnailFileName() {
 		return thumbnailFileName;
 	}
-	public void setThumbnailfileName(String thumbnailFileName) {
+	public void setThumbnailFileName(String thumbnailFileName) {
 		this.thumbnailFileName = thumbnailFileName;
+	}
+	public String getBeforeFileName() {
+		return beforeFileName;
+	}
+	public void setBeforeFileName(String beforeFileName) {
+		this.beforeFileName = beforeFileName;
+	}
+	public String getBeforeThumbnail() {
+		return beforeThumbnail;
+	}
+	public void setBeforeThumbnail(String beforeThumbnail) {
+		this.beforeThumbnail = beforeThumbnail;
 	}
 	
 	

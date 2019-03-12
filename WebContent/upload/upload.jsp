@@ -129,6 +129,13 @@
 	        $('#proImgUpload').click();
 	    });
 		
+		$("input[name=interest]:checkbox").on("change",function(){ //변수 차단
+			if($("input[name=interest]:checkbox:checked").length==3){
+				$(":checkbox:not(:checked)").attr("disabled","disabled");
+			}else{
+				$("input[name=interest]:checkbox").removeAttr("disabled");
+			}
+		});
 		
 	});
 </script>
@@ -184,18 +191,30 @@
 			<b>Title</b><br/>
 			<input type="text" id="title" name="title" value="${introVO.title }"maxlength="30"><br/>
 			
-			<b>Name</b><br/>${introVO.interestStr }
+			<b>Name</b><br/>
 			<input type="text" id="profileName" name="userid" value="${introVO.userid }" readonly value="${vo.userid }" maxlength="20"><br/>
 			<b>Teaching Subject</b><br/>
+			<c:set var="num" value="0" scope="page"/>
 			<c:forTokens var="ts" items="acting,art,bodybuild,climbing,dancing,economy,history,philosophy,soccer" delims=",">
 				<input type="checkbox" id="${ts }" name="interest" value="${ts }"
 					<c:forTokens var="ss" items="${introVO.interestStr }" delims="/">
-						<c:if test="${ts==ss}">
-							checked
-						</c:if>
-					</c:forTokens>
-				/>${ts }
-			</c:forTokens><br/>
+							<c:if test="${ts==ss }">
+								checked <c:set var="num2" value="${num+1}" scope="page"/>
+							</c:if>	
+					</c:forTokens>	
+						<c:if test="${interLength==3}">	
+							<c:choose>	
+							<c:when test="${num2==0}">
+								disabled
+							</c:when>
+							<c:when test="${num2>0}">
+								<c:set var="num2" value="0" scope="page"/>	
+							</c:when>
+							</c:choose>
+						</c:if>	
+				/>${ts } 
+			</c:forTokens>			
+			<br/> 
 			<b>Your Profile</b><br/>
 			<textarea id="profileTxt" name="description" maxlength="500" >${introVO.description}</textarea>
 			<input type="submit" class="btn btn-primary btn-sm" value="done"/>	

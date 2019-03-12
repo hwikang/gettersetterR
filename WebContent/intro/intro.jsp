@@ -43,18 +43,6 @@ Will changes in real estate prices be reflected in apartment prices from 2013 to
 There are many city parks all over the country. What kind of park is there in my neighborhood? Visualize what parks are distributed by region via the Volium.
 How do you leverage the data in the public data portal? And what kind of data does the public data portal have? The goal is to become familiar with Python and multiple data analytics libraries, dealing with different types of data through public data.
 		</p>
-		<br/><h4>instructor career</h4><br/>
-		<ul>
-			<li>Bivaripublica, Server Developer</li>
-			<li>bluenight, CTO (2016-2017)</li>
-			<li>Data Square, CEO / Developer / Joint Establishment (2011-2016)</li>
-			<li>Like the handsome lion, the operating / teacher / founding member (2014-2016)</li>
-			<li>IT Instructors such as Ajou University, KT&G, etc. (2014-2016)</li>
-			<li>MERSMAP Development (Five million net visitors)</li>
-			<li>IEEE Best-Poster Award for International Studies</li>
-			<li>Microsoft Korea Cloud Competition Silver Award</li>
-			<li>Korea Talent Award</li>
-		</ul>
 		<h4 id="cur">Curriculum</h4><hr/>
 		<div>
 		<ul>
@@ -64,9 +52,7 @@ How do you leverage the data in the public data portal? And what kind of data do
 			<li><a href="#">4</a></li>
 			<li><a href="#">5</a></li>
 		</ul>
-		</div>
-		
-		
+		</div>		
 		<h4 id="eva">Instructor Evaluation</h4><hr/>
 		<div class="row">
 			<div class="col-sm-1"></div>
