@@ -75,7 +75,7 @@
 <nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
 			<!-- 로고가 들어갈 div -->
-			<div id="logoDiv" ><a href="${ctx }index.do"><img src="img/logo.jpg"/></a></div>
+			<div id="logoDiv" ><a href="${ctx }index.do"><img src="../img/logo.jpg"/></a></div>
 				<!-- 멤버 : 로그인,회원가입 -->													
 			<div id="memberDiv"><!-- 우측정렬 -->
 				<ul class="nav justify-content-end align-items-center">

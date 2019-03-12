@@ -53,7 +53,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 		IntroVO vo = new IntroVO();
 		try {
 			dbConn();
-			String sql = "select introno, userid, filename, interest, description, to_char(introdate, 'YYYY-MM-DD') from introtbl where userid=?";
+			String sql = "select introno, userid, filename, interest, description, to_char(introdate, 'YYYY-MM-DD'), title, follower, price, thumbnail from introtbl where userid=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userid);
 			rs = pstmt.executeQuery();
@@ -64,6 +64,10 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 				vo.setInterestStr(rs.getString(4));
 				vo.setDescription(rs.getString(5));
 				vo.setIntrodate(rs.getString(6));
+				vo.setTitle(rs.getString(7));
+				vo.setFollower(rs.getInt(8));
+				vo.setPrice(rs.getFloat(9));
+				vo.setThumbnail(rs.getString(10));
 			}
 		}catch(Exception e) {
 			System.out.println("intro select error"+e.getMessage());

@@ -9,6 +9,7 @@ public class IntroVO {
 	private String description;
 	private String introdate;
 	private String thumbnail;
+	private String thumbnailFileName;
 	private String title;
 	private int follower;
 	private Float price;
@@ -68,6 +69,7 @@ public class IntroVO {
 	public String getThumbnail() {
 		return thumbnail;
 	}
+	
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
@@ -88,6 +90,12 @@ public class IntroVO {
 	}
 	public void setPrice(Float price) {
 		this.price = price;
+	}
+	public String getThumbnailFileName() {
+		return thumbnailFileName;
+	}
+	public void setThumbnailfileName(String thumbnailFileName) {
+		this.thumbnailFileName = thumbnailFileName;
 	}
 	
 	
