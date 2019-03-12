@@ -248,7 +248,7 @@ ${loginStatus}
 			var category=["Bodybuild", "Soccer", "Climbing", "Acting", "Dancing", "Art", "Economy", "Philosophy","History"];
 			var txt =  "";			
 			for(var i=0;i<category.length;i++){
-				 txt += "<a href='"+category[i]+".html' class='col-md-1'><div>"+category[i]+"</div></a>";		 
+				 txt += "<a href='<%=request.getContextPath()%>/content/content.do?interest="+category[i]+"' class='col-md-1'><div>"+category[i]+"</div></a>";		 
 			}
 			document.getElementById("categoryDiv").innerHTML=txt;
 			
