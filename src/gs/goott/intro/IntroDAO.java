@@ -245,4 +245,35 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 		}
 		return list;
 	}
+
+	@Override
+	public IntroVO getIntro(int introNo) {
+		IntroVO vo = new IntroVO();
+		try {
+			dbConn();
+			String sql = "select * from introtbl where introNo = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, introNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo.setIntroNo(rs.getInt("introno"));
+				vo.setUserid(rs.getString("userid"));
+				vo.setInterestStr(rs.getString("interest"));
+				vo.setDescription(rs.getString("description"));
+				vo.setIntrodate(rs.getString("introdate"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setTitle(rs.getString("title"));
+				vo.setFollower(rs.getInt("follower"));
+				vo.setPrice(rs.getFloat("price"));
+				System.out.println("get 하고있는 intro userid="+vo.getUserid());
+			}
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("get intro error");
+		}finally {
+			dbClose();
+		}
+		return vo;
+	}
 }

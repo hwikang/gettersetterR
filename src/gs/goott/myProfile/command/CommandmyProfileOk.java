@@ -78,8 +78,8 @@ public class CommandmyProfileOk implements CommandService {
 		//String userid = "hahaori";
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.profileUpdate(userid, data, type);
-		MemberVO mem = dao.getUserInfo(userid);
-		req.setAttribute("mem", mem); 
+		MemberVO vo = dao.getUserInfo(userid);
+		req.setAttribute("vo", vo); 
 		return "myProfile.jsp";
 		
 	}

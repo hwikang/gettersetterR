@@ -29,14 +29,14 @@
 </style>
 <footer>
 <div id="companyInfoDiv" class="border row align-items-center"style="font-size:0.9em">
-	<div class="col-12 col-md-4"><img src="../img/logo.jpg" onclick="location.href='main.html'" style="cursor:pointer"></div>
+	<div class="col-12 col-md-4"><img src="<%=request.getContextPath()%>/img/logo.jpg" onclick="location.href='<%=request.getContextPath()%>/index.do'" style="cursor:pointer"></div>
 	<div class="col-12 col-md-4">
 		<p>GetterSetter|CEO:A-TownOG|TEL:02-333-3333|EMAIL:Gese@gmail.com|Business Code:428-34-23442|Address:		
 		</p>
 	</div>
 	<div class="col-12 col-md-4">
 		<p>
-			채용안내 | 이용안내 | 앱다운로드
+			<a href="#">Recruit</a> |<a href="#"> How to use</a> |<a href="#"> App-download</a>
 		</p>
 	</div>
 </div>

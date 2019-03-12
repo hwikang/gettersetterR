@@ -11,6 +11,8 @@ import gs.goott.content.ContentDAO;
 import gs.goott.controller.CommandService;
 import gs.goott.intro.IntroDAO;
 import gs.goott.intro.IntroVO;
+import gs.goott.signup.MemberDAO;
+import gs.goott.signup.MemberVO;
 
 public class CommandUpload implements CommandService {
 
@@ -27,6 +29,9 @@ public class CommandUpload implements CommandService {
 		req.setAttribute("introVO", introVO);
 		req.setAttribute("interLength", interLength);
 		
+		MemberDAO dao = new MemberDAO();
+		MemberVO vo = dao.getUserInfo(userid);
+		req.setAttribute("vo",vo);
 		return "upload.jsp";
 	}
 

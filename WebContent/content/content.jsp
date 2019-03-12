@@ -2,61 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../jspf/SearchbarHeader.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width , initial-scale=1" >
 <title>제목을넣으면되ㅎㅎ</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<%@ include file="/jspf/SearchbarHeader.jspf" %>
+
 <style>
 	body{height:1000px;font-family: 'Montserrat', sans-serif;}
-	/*header*/
-	#logoDiv{}
-	#logoDiv img{
-				width:100%;
-				height:99px;
-				}
-	#memberDiv ul{height:100px;}
-	/**/
-	/* 검색기능 div */
-	#searchDiv{
-		width:100%;
-		height:80px;
-		
-	}
-	/* 검색창 위에 div, 검색창이 가운데에 위치하기위해 존재 */
-	#searchDiv>div:nth-child(1){		
-		height:40%;
-	}
-	/* 검색텍스트창 */
-	#searchBar{
-		width:80%;		
-	}
-	#searchButton{
-		width:15%;
-	}
 	
-	/* 텍스트창,버튼 */
-	#searchInput>input{
-		height:40px;
-	}
 	
-	#listhead{background-color:white; 
-			  width:100%;height:100px;		  
-			  border-bottom:1px solid gray;			
-			  }
-	#listhead>div{
-		padding:0;
-	}
-	#searchButton{
-		border:none;
-		border-radius:20px;
-	}	  
+	  
 			
 	#menuList{padding-top:10px;margin:0px auto;}
 	.cate{margin-left:15px ; color:gray }
@@ -106,22 +64,6 @@
 </head>
 <body>
 <div id="container">
-	<div id="listhead" class="row">
-	 	
-		<script>
-		/*팝오버 실행*/
-		  $('#myInfo').popover({
-			  html : true,
-			  content: function(){
-				  return $("#myInfoPopover").html();
-			  },
-			  title : "My Info"
-			  
-			  
-		  });
-		</script>	
-
-	</div>
 	
 	<!-- menuList -->
 	<div id="menuList" class="container row" >		
@@ -149,8 +91,7 @@
 				    <a class="dropdown-item" href="#" id="hottest" onclick="clickHottest()">Hottest</a>
 				    <a class="dropdown-item" href="#" id="lowPrice" onclick="clickLowPrice()">LowPrice</a>
 				    <a class="dropdown-item" href="#" id="highPrice"onclick="clickHighPrice()">HighPrice</a>
-				 </div>
-		  
+				 </div>		  
 			</div>
 
 			
@@ -318,15 +259,15 @@
 			}
 			createContents();
 				//프로필 
-				$(function(){
+				/* $(function(){
 					var profile = localStorage.getItem("profile");
 					$("#profile").attr('scr', profile);
-				});
+				}); */
 				</script>
 	</div>
 	<!-- 회사정보 -->
 	<div id="companyInfoDiv" class="border row align-items-center">
-		<div class="col-12 col-md-4"><img src="../img/logo.jpg"/></div>
+		<div class="col-12 col-md-4"><img src="<%=request.getContextPath()%>/index.do"/></div>
 		<div class="col-12 col-md-4">
 			<p>GetterSetter|CEO:A-TownOG|TEL:02-333-3333|EMAIL:Gese@gmail.com|Business Code:428-34-23442|Address:		
 			</p>
