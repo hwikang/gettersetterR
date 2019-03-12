@@ -108,15 +108,15 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 		int cnt =0;
 		try {
 			dbConn();
-			String sql = "insert into memberTbl values(memberSq.nextVal,?,?,?,?,?,?,0,0,sysdate,1)";
+			String sql = "insert into memberTbl values(memberSq.nextVal,?,?,?,?,?,0,0,sysdate,1,?)";
 			                                             //userno                  myacorn contentPrice regdate userlevel
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setString(2, vo.getUserpwd());
 			pstmt.setString(3, vo.getTel());
 			pstmt.setString(4, vo.getEmail());
-			pstmt.setString(5, vo.getUserImage());
-			pstmt.setString(6, vo.getInterestStr());
+			pstmt.setString(5, vo.getInterestStr());
+			pstmt.setString(6, vo.getUserImage());
 			//pstmt.setInt(7, vo.getContentPrice());
 			//pstmt.setInt(8, vo.getUserLevel());
 			
@@ -149,16 +149,17 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 				vo.setUserpwd(rs.getString(3));
 				vo.setTel(rs.getString(4));
 				vo.setEmail(rs.getString(5));
-				vo.setUserImage(rs.getString(6));
-				vo.setInterestStr(rs.getString(7));
-				vo.setMyAcorn(rs.getInt(8));
-				vo.setContentPrice(rs.getInt(9));
-				vo.setUserLevel(rs.getInt(11));
+				vo.setInterestStr(rs.getString(6));
+				vo.setMyAcorn(rs.getInt(7));
+				vo.setContentPrice(rs.getInt(8));
+				//9는 regdate
+				vo.setUserLevel(rs.getInt(10));
+				vo.setUserImage(rs.getString(11));
 				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("get user information error");
+			System.out.println("회원정보 가져오기 에러");
 		}finally {
 			dbClose();
 		}

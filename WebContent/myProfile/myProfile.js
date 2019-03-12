@@ -150,7 +150,6 @@ $(function(){
 			var type = id.substr(id.length-1,1); // id가 soccer1 => '1'
 			id = id.substr(0, id.length-1); // id가 soccer1 => 'soccer'
 			
-			interestArr.push(id);
 			var big;
 			var bc;
 			var list1val;
@@ -203,6 +202,7 @@ $(function(){
 				$("#list3").css("display", "block");
 				}
 			
+			interestArr.push(id);
 			});
 			$(".dbutton").on('click', function(){
 				var id = $(this).attr("id");
@@ -224,6 +224,5 @@ $(function(){
 			
 			//관심사 선택end=======================================================================
 		  
-			  //로그아웃기능
 			  
 });
