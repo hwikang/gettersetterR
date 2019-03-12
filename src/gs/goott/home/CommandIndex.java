@@ -25,8 +25,8 @@ public class CommandIndex implements CommandService {
 		////////인덱스페이지에서 우측상단에 이미지 파일 불러오기 위해.${mem.userImage}
 		String userid = (String)req.getSession().getAttribute("userid");
 		MemberDAO dao1 = new MemberDAO();
-		MemberVO mem = dao1.getUserInfo(userid);
-		req.setAttribute("mem",mem);
+		MemberVO vo = dao1.getUserInfo(userid);
+		req.setAttribute("vo",vo);
 		/////////////////////////////////////
 		
 
