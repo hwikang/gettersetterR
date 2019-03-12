@@ -36,18 +36,6 @@ recommendedData.push(
 
 
 <!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
-<<<<<<< HEAD
-	<nav class="navbar row">
-		<div id="menuDiv" class="container col-md-12">			
-			<!-- 로고가 들어갈 div -->
-			<div id="logoDiv" ><a href="<%=request.getContextPath()%>/index.do"><img src="<%=request.getContextPath() %>img/logo.jpg"/></a></div>
-				<!-- 멤버 : 로그인,회원가입 -->													
-			<div id="memberDiv"><!-- 우측정렬 -->
-				<ul class="nav justify-content-end align-items-center">
-=======
-
->>>>>>> branch 'master' of https://github.com/zbass90/gettersetterR.git
-	
 	
 	<!-- 로그인기능모달 -->
 	<!-- login form  -->
