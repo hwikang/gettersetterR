@@ -82,7 +82,23 @@
 			</div>
 			<div class="col-sm-1"></div>
 		</div>
-
+		
+		<!-- 댓글 --> 
+		<h4 id="review">Review</h4><hr/>
+		<div class="row">			
+			<form method="get" action="replyWrite.do" class="col-12">
+				<div class="col-12 row">
+					<p class="col-2">${userid }</p>
+					<input class="col-6" type="text" name="commentContent"/>
+					<input class="col-2" type="submit"/>
+					<span class="col-2"><i class="fas fa-star"></i></span><br/>
+					<input type="hidden" name="star" value="3.0"/>
+					<input type="hidden" name="commenter" value="${userid}"/>
+				</div>
+			</form>
+				
+		</div>
+		
 	</div>
 </div>
 </body>

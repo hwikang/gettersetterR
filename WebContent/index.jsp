@@ -80,7 +80,7 @@ recommendedData.push(
 				<!-- padding용 -->
 				<div></div>
 				<!-- 검색창DIV -->
-				<form method="get" action="searchResult.html">
+				<form method="get" action="<%=request.getContextPath()%>/content/content.do">
 					<div id="searchInput">
 						<input type="text" placeholder=" Input Keyword" id="searchBar" name="search"/>
 						<input id="searchButton" type="submit" value="GET" class="btn btn-primary btn-sm"/>
