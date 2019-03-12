@@ -18,10 +18,7 @@
 	.list-group{width:90%}
 	.list-group-item{border:1px solid white; border-bottom:1px solid lightgray;}
 	body{margin-Top:50px; font-size:0.9em; font-family: 'Montserrat', sans-serif;}
-	#nameTag{width:100%; height:100px; margin-bottom:10px} /* 화면상단 */
-		#nameTag>a>img{width:300px; height:100px;} /* 로고사이즈 */
-		#nameTag>ul>li{padding:0px; text-align:center}
-	#myInfo img{width:50px; height:50px;}
+	
 	.nav-link{color:black;}
 	.nav-link:hover{font-weight:bolder;}
 		
@@ -134,37 +131,7 @@
 </script>
 </head>
 <body>
-<nav class="navbar">
-	<div id="nameTag" class="row">
-		<a href="main.html" class="col-4 p-0"><img src="../img/logo.jpg"></a> <!-- 로고 -->
-		<div class="col-1 col-xl-3 p-0"></div>		
-		<ul class="nav justify-content-end col-12 col-md-6 col-xl-4 p-0 row align-items-center"> 
-			<li class="nav-item col-2"><a href="main.html" class="nav-link">getter</a></li>
-			<li class="nav-item col-2"><a href="main_setter.html" class="nav-link">setter</a></li>
-			<li class="nav-item col-2"><a href="#" class="nav-link" data-toggle="modal" data-target="#uploadModal">upload</a></li> 
-			<li id="myAcorn" class="d-flex" >
-						<img src="../img/acorn.png" class="p-0"/>
-						<p class="p-0"></p>
-					</li>		
-			<li id="myInfo" class="nav-item col-2">
-				<a href="#" class="nav-link" data-toggle="popover" 
-				data-placement="left" data-title="My Info" 
-				data-popover-content="#myInfoPopover"><img src="../img/profile.jpg" class="rounded-circle" id="profile"></a>
-			</li>
-		</ul>
-	
-	</div>
-</nav><br/><br/>
-
-<!-- myinfo popover -->
-<div id="myInfoPopover" style="display:none" >
-	<ul class="nav row">
-		<li class="nav-item col-12"><a href="my_profile_html" class="nav-link">My Profile</a>
-		<li class="nav-item col-12"><a href="main.html"  class="nav-link" id="logOut">LogOut</a>
-		<li class="nav-item col-12"><a href="payment.html"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-		<li class="nav-item col-12" ><a href="main.html" class="nav-link getterMode">Getter Mode</a>
-	</ul>
-</div>
+<%@include file="../jspf/SearchbarHeader.jspf" %>
 
 
 <!-- 첫번째 콘텐츠 -->

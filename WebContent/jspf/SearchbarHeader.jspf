@@ -46,7 +46,7 @@
 	}
 	#logoDiv img{
 		width:300px;
-		height:100px;
+		height:100%;
 		cursor:pointer;
 	}
 	.navbar{

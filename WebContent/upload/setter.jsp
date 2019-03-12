@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,10 @@
 		width:50px;
 		height:50px;	
 			
+	}
+	#myAcornNum img{
+		width:20px;
+		height:20px;
 	}
 	.nav-link{
 		color:black;
@@ -103,36 +108,44 @@
 </style>
 </head>
 <body>
+${loginStatus}
 	<!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
 	<nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
 			<!-- 로고가 들어갈 div -->
-			<div id="logoDiv" ><a href="main.html"><img src="../img/logo.jpg"/></a></div>
+			<div id="logoDiv" ><a href="<%=request.getContextPath()%>/index.do"><img src="<%=request.getContextPath() %>/img/logo.jpg"/></a></div>
 				<!-- 멤버 : 로그인,회원가입 -->													
 			<div id="memberDiv"><!-- 우측정렬 -->
-				<ul class="nav justify-content-end align-items-center">
-					<li id="mySetter" class="nav-item"><a href="upload.do" class="nav-link">My Setter</a></li>
-					<li id="myAcorn" class="d-flex" >
-						<img src="../img/acorn.png" class="p-0"/>
-						<p class="p-0"></p>
-					</li>		
-					<li id="myInfo" class="nav-item">
+				<ul class="nav justify-content-end align-items-center">					
+					<!-- 미 로그인상태 -->
+					<c:if test="${loginStatus!=1 }">						
+						<li id="login" class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">login</a></li>
+						<li id="signUp" class="nav-item"><a href="<%=request.getContextPath()%>/signup/signup.do" class="nav-link">SignUp</a></li>
+					</c:if>
+					<!-- 로그인상태 -->
+					<c:if test="${loginStatus==1}">
+						<li id="mySetter" class="nav-item"><a href="upload.do" class="nav-link">My Setter</a></li>
+						<li id="myAcornNum" class="d-flex" ><p class="p-0">${vo.myAcorn}</p>						
+							<img src="<%=request.getContextPath() %>/img/acorn.png" class="p-0"/>
+						</li>
+															<!--  수정 -->	
+						<li id="myInfo" class="nav-item">
 							<a href="#" class="nav-link" data-toggle="popover" 
 							data-placement="left" data-title="My Info" 
-							data-popover-content="#myInfoPopover"><img src="../img/profile.jpg" class="rounded-circle" id="profile"></a>
-					</li>
+							data-popover-content="#myInfoPopover"><img src="<%=request.getContextPath() %>/img/profile.jpg" class="rounded-circle" id="profile"></a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	
-	<!-- myinfo popover -->
 	<div id="myInfoPopover" style="display:none" >
 		<ul class="nav row">
-			<li class="nav-item col-12"><a href="my_profile.html" class="nav-link">My Profile</a>
-			<li class="nav-item col-12"><a href="<%=request.getContextPath() %>/logout.do"  class="nav-link" id="logOut">Log Out</a>
-			<li class="nav-item col-12"><a href="payment.html"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-			<li class="nav-item col-12" ><a href="<%=request.getContextPath() %>/index.do" class="nav-link getterMode">Getter Mode</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/myProfile/myProfile.do" class="nav-link">My Profile</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/logout.do"  class="nav-link" id="logOut">log Out</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/signup/payment.do"  class="nav-link" id="payment">Buy Acorn</a>
+			<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/index.do" class="nav-link" id="getterMode">Getter Mode</a>
 		</ul>
 	</div>
 

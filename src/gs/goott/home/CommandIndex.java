@@ -19,27 +19,15 @@ public class CommandIndex implements CommandService {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-<<<<<<< HEAD
-		System.out.println("logstatus="+session.getAttribute("loginStatus"));
-=======
-		
-		System.out.println("logstatus="+session.getAttribute("loginStatus"));
 
->>>>>>> ea605d88b66321875e9d1067ed5f260204a48c91
+		System.out.println("logstatus="+session.getAttribute("loginStatus"));
 		////////인덱스페이지에서 우측상단에 이미지 파일 불러오기 위해.${mem.userImage}
 		String userid = (String)req.getSession().getAttribute("userid");
 		MemberDAO dao1 = new MemberDAO();
 		MemberVO vo = dao1.getUserInfo(userid);
 		req.setAttribute("vo",vo);
 		/////////////////////////////////////
-<<<<<<< HEAD
-=======
-		
 
-		
->>>>>>> ea605d88b66321875e9d1067ed5f260204a48c91
-		//session.setAttribute("loginStatus",0);
-		
 		//6개의 가장핫한세터추천
 		IntroDAO dao = new IntroDAO();
 		

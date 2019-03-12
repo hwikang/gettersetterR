@@ -12,6 +12,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script>
  $(function(){
@@ -114,7 +116,7 @@
 	<div id="myInfoPopover" style="display:none" >
 		<ul class="nav row">
 			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/myProfile/myProfile.do" class="nav-link">My Profile</a>
-			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>logout.do"  class="nav-link" id="logOut">log Out</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/logout.do"  class="nav-link" id="logOut">log Out</a>
 			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/signup/payment.do"  class="nav-link" id="payment">Buy Acorn</a>
 			<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/upload/setter.do" class="nav-link" id="setterMode">Setter Mode</a>
 		</ul>
