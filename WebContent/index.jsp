@@ -114,7 +114,9 @@ recommendedData.push(
 					<p>You can change to Setter mode on MyInfo. then you are the Setter!
 				</div>
 				<div>
-					<a href="main_setter.html" class="btn btn-outline-primary btn-sm">Change to Setter mode</a>
+				
+				<a href="<%=request.getContextPath()%>/upload/setter.do" class="btn btn-outline-primary btn-sm">Change to Setter mode</a>
+				
 				</div>
 			</div>
 			
@@ -123,7 +125,7 @@ recommendedData.push(
 					<p>Upload your valuable content! 
 				</div>
 				<div>
-					<a href="upload.html" class="btn btn-outline-primary btn-sm">Go to upload file</a>
+					<a href="upload/upload.jsp" class="btn btn-outline-primary btn-sm">Go to upload file</a>
 				</div>
 			</div>
 			
@@ -132,7 +134,7 @@ recommendedData.push(
 					<p>Setter can earn Acorn by purchaser. use your talent on GetterSetter! 
 				</div>
 				<div>
-					<a href="#" class="btn btn-outline-primary btn-sm">Check my Acorn</a>
+					<a href="<%=request.getContextPath()%>/signup/payment.do" class="btn btn-outline-primary btn-sm">Check my Acorn</a>
 				</div>
 			</div>
 		</div>
@@ -158,7 +160,7 @@ recommendedData.push(
 					<p>You need to buy Acorn for watch contents. Before purchasing, you can check reviews from other users.
 				</div>
 				<div>
-					<a href="payment.html" class="btn btn-outline-primary btn-sm">Buy Acorn</a>
+					<a href="<%=request.getContextPath()%>/signup/payment.do" class="btn btn-outline-primary btn-sm">Buy Acorn</a>
 				</div>
 			</div>
 			
@@ -167,7 +169,7 @@ recommendedData.push(
 					<p>you can easily find content you Bought on My Info. <br/>Enjoy GetterSetter! 
 				</div>
 				<div>
-					<a href="my_profile.html" class="btn btn-outline-primary btn-sm">Go to My Info</a>
+					<a href="<%=request.getContextPath()%>/intro/intro.jsp" class="btn btn-outline-primary btn-sm">Go to My Info</a>
 				</div>
 			</div>
 		</div>
