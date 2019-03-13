@@ -1,6 +1,7 @@
 package gs.goott.intro.command;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,22 +33,44 @@ public class CommandBuy implements CommandService {
 		IntroDAO introDao = new IntroDAO();
 		IntroVO introVo = introDao.getIntro(introNo);
 		Double price = introVo.getPrice();
-		//비교
+		
+		/////////여러경우의수
 		int cnt = 0;
+		//이미산거아니니?
+		OrderDAO orderDao = new OrderDAO();
+		List<OrderVO> orderList = orderDao.checkOrderList(userid);
+		String orderedSetterId ="";
+		String nowSetterId ="";
+		for(int i=0; i<orderList.size();i++) {
+				//내가 산 세터들의 아이디
+			orderedSetterId = orderList.get(i).getSetterId();
+			nowSetterId = introVo.getUserid();
+			System.out.println("orderedSetterId"+orderedSetterId);
+			System.out.println("nowSetterId"+nowSetterId);
+			if(orderedSetterId.equals(nowSetterId)) {
+				cnt=2;
+				System.out.println("cnt+"+cnt);
+			}
+		}
+		// 잔액이 부족하다
+		System.out.print("잔액스=");
+		System.out.println(myAcorn-price);
 		if(myAcorn-price<0) {//잔액부족
-			cnt = -1;
-			req.setAttribute("cnt", cnt);
+			cnt = -1;			
+		}
+		else if(cnt==2) {
+			//걍넘기기
 		}else {
-		//잔액차감
-		int useCnt = memberDao.useAcorn(userid, price);
-		//order table 에추가
+			//잔액차감
+			int useCnt = memberDao.useAcorn(userid, price);
+			//order table 에추가
 			if(useCnt==1) {
-				OrderVO orderVo = new OrderVO();
-				OrderDAO orderDao = new OrderDAO();
+				OrderVO orderVo = new OrderVO();				
 				String setterId = introVo.getUserid();
 				cnt = orderDao.orderContent(setterId, userid, price);
 			}
 		}
+		System.out.println("cnt="+cnt);
 		req.setAttribute("cnt", cnt);
 		req.setAttribute("introNo", introNo);
 		

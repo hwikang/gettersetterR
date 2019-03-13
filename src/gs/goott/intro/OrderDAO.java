@@ -1,5 +1,8 @@
 package gs.goott.intro;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gs.goott.util.DBConnection;
 
 public class OrderDAO extends DBConnection implements OrderInterface{
@@ -22,6 +25,29 @@ public class OrderDAO extends DBConnection implements OrderInterface{
 			dbClose();
 		}
 		return cnt;
+	}
+
+	@Override
+	public List<OrderVO> checkOrderList(String userid) {
+		List<OrderVO> list = new ArrayList<OrderVO>();
+		try {
+			dbConn();
+			String sql = "select * from ordertbl where getterid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				OrderVO vo = new OrderVO();
+				vo.setSetterId(rs.getString("setterid"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("get ORDER LIST");
+		}finally {
+			dbClose();
+		}
+		return list;
 	}
 
 }
