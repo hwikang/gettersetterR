@@ -38,7 +38,7 @@ public class ControllerAction extends HttpServlet {
 		}
 		
 		try {
-			//properties에 있는 문자열을 HashMap에 저장한다.
+			//properties에 있는 문자열을  HashMap에 저장한다.
 			Set keyList = pro.keySet();
 			Iterator keyIterator = keyList.iterator();
 			while(keyIterator.hasNext()) {//key가 있으면

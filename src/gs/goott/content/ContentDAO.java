@@ -29,6 +29,20 @@ public class ContentDAO extends DBConnection implements ContentInterface {
 		}
 		return cnt; 
 	}
+
+	@Override
+	public List<ContentVO> getContentList(String userid) {
+		List<ContentVO> list = new ArrayList<ContentVO>();
+		try {
+			dbConn();
+			String sql = "select contentno, title, file";
+		}catch(Exception e) {
+			System.out.println("컨텐츠 목록 불러오기 에러"+e.getMessage());
+		}finally {
+			dbClose();
+		}
+		return list;
+	}
 	
 	
 }
