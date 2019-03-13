@@ -85,6 +85,14 @@
 		<h4 id="review">Review</h4><hr/>
 		<div class="row">			
 			<form method="get" action="replyWrite.do" class="col-12">
+				<c:forEach var="vo" items="${list}">
+					<div class="col-12 row">
+						<p class="col-2">${vo.commenter }</p>
+						<p class="col-6">${vo.commentContent }</p>
+						<p class="col-2">${vo.commentDate}</p>
+						<span class="col-2"><i class="fas fa-star"></i></span>
+					</div>
+				</c:forEach>
 				<div class="col-12 row">
 					<p class="col-2">${userid }</p>
 					<input class="col-6" type="text" name="commentContent"/>
@@ -92,6 +100,7 @@
 					<span class="col-2"><i class="fas fa-star"></i></span><br/>
 					<input type="hidden" name="star" value="3.0"/>
 					<input type="hidden" name="commenter" value="${userid}"/>
+					<input type="hidden" name="introNo" value="${introVO.introNo}"/>				
 				</div>
 			</form>
 				
