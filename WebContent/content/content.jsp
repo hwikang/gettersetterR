@@ -11,11 +11,7 @@
 <title>제목을넣으면되ㅎㅎ</title>
 
 <style>
-	body{height:1000px;font-family: 'Montserrat', sans-serif;}
-	
-	
-	  
-			
+	body{height:1000px;font-family: 'Montserrat', sans-serif;}			
 	#menuList{padding-top:10px;margin:0px auto;}
 	.cate{margin-left:15px ; color:gray }
 	#container a{text-decoration: none;}
@@ -177,7 +173,7 @@
 					txt += "<p class= 'card-text' style='color:gray;'>"+"Setter : "+searchedData[i][1]+ "</p>";
 					txt += "<p class='card-text'style='color:gray'>"+"Follower : " +searchedData[i][8]+"</p>";
 					txt += "<p class='card-text'style='color:gray'>"+"Price : $ " +searchedData[i][9]+"</p>";
-					txt += "<div class='d-flex justify-content-center mt-3'><a href='payment.html' class='btn btn-primary buyBtn'>Buy</a></div>"
+					txt += "<div class='d-flex justify-content-center mt-3'><a href='<%=request.getContextPath() %>/intro/buy.do?introNo="+searchedData[i][0]+"' class='btn btn-primary buyBtn'>Follow</a></div>"
 					txt += "</div></div></a>";
 					if(i%3==2){
 						txt += "</div>"

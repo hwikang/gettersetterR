@@ -55,7 +55,7 @@
 						<div class="tab-pane fade show active" id="profile-1">
 						
 						<div class="tab-pane fade show active" id="profile-1">
-							<div style="font-weight:bold;font-size:20px">ID : ${vo.userid}</div>
+							<div style="font-weight:bold;font-size:20px">ID : ${vo.userid} </div>
 							<div id=pwDiv><button id = "changeBtn1" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" >PASSWORD CHANGE</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c1>Insert new PW<input type=password id=pwCha style="border-style:inset; border-radius:10px">Check Again<input type=password id=pwCheck name="pwchange" style="border-style:inset; border-radius:10px"><button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" id="cha11">Submit</button></div></div><br/></form>
 							<div style="font-weight:bold;font-size:20px">TEL : ${vo.tel} </div><button id = "changeBtn2" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">TEL CHANGE</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c2><input type=text id=telCha name="telchange" style="border-style:inset; border-radius:10px"><button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" id="chaB">Submit</button></div><br/><br/></form>
 							<div style="font-weight:bold;font-size:20px">E-MAIL : ${vo.email}</div><button id = "changeBtn3" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px">E-MAIL CHANGE</button><form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do"><div id=c3><input type=text id=mailCha name="emailchange" style="border-style:inset; border-radius:10px"><button style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px" id="chaC">Submit</button></div><br/><br/></form>
@@ -112,54 +112,40 @@
 						
 						</div>
 						<div class="tab-pane fade" id="wishList"><!-- Wish List --></div> <!-- Wish List -->
-						<div class="tab-pane fade" id="history"><!-- History --><div class="media">
+						
+						<div class="tab-pane fade" id="history"><!-- History -->
+							<c:forEach var="introVo" items="${historyList}">
+								<div class="media">
 									<div class="media-left">
-											<img class="media-object thumbnail-img media-click" src="<%=request.getContextPath() %>/img/actingThumb1.jpg"/>
+											<img class="media-object thumbnail-img media-click" src="data:image/jpeg;base64,${introVo.thumbnail }" onclick="location.href='<%=request.getContextPath()%>/intro/intro.do?introNo=${introVo.introNo}'"/>
 											<img class='media-object thumbnail-img media-clock' src='<%=request.getContextPath() %>/img/clock.jpg' data-toggle="tooltip" data-placement="bottom" title="Wish List"/>
 									</div>
 									<div class="media-body media-body-frm media-selected">
 										<div class="media-heading">
 											<img class='media-object thumbnail-img media-close' align='right' src='<%=request.getContextPath() %>/img/close.jpg'data-toggle="tooltip" data-placement="bottom" title="Remove from History"/>
-											<b class="fnt-size-title media-click">Acting_01_A</b>
+											<b class="fnt-size-title media-click">${introVo.title }</b>
 										</div>
-										<span class="fnt-size-content media-click">Instructor : GYEOUNGHO, JI</span>
-										<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i> 3,658</span><br/>
-										<span class="fnt-size-content media-click">It addresses the essential programming problems and solutions that must be taken to successfully view the coding interview (developer interview). There are a total of 21 courses in five minutes per concept. From the concept of OOP to alignment, data structure, algorithm, and other important concepts that the interviewer would like to learn.</span>
+										<span class="fnt-size-content media-click">Setter : ${introVo.userid}</span>
+										<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i>${introVo.follower }</span><br/>
+										<span class="fnt-size-content media-click">${introVo.description }</span>
+									
 									</div>
-								</div><hr class="hr-line"/><div class="media">
-								<div class="media-left">
-										<img class="media-object thumbnail-img media-click" src="<%=request.getContextPath() %>/img/actingThumb2.jpg"/>
-										<img class='media-object thumbnail-img media-clock' src='<%=request.getContextPath() %>/img/clock.jpg' data-toggle="tooltip" data-placement="bottom" title="Wish List"/>
-								</div>
-								<div class="media-body media-body-frm media-selected">
-									<div class="media-heading">
-										<img class='media-object thumbnail-img media-close' align='right' src='<%=request.getContextPath() %>/img/close.jpg'data-toggle="tooltip" data-placement="bottom" title="Remove from History"/>
-										<b class="fnt-size-title media-click">Acting_02_A</b>
-									</div>
-									<span class="fnt-size-content media-click">Instructor : GYEOUNGHO, JI</span>
-									<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i> 51,233</span><br/>
-									<span class="fnt-size-content media-click">It addresses the essential programming problems and solutions that must be taken to successfully view the coding interview (developer interview). There are a total of 21 courses in five minutes per concept. From the concept of OOP to alignment, data structure, algorithm, and other important concepts that the interviewer would like to learn.</span>
-								</div>
-							</div><hr class="hr-line"/><div class="media">
-								<div class="media-left">
-										<img class="media-object thumbnail-img media-click" src="<%=request.getContextPath() %>/img/actingThumb3.jpg"/>
-										<img class='media-object thumbnail-img media-clock' src='<%=request.getContextPath() %>/img/clock.jpg' data-toggle="tooltip" data-placement="bottom" title="Wish List"/>
-								</div>
-								<div class="media-body media-body-frm media-selected">
-									<div class="media-heading">
-										<img class='media-object thumbnail-img media-close' align='right' src='<%=request.getContextPath() %>/img/close.jpg'data-toggle="tooltip" data-placement="bottom" title="Remove from History"/>
-										<b class="fnt-size-title media-click">Acting_03_C</b>
-									</div>
-									<span class="fnt-size-content media-click">Instructor : GYEOUNGHO, JI</span>
-									<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i> 3,506</span><br/>
-									<span class="fnt-size-content media-click">It addresses the essential programming problems and solutions that must be taken to successfully view the coding interview (developer interview). There are a total of 21 courses in five minutes per concept. From the concept of OOP to alignment, data structure, algorithm, and other important concepts that the interviewer would like to learn.</span>
-								</div>
-							</div>
-							
-							
+									
+								</div><hr class="hr-line"/> 
+							</c:forEach>
+															
 							</div> <!-- History -->
+							
+							
 						<div class="tab-pane fade" id="order">
-							order
+							<c:forEach var="ordervo" items="${orderlist}" >
+								<span style="float:left;margin-right:150px"><img src="data:image/jpeg;base64,${ordervo.thumbnail}" style="width:200px;height:120px;cursor:pointer" onclick="location.href='<%=request.getContextPath()%>/intro/intro.do?introNo=${ordervo.introNo}'"><br/>
+								<p style="font-weight:bold">&lt;Instructor&gt;</a></br><a href="<%=request.getContextPath()%>/intro/intro.do?introNo=${ordervo.introNo}">${ordervo.userid}</a></p>
+								<p style="font-weight:bold">&lt;Title&gt;</br>${ordervo.title }</p>
+								<p style="font-weight:bold">&lt;Description&gt;</br>${ordervo.description }</p>
+								<p style="font-weight:bold">&lt;Price&gt;</br>${ordervo.price}</p>
+								</span>
+							</c:forEach>
 						</div>
 					</div><!-- tab-content -->
 				</div><!-- card-body -->

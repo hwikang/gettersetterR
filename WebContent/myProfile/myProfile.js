@@ -62,17 +62,7 @@ $(function(){
 		$("#wishList:empty").html("<div class=fnt-size-content-empty id='empty_message'>This list has no videos.</div>");
 		
 		
-		$(".media:eq(0) .media-click").on('click',function(){
-			location.href=("contentOp_01.html");
-		});
-		$(".media:eq(1) .media-click").on('click',function(){
-			location.href=("contentOp_02.html");
-		});
-		$(".media:eq(2) .media-click").on('click',function(){
-			location.href=("contentOp_03.html");
-		});
-		
-		
+
 		/*팝오버 실행*/
 		  $('#myInfo').popover({
 			  html : true,
