@@ -23,5 +23,26 @@ public class OrderDAO extends DBConnection implements OrderInterface{
 		}
 		return cnt;
 	}
-
+	//order테이블 정보 가져오기
+	public OrderVO orderInfo(String sertterId) {
+		OrderVO vo = new OrderVO();
+		try {
+			dbConn();
+			String sql ="select getterId, setterId, contentPrice from ordertbl where setterId=? ";
+			pstmt =con.prepareStatement(sql);
+			pstmt.setString(1,sertterId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo.setGetterId(rs.getString("getterId"));
+				vo.setSetterId(rs.getString("setterId"));
+				vo.setContentPrice(rs.getDouble("contentPrice"));		
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("회원정보 가져오기 에러");
+		}finally {
+			dbClose();
+		}
+		return vo;
+	}
 }

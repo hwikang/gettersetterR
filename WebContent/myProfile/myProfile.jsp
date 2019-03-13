@@ -159,7 +159,10 @@
 							
 							</div> <!-- History -->
 						<div class="tab-pane fade" id="order">
-							order
+							
+							My Follow List : ${ordervo.getterId}, ${ordervo.contentPrice}
+							
+							
 						</div>
 					</div><!-- tab-content -->
 				</div><!-- card-body -->

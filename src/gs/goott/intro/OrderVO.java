@@ -4,7 +4,7 @@ public class OrderVO {
 	private String getterId;
 	private String setterId;
 
-	private int contentPrice;
+	private double contentPrice;
 
 	public String getGetterId() {
 		return getterId;
@@ -22,11 +22,11 @@ public class OrderVO {
 		this.setterId = setterId;
 	}
 
-	public int getContentPrice() {
+	public double getContentPrice() {
 		return contentPrice;
 	}
 
-	public void setContentPrice(int contentPrice) {
+	public void setContentPrice(double contentPrice) {
 		this.contentPrice = contentPrice;
 	}
 	
