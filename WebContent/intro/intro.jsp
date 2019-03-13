@@ -49,13 +49,11 @@
 		</ul>
 		<h4 id="cur">Curriculum</h4><hr/>
 		<div>
-		<ul>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-		</ul>
+		<c:forEach var="contentVO" items="${list }">
+			<ul>
+				<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}'">${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
+			</ul>
+		</c:forEach>
 		</div>		
 		<h4 id="eva">Instructor Evaluation</h4><hr/>
 		<div class="row">

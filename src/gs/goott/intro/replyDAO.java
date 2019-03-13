@@ -9,7 +9,7 @@ public class replyDAO extends DBConnection implements ReplyInterface {
 		int cnt =0;
 		try {
 			dbConn();
-			String sql = "insert into replttbl values()"
+			//String sql = "insert into replttbl values()"
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("write reply error");

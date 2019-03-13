@@ -11,6 +11,7 @@ public class ContentVO {
 	private String uploadDate;
 	private String interest;
 	private float videoLength;
+	private String videoLengthStr;
 	public ContentVO() {}	
 	
 	public int getContentNo() {
@@ -71,9 +72,18 @@ public class ContentVO {
 	public float getVideoLength() {
 		return videoLength;
 	}
-
 	public void setVideoLength(float videoLength) {
-		this.videoLength = videoLength;
+		this.videoLength = videoLength;	
+		videoLengthStr = Float.toString(videoLength);
+		videoLengthStr = videoLengthStr.replace(".", ":");
+	}
+
+	public String getVideoLengthStr() {
+		return videoLengthStr;
+	}
+
+	public void setVideoLengthStr(String videoLengthStr) {
+		this.videoLengthStr = videoLengthStr;		
 	}
 	
 }

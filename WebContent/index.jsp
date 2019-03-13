@@ -192,6 +192,7 @@ recommendedData.push(
 		<img src="img/askUs.png"/>
 	</div>
 	</a>
+	<%-- <iframe src="<c:url value=''/>"></iframe> 갱호작업--%> 
 </body>
 
 	<script type="text/javascript" src="main.js"></script>

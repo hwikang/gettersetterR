@@ -34,7 +34,8 @@ public class CommandContentWrite implements CommandService{
 		/*HttpSession session = req.getSession(); 세션값으로 아이디 가져오기
 		String userid = (String)session.getAttribute("userid");*/
 		vo = new ContentVO();
-		vo.setUserid("zbass90");
+		HttpSession session = req.getSession();
+		vo.setUserid((String)session.getAttribute("userid"));
 		vo.setTitle(mr.getParameter("title"));
 		vo.setDescription(mr.getParameter("description"));
 		vo.setInterest(mr.getParameter("interest"));
