@@ -180,6 +180,26 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 			return cnt;
 		
 	}
+
+	@Override
+	public int useAcorn(String userid, Double price) {
+		int cnt =0;
+		try {
+			dbConn();
+			String sql = "update membertbl set myacorn = myacorn-? where userid=?";
+			pstmt =con.prepareStatement(sql);
+			pstmt.setDouble(1, price);
+			pstmt.setString(2, userid);
+			cnt = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("use acorn error");
+		}finally {
+			dbClose();
+		}
+		return cnt;
+	}
 	
 }
 

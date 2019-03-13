@@ -77,7 +77,7 @@ public class CommandmyProfileOk implements CommandService {
 		String userid = (String)req.getSession().getAttribute("userid");
 		//String userid = "hahaori";
 		MemberDAO dao = new MemberDAO();
-		int cnt = dao.profileUpdate(userid, data, type);
+		dao.profileUpdate(userid, data, type); //프로필 수정 !
 		MemberVO vo = dao.getUserInfo(userid);
 		req.setAttribute("vo", vo); 
 		return "myProfile.jsp";

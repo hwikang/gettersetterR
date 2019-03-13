@@ -12,7 +12,7 @@ public class IntroVO {
 	private String thumbnailFileName;
 	private String title;
 	private int follower;
-	private Float price;
+	private Double price;
 	private String beforeFileName;
 	private String beforeThumbnail;
 	
@@ -87,10 +87,10 @@ public class IntroVO {
 	public void setFollower(int follower) {
 		this.follower = follower;
 	}
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(Float price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	public String getThumbnailFileName() {

@@ -15,6 +15,7 @@ import gs.goott.intro.IntroDAO;
 import gs.goott.intro.IntroVO;
 import gs.goott.intro.replyDAO;
 import gs.goott.intro.replyVO;
+import gs.goott.signup.MemberDAO;
 import gs.goott.signup.MemberVO;
 
 public class CommandIntro implements CommandService {
@@ -40,6 +41,16 @@ public class CommandIntro implements CommandService {
 		replyDAO replyDao = new replyDAO();
 		List<replyVO> list = replyDao.getReply(introNo);	
 		req.setAttribute("list", list);
+		
+		//헤더의 정보를 업데이트하기 위해 다시 세션설정
+		MemberVO memberVo = new MemberVO();
+		MemberDAO memberDao = new MemberDAO();
+			//로그인한유저아이디
+			String loginUserid = (String)session.getAttribute("userid");
+		memberVo = memberDao.getUserInfo(loginUserid);
+		session.setAttribute("vo", memberVo);
+		
+		
 		return "intro.jsp";
 	}
 

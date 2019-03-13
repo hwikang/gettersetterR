@@ -25,6 +25,7 @@ public class CommandUpload implements CommandService {
 		IntroVO introVO = introDAO.selectIntroVO(userid);
 		
 		ContentDAO contentDAO = new ContentDAO();
+		System.out.println(introVO.getInterest().length);
 		int interLength = introVO.getInterest().length;
 		req.setAttribute("introVO", introVO);
 		req.setAttribute("interLength", interLength);
