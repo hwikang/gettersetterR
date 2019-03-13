@@ -15,7 +15,7 @@ public class CommandReplyWrite implements CommandService {
 		String commentContent = req.getParameter("commentContent");
 		Double star = Double.parseDouble(req.getParameter("star"));
 		String commentor = req.getParameter("commenter");
-		Reply
+		
 		
 		return null;
 	}
