@@ -30,7 +30,7 @@
 	<div style="border:0.5px solid #eee;position:absolute;margin-left:-15px;width:100%"></div>
 	<div style="width:50%; margin:30px auto 0 auto;">
 		<div class="embed-responsive embed-responsive-16by9" id="cou">
-			<iframe class="embed-responsive-item" src=""></iframe>			
+			<iframe class="embed-responsive-item" src="<c:url value='getIntro/${introVO.filename }'/>"></iframe>			
 		</div><br/> <!-- 해당 INTRO 의 VO 는 = introVO 로 부르면됨!! -->
 		<h2>Instructor name <span style="font-weight:bold;font-size:0.7em;margin-right:10px;float:right;"> ${introVO.userid}</span></h2><hr/>
 		<br/><h4>Instructor Introduction Content</h4><br/>

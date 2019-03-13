@@ -257,6 +257,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo.setIntroNo(rs.getInt("introno"));
+				vo.setFilename(rs.getString("filename"));
 				vo.setUserid(rs.getString("userid"));
 				vo.setInterestStr(rs.getString("interest"));
 				vo.setDescription(rs.getString("description"));
