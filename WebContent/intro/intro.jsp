@@ -32,6 +32,7 @@
 		<div class="embed-responsive embed-responsive-16by9" id="cou">
 			<iframe class="embed-responsive-item" src=""></iframe>			
 		</div><br/> <!-- 해당 INTRO 의 VO 는 = introVO 로 부르면됨!! -->
+		<div><form action="<%=request.getContextPath() %>/intro/buy.do?introNo=${introVO.introNo}" method="get"><input type="submit" class="btn btn-primary" value="Follow Now"/></form></div>
 		<h2>Instructor name <span style="font-weight:bold;font-size:0.7em;margin-right:10px;float:right;"> ${introVO.userid}</span></h2><hr/>
 		<br/><h4>Instructor Introduction Content</h4><br/>
 		<p>${introVO.description}</p>
