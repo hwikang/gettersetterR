@@ -1,13 +1,8 @@
-/*$(function(){
-		$("#clickLogo").on("click", function(){		
-			location.href="main.html"
-		});			
-	});*/
 var interestArr = [];
 $(function(){
-		$('[data-toggle="tooltip"]').tooltip(); //툴 팁 경로 설정
-		/*var pro=localStorage.getItem("profile");
-		$(".avatar").attr('src', pro);*/
+		/*$('[data-toggle="tooltip"]').tooltip(); //툴 팁 경로 설정
+		var pro=localStorage.getItem("profile");
+		$(".avatar").attr('src', pro);
 		
 		var readURL = function(input) { //프로필 이미지 input 경로 변경
 	        if (input.files && input.files[0]) {
@@ -23,13 +18,17 @@ $(function(){
 	    }
 		$(".file-upload").on('change', function(){
 	        readURL(this);
+	        $("#apply").css("display", "block")
+	        alert("d")
 	    });
 		$('.proImg').on('click', function() {
-	        $('#proImgUpload').click();
-	    });
+			alert("g")
+	       $('#proImgUpload').click();
+		});
 		$('#proImgBtn').on('click', function() {
-	        $('#proImgUpload').click();
-	    });
+			alert("d")
+			$('#proImgUpload').click();
+	    }); 바로바로 안먹어서 myProfile.jsp에 옮김*/
 		$(".media").mouseenter(function(){
 			var clock = $(this).children('.media-left').children('.media-clock');
 			var close = $(this).children('.media-body').children('.media-heading').children('.media-close');

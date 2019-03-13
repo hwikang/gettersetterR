@@ -33,12 +33,13 @@ public class CommandIntroUpdate implements CommandService {
 		
 		HttpSession session = req.getSession(); //세션은 req로 해도 받아오네...
 		//System.out.println("userid="+(String)session.getAttribute("userid"));
-		vo.setUserid((String)session.getAttribute("userid"));
-		
+		vo.setUserid((String)session.getAttribute("userid"));		
 		
 		vo.setInterest(mr.getParameterValues("interest"));
 		vo.setDescription(mr.getParameter("description"));		
-		vo.setTitle(mr.getParameter("title"));
+		vo.setTitle(mr.getParameter("title"));		
+		vo.setBeforeFileName(mr.getParameter("beforeFileName"));
+		vo.setBeforeThumbnail(mr.getParameter("beforeThumbnail"));
 		
 		String fileName = "";
 		String thumbnailFilename ="";
@@ -53,9 +54,11 @@ public class CommandIntroUpdate implements CommandService {
 			}
 			
 		}
+		
 		vo.setFilename(fileName);
 		System.out.println("filename="+fileName);  //첨부안하면 null 나옴
 		System.out.println("thumbnailFilename="+thumbnailFilename);
+		vo.setThumbnailFileName(thumbnailFilename);
 		///////////////////////////////////thmbnail
 		//fileName 이 이미지형식일경우에만
 		if(!thumbnailFilename.equals("") && thumbnailFilename !=null) {
@@ -91,7 +94,7 @@ public class CommandIntroUpdate implements CommandService {
 		IntroVO vo2 = dao.selectIntroVO(vo.getUserid());		
 		req.setAttribute("cnt", cnt);
 		req.setAttribute("vo", vo2);		
-			
+		
 		return "uploadOk.jsp";
 	}
 

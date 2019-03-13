@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import gs.goott.controller.CommandService;
+import gs.goott.intro.IntroDAO;
 import gs.goott.signup.MemberDAO;
 import gs.goott.signup.MemberVO;
 
@@ -57,8 +58,9 @@ public class CommandSignup2Ok implements CommandService {
 		
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.signup(vo);
-
-
+		
+		IntroDAO introDao =new IntroDAO();
+		introDao.introInsert(vo.getUserid());
 		/*String msg = "";
 		String url = "";
 		if(cnt > 0){
@@ -70,6 +72,7 @@ public class CommandSignup2Ok implements CommandService {
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url); 이런식으로 데이터 넘기는 식도 있음.*/
+		//req.getSession().setAttribute("vo", vo);세션에 넣어두고 쓰면 회원가입시의 이미지정보로 고정된다.
 		req.setAttribute("cnt", cnt);
 		return "signup2.jsp";   //다시signup2.jsp로 데이터 데려가기.
 	}
