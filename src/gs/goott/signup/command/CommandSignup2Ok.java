@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import gs.goott.controller.CommandService;
+import gs.goott.intro.IntroDAO;
 import gs.goott.signup.MemberDAO;
 import gs.goott.signup.MemberVO;
 
@@ -57,8 +58,9 @@ public class CommandSignup2Ok implements CommandService {
 		
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.signup(vo);
-
-
+		
+		IntroDAO introDao =new IntroDAO();
+		introDao.introInsert(vo.getUserid());
 		/*String msg = "";
 		String url = "";
 		if(cnt > 0){
