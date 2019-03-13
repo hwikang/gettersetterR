@@ -107,78 +107,7 @@
 		 </div>
 		
 </div><!-- container -->
-
-<script>
-				//검색결과 보여주기
-		 		//키워드 추출
-		 		/* 
-		 		checkLogin();
-				
-		 		var t1 = document.URL.split("?"); //? 앞뒤로 가름
-		 		var t2
-		 		
-		 		var searchTxt ; 
-		 			
-		 		if(t1[1]==null){
-		 			searchTxt ="";
-		 			
-		 		}else{
-		 			t2 = t1[1].split("=");
-		 			searchTxt = t2[1];
-		 		}
-		 		
-		 		$(function(){
-		 			$("#result>p").html("about '"+searchTxt+"'");
-		 		});
-				var resultContents = [];
-		 		var conteImg = [];		 		
-	 			var conteTitle = [];
-	 			var setterName = [];
-	 			var buyNum = [];
-	 			var price = [];
-	 			var categoty = [];
-
-	 			
-	 			
-	 			
-		 			//검색결과의 컨텐츠 모으기
-		 			for(var i=0;i<dataAll.length;i++){
-		 				var title = dataAll[i][3].toUpperCase();
-		 				if(title.indexOf(searchTxt.toUpperCase())!= -1){
-		 					resultContents.push(dataAll[i]);
-							setterName.push(dataAll[i][0]);
-							conteImg.push(dataAll[i][1]);		 			
-							conteTitle.push(dataAll[i][3]);
-							buyNum.push(dataAll[i][4]);
-							price.push(dataAll[i][5]);	
-							category.push(dataAll[i][6]);
-		 				};		 				
-		 			};
-		 			//검색결과 없을떄
-		 			if(conteImg.length==0){
-		 				$(function(){
-		 					$("#contents").html("<img src='../img/noResult.png'><p class='display-5'>sorry there is no content about '"+searchTxt+"'</p>");
-		 					
-		 				});
-		 			}
-		 			
-		 			  //검색 키워드 받기		 			
-		 			$(function(){
-		 				$("#searchButton").on("click",function(){
-		 					var searchTxt = $("#searchBar").val();		 					
-		 				});		 				
-		 			});		 	
-		 		
-		 			  //콘텐츠 생성
-		 			  createContents();
-		 			
-				//드롭다운 이벤트 실행
-
-				
-				
-				
-				
-		 */	
+<script>	
 		var searchedData =[] ;
 		 <c:forEach var ="i" items="${list}">		 	
 		 searchedData.push(
@@ -242,7 +171,7 @@
 					if(i%3==0){
 						txt += "<div class='row'>"
 					}
-					txt += "<a href='contentOp_01.html'><div class='card col-3  m-3' style='width:18rem'><img src='data:image/jpeg;base64,"+searchedData[i][6]+"' class='card-img-top'/>"
+					txt += "<a href='<%=request.getContextPath()%>/intro/intro.do?introNo="+searchedData[i][0]+"'><div class='card col-3  m-3' style='width:18rem'><img src='data:image/jpeg;base64,"+searchedData[i][6]+"' class='card-img-top'/>"
 					txt += "<div class='card-body'>";
 					txt += "<h5 class='card-title'style='color:gray text-line:bold'>"+searchedData[i][7]+"</h5>";
 					txt += "<p class= 'card-text' style='color:gray;'>"+"Setter : "+searchedData[i][1]+ "</p>";
@@ -263,20 +192,9 @@
 					var profile = localStorage.getItem("profile");
 					$("#profile").attr('scr', profile);
 				}); */
-				</script>
+</script>
 	</div>
 	<!-- 회사정보 -->
-	<div id="companyInfoDiv" class="border row align-items-center">
-		<div class="col-12 col-md-4"><img src="<%=request.getContextPath()%>/index.do"/></div>
-		<div class="col-12 col-md-4">
-			<p>GetterSetter|CEO:A-TownOG|TEL:02-333-3333|EMAIL:Gese@gmail.com|Business Code:428-34-23442|Address:		
-			</p>
-		</div>
-		<div class="col-12 col-md-4">
-			<p>
-				채용안내 | 이용안내 | 앱다운로드
-			</p>
-		</div>
-	</div>
+<%@include file="../jspf/footer.jspf" %>
 </body>
 </html>

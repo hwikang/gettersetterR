@@ -139,7 +139,7 @@
 						<li id="signUp" class="nav-item"><a href="<%=request.getContextPath()%>/signup/signup.do" class="nav-link">SignUp</a></li>
 					</c:if>
 					<!-- 로그인상태 -->
-					<c:if test="${loginStatus==1}">
+					<c:if test="${loginStatus==1 && vo.userImage!=null}">
 						<li id="myAcornNum" class="d-flex" >
 							<p class="p-0">${vo.myAcorn}</p>
 							<img src="<%=request.getContextPath() %>/img/acorn.png" class="p-0"/>
@@ -149,6 +149,19 @@
 							<a href="#" class="nav-link" data-toggle="popover" 
 							data-placement="left" data-title="My Info" 
 							data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle" id="profile"></a>
+						</li>
+					</c:if>
+					<c:if test="${loginStatus==1 && vo.userImage==null}">
+						<li id="myAcornNum" class="d-flex" >
+							
+							<p class="p-0">${vo.myAcorn}</p>
+							<img src="<%=request.getContextPath() %>/img/acorn.png" class="p-0"/>
+							
+						</li>									<!--  수정 -->	
+						<li id="myInfo" class="nav-item">
+							<a href="#" class="nav-link" data-toggle="popover" 
+							data-placement="left" data-title="My Info" 
+							data-popover-content="#myInfoPopover"><img src="<%=request.getContextPath()%>/img/profile-picture.jpg" class="rounded-circle" id="profile"></a>
 						</li>
 					</c:if>
 				</ul>

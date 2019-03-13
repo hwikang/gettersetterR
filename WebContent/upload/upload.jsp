@@ -241,7 +241,7 @@
 					<source src=""/>
 				</video>
 				<canvas id="canvas-element"></canvas>
-				<img src="../img/click.jpg" class=" proImg img-thumbnail img-fluid file-upload avatar" id="imgUpload" alt="avatar"/>
+				<img src="<%=request.getContextPath()%>/img/click.jpg" class=" proImg img-thumbnail img-fluid file-upload avatar" id="imgUpload" alt="avatar"/>  
 				<input type="file" name="filename"id="proImgUpload"class="text-enter center-block file-upload hidden"/>
 				</div>
 				<hr/>

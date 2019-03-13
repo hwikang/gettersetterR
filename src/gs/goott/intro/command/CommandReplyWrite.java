@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gs.goott.controller.CommandService;
+import gs.goott.intro.replyDAO;
 
 public class CommandReplyWrite implements CommandService {
 
@@ -14,10 +15,17 @@ public class CommandReplyWrite implements CommandService {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String commentContent = req.getParameter("commentContent");
 		Double star = Double.parseDouble(req.getParameter("star"));
-		String commentor = req.getParameter("commenter");
-		//Reply
+
+		String commenter = req.getParameter("commenter");
+		int introNo = Integer.parseInt(req.getParameter("introNo"));
 		
-		return null;
+		replyDAO dao = new replyDAO();
+		int cnt = dao.writeReply(commenter,commentContent, star,introNo);
+		req.setAttribute("cnt", cnt);
+		req.setAttribute("introNo", introNo);
+		
+		System.out.println(cnt);
+		return "introOk.jsp";
 	}
 
 }

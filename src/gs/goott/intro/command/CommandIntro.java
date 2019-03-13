@@ -13,13 +13,15 @@ import gs.goott.content.ContentVO;
 import gs.goott.controller.CommandService;
 import gs.goott.intro.IntroDAO;
 import gs.goott.intro.IntroVO;
+import gs.goott.intro.replyDAO;
+import gs.goott.intro.replyVO;
 import gs.goott.signup.MemberVO;
 
 public class CommandIntro implements CommandService {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("intro gogo");
+		
 		HttpSession session = req.getSession();
 		int introNo = Integer.parseInt(req.getParameter("introNo"));
 		System.out.println("introNo="+introNo);
@@ -30,10 +32,14 @@ public class CommandIntro implements CommandService {
 		
 		String userid = vo.getUserid();	//content 자료 불러오기!
 		ContentDAO dao2 = new ContentDAO();
-		List<ContentVO> list = dao2.getContentList(userid);
-		req.setAttribute("list", list);
+		List<ContentVO> cList = dao2.getContentList(userid);
+		req.setAttribute("list", cList);
 		
-		System.out.println("VO="+vo.getUserid());
+		System.out.println("VO="+vo.getUserid());	
+	
+		replyDAO replyDao = new replyDAO();
+		List<replyVO> list = replyDao.getReply(introNo);	
+		req.setAttribute("list", list);
 		return "intro.jsp";
 	}
 

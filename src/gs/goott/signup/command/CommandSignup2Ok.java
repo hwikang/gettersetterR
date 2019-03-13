@@ -70,6 +70,7 @@ public class CommandSignup2Ok implements CommandService {
 		}
 		req.setAttribute("msg", msg);
 		req.setAttribute("url", url); 이런식으로 데이터 넘기는 식도 있음.*/
+		//req.getSession().setAttribute("vo", vo);세션에 넣어두고 쓰면 회원가입시의 이미지정보로 고정된다.
 		req.setAttribute("cnt", cnt);
 		return "signup2.jsp";   //다시signup2.jsp로 데이터 데려가기.
 	}
