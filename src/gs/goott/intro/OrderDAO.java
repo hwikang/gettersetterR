@@ -11,8 +11,8 @@ public class OrderDAO extends DBConnection implements OrderInterface{
 			dbConn();
 			String sql = "insert into ordertbl values(ordersq.nextval,?,?,?,sysdate)";
 			pstmt =con.prepareStatement(sql);
-			pstmt.setString(1, setterId);
-			pstmt.setString(2, getterId);
+			pstmt.setString(1, getterId);
+			pstmt.setString(2, setterId);
 			pstmt.setDouble(3,price);
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
