@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="intro.css" type="text/css"/>
 </head>
 <body>
+
 <div class="container-fluid">
 	<ul class="nav">
 		<li class="nav-item">
@@ -30,8 +31,15 @@
 	<div style="border:0.5px solid #eee;position:absolute;margin-left:-15px;width:100%"></div>
 	<div style="width:50%; margin:30px auto 0 auto;">
 		<div class="embed-responsive embed-responsive-16by9" id="cou">
-			<iframe class="embed-responsive-item" src=""></iframe>			
+			<iframe class="embed-responsive-item" src="<c:url value='getIntro/${introVO.filename }'/>"></iframe>			
 		</div><br/> <!-- 해당 INTRO 의 VO 는 = introVO 로 부르면됨!! -->
+		
+		<div>
+		<form action="<%=request.getContextPath() %>/intro/buy.do" method="get" onsubmit="return confirm('do you really want to follow?')">
+			<input type="hidden" name="introNo" value="${introVO.introNo }"/>
+			<input type="submit" class="btn btn-primary" value="Follow Now"/>
+		</form>
+		</div>
 		<h2>Instructor name <span style="font-weight:bold;font-size:0.7em;margin-right:10px;float:right;"> ${introVO.userid}</span></h2><hr/>
 		<br/><h4>Instructor Introduction Content</h4><br/>
 		<p>${introVO.description}</p>
@@ -80,7 +88,7 @@
 		</div>
 		
 		<!-- 댓글 --> 
-		<h4 id="review">Review</h4><hr/>
+		<h4 id="review">Review </h4><hr/>
 		<div class="row">			
 			<form method="get" action="replyWrite.do" class="col-12">
 				<c:forEach var="vo" items="${list}">

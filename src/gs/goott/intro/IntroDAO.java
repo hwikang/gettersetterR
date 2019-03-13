@@ -76,7 +76,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 				vo.setIntrodate(rs.getString(6));
 				vo.setTitle(rs.getString(7));
 				vo.setFollower(rs.getInt(8));
-				vo.setPrice(rs.getFloat(9));
+				vo.setPrice(rs.getDouble(9));
 				vo.setThumbnail(rs.getString(10));
 			}
 		}catch(Exception e) {
@@ -161,7 +161,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 				vo.setIntrodate(rs.getString("introdate"));
 				vo.setTitle(rs.getString("title"));
 				vo.setFollower(rs.getInt("follower"));
-				vo.setPrice(rs.getFloat("price"));
+				vo.setPrice(rs.getDouble("price"));
 				list.add(vo);
 			}
 			
@@ -233,7 +233,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 				vo.setIntrodate(rs.getString("introdate"));
 				vo.setTitle(rs.getString("title"));
 				vo.setFollower(rs.getInt("follower"));
-				vo.setPrice(rs.getFloat("price"));
+				vo.setPrice(rs.getDouble("price"));
 				list.add(vo);				
 			}
 			System.out.println("list size in getConents method="+list.size());
@@ -257,6 +257,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo.setIntroNo(rs.getInt("introno"));
+				vo.setFilename(rs.getString("filename"));
 				vo.setUserid(rs.getString("userid"));
 				vo.setInterestStr(rs.getString("interest"));
 				vo.setDescription(rs.getString("description"));
@@ -264,7 +265,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 				vo.setThumbnail(rs.getString("thumbnail"));
 				vo.setTitle(rs.getString("title"));
 				vo.setFollower(rs.getInt("follower"));
-				vo.setPrice(rs.getFloat("price"));
+				vo.setPrice(rs.getDouble("price"));
 				System.out.println("get 하고있는 intro userid="+vo.getUserid());
 			}
 					
@@ -276,4 +277,5 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 		}
 		return vo;
 	}
+	
 }

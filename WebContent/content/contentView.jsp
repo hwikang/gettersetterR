@@ -84,7 +84,7 @@
 	<div class="row">
 		<div class="col-sm-8" id="left"> <!-- left -->
 			<div class="embed-responsive embed-responsive-16by9"><!-- 동영상 출력 -->
-				<iframe class="embed-responsive-item" src="video/acting.mp4"></iframe> <!-- https://www.youtube.com/embed/l49aooJqlwA -->
+				<iframe class="embed-responsive-item" src="#"></iframe> <!-- https://www.youtube.com/embed/l49aooJqlwA -->
 			</div> <!-- 동영상 출력 -->
 			<div class="media-head">
 				<div class="media-title fnt-size-head"><b>Acting_01</b></div>

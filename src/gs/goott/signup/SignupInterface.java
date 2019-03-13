@@ -18,7 +18,8 @@ public interface SignupInterface {
 	public MemberVO getUserInfo(String userid);
 	//도토리충전		
 	public int buyAcorn(String userid,int buyAcorn, int myAcorn);	
-	
+	//도토리 차감
+	public int useAcorn(String userid,Double price);
 	
 
 	
