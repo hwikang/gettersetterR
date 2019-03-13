@@ -17,51 +17,22 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="myProfile.css" type="text/css"/>
-<%-- </head>
-<header>
-	<nav class="navbar row">
-		<div id="menuDiv" class="container col-md-12">			
-			<!-- ë¡ê³ ê° ë¤ì´ê° div -->
-			<a href="<%=request.getContextPath()%>/index.do"><div id="logoDiv"><img src="<%=request.getContextPath()%>/img/logo.jpg"/></div></a>
-				<!-- ë©¤ë² : ë¡ê·¸ì¸,íìê°ì -->													
-			<div id="memberDiv"><!-- ì°ì¸¡ì ë ¬ -->
-				<ul class="nav justify-content-end align-items-center">
-				<li id="myAcornNum" class="d-flex" >
-							
-							<p class="p-0">${vo.myAcorn}</p>
-							<img src="<%=request.getContextPath() %>/img/acorn.png" class="p-0"/>
-							
-						</li>
-					<li id="myInfo" class="nav-item">
-					<!-- ìì´ëê°ì£¼ê¸° -->
-						<a href="#" class="nav-link nav-link-blk" data-toggle="popover" 
-						data-placement="left" data-title="My Info" 
-						data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle avatar" id="profile"></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- myinfo popover -->
-	<div id="myInfoPopover" style="display:none" >
-		<ul class="nav row">
-			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/index.do"  class="nav-link" id="logOut">Log Out</a>
-			<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/upload/setter.do" class="nav-link" id="setterMode">Setter Mode</a>
-			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/signup/payment.do"  class="nav-link" id="payment">Buy Acorn</a>
-		</ul>
-	</div>
-	<div style="margin-bottom:2%"></div>
-</header>  --%>
 <body>
 <div class="container-fluid"> <!-- Main Div -->
 	<div class="row"> <!-- row Div -->
 		<div class="col-sm-2"> <!-- left col -->
 			<div class="text-center proFrm"> 
 			<form method="post" action="<%=request.getContextPath()%>/myProfile/myProfileOk.do" enctype="multipart/form-data" class="form-horizontal">
+				<c:if test= "${loginStatus==1 && vo.userImage!=null}">
 				<img src="data:image/jpeg;base64,${vo.userImage}" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
-				
+				</c:if>
+				<c:if test= "${loginStatus==1 && vo.userImage==null}">
+				<img src="<%=request.getContextPath()%>/img/profile-picture.jpg" class="proImg img-thumbnail img-fluid rounded-circle file-upload avatar" alt="avatar"/>
+				</c:if>
 				<input type="file" id="proImgUpload" name="userimage" class="text-enter center-block file-upload hidden"/>
 				<input type="hidden" name="ischange" value="ok"/><br/>
-				<button type="button" id="proImgBtn" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;"data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add</button><br/>
+				<button type="button" id="proImgBtn" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;"data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add New Image</button>
+				<br/>
 				After You Add Image, Press &lt;Apply to Profile&gt;button to Save your Image.
 				<button id="apply" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;display:none;margin-left:50px">Apply to Profile</button>
 			</form>
@@ -195,20 +166,6 @@
 		</div> <!-- right col(9) -->
 	</div> <!-- row Div -->
 </div> <!-- Main Div -->
-<footer>
-	<div id="companyInfoDiv" class="border row align-items-center"style="font-size:0.9em">
-		<div class="col-12 col-md-4"><img src="<%=request.getContextPath()%>/img/logo.jpg" style="cursor:pointer" onclick="location.href='<%=request.getContextPath()%>/index.do'"></div>
-		<div class="col-12 col-md-4">
-			<p>GetterSetter|CEO:A-TownOG|TEL:02-333-3333|EMAIL:Gese@gmail.com|Business Code:428-34-23442|Address:		
-			</p>
-		</div>
-		<div class="col-12 col-md-4">
-			<p>
-				<a href="#">Recruit</a> |<a href="#"> How to use</a> |<a href="#"> App-download</a>
-			</p>
-		</div>
-	</div>
-</footer>
 <!-- interest 중복 선택시 나오는 모달 -->
 <div id="overlapModal" class="modal fade">
 				<div class="modal-dialog">
@@ -225,6 +182,7 @@
 		</div>	
 </body>
 
+<%@ include file="/jspf/footer.jspf" %> 
 <script>
 var interestArr = [];
 $("#closeBtn").on('click', function(){
@@ -273,6 +231,7 @@ $("#deleteBtn").click(function(){
 		$('#proImgBtn').on('click', function() {//Add 버튼부분
 			$('#proImgUpload').click();
 	    }); 
+		
 		$("#apply").click(function(){  //submit이 되는 apply버튼을 누르면 apply버튼이 다시 사라지게
 			$("#apply").css("display", "none");
 		})

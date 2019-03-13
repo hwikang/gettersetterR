@@ -19,6 +19,9 @@ public class CommandmyProfile implements CommandService {
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.getUserInfo(userid);
 		req.setAttribute("vo",vo);
+		
+		//req.getSession().getAttribute("loginStatus"); //loginStatus를  session에 담기
+		
 		return "myProfile.jsp";
 	}
 

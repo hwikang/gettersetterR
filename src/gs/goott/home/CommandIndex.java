@@ -21,7 +21,7 @@ public class CommandIndex implements CommandService {
 		HttpSession session = req.getSession();
 
 
-		System.out.println("logstatus="+session.getAttribute("loginStatus"));
+		System.out.println("loginStatus="+session.getAttribute("loginStatus"));
 
 		////////인덱스페이지에서 우측상단에 이미지 파일 불러오기 위해.${mem.userImage}
 		String userid = (String)req.getSession().getAttribute("userid");

@@ -82,7 +82,7 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 	
 
 	@Override
-	public int signup(MemberVO vo) {
+	public int signup(MemberVO vo) {  //회원가입
 		int cnt =0;
 		try {
 			dbConn();
