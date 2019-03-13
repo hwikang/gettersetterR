@@ -11,6 +11,7 @@
 <title>Setter Upload Page</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
@@ -49,7 +50,7 @@
 	.proFrm{position:relative; width:100%; height:300px; border:1px solid #eee}
 	#proImgUpload{position: absolute; left:-9999px;}
 	
-	.proImg{width:50%; cursor:pointer; border:0px solid white; position:absolute; left:80px}
+	.proImg{width:50%; cursor:pointer; border:0px solid white; position:absolute; top:110px; right:100px}
 	#proImgBtn{width:100px;	height:30px; line-height:1; margin-top:5px; cursor:pointer; font-size:0.8em;}
 	
 	/* content2 */
@@ -236,12 +237,8 @@
 				<button class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<div class="text-center proFrm">
-				<video id="video-element" controls>
-					<source src=""/>
-				</video>
-				<canvas id="canvas-element"></canvas>
-				<img src="<%=request.getContextPath()%>/img/click.jpg" class=" proImg img-thumbnail img-fluid file-upload avatar" id="imgUpload" alt="avatar"/>  
+				<div class="text-center proFrm">				
+				<img src="<%=request.getContextPath()%>/img/click.jpg" class="proImg img-thumbnail img-fluid file-upload" id="imgUpload"/>  
 				<input type="file" name="filename"id="proImgUpload"class="text-enter center-block file-upload hidden"/>
 				</div>
 				<hr/>
