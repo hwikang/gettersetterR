@@ -35,7 +35,7 @@ public class CommandIntro implements CommandService {
 		String userid = vo.getUserid();	//content 자료 불러오기!
 		ContentDAO dao2 = new ContentDAO();
 		List<ContentVO> cList = dao2.getContentList(userid);
-		req.setAttribute("list", cList);
+		req.setAttribute("cList", cList);
 		
 		System.out.println("VO="+vo.getUserid());	
 	

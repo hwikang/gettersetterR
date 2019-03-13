@@ -49,7 +49,7 @@ recommendedData.push(
 			<div class="modal-content">
 				<!-- header -->
 				<div class="modal-header">
-					<h4 class="modal-title">welcome</h4>
+					<h4 class="modal-title">welcome </h4>
 					<button class="close" data-dismiss="modal">&times;</button>
 				</div>
 				
@@ -97,7 +97,7 @@ recommendedData.push(
 	
 	<!-- 추천콘텐츠 div  -->
 	<div id="recomendedContentsDiv">
-		<div><h4><b>Recomended Contents</b></h4></div>
+		<div><h4><b>Recomended Contents </b></h4></div>
 		<hr/>
 		<div id="recommendContents" class="row justify-content-around">
 			

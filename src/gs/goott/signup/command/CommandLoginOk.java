@@ -41,9 +41,11 @@ public class CommandLoginOk implements CommandService {
 			session.setAttribute("userid", vo.getUserid());
 			session.setAttribute("vo",vo);
 			//컨텐츠 정보 세션
-			//convo =(ContentVO)condao.getContentList(userid);
-			//session.setAttribute("convo", condao.getContentList(userid));
-			//System.out.println("리스트리스트리스트리스트리스트리스트리스트리스트"+condao.getContentList(userid));
+			
+			/*List<ContentVO>conlist =condao.getContentList(userid);
+			req.setAttribute("conlist", conlist);
+			session.setAttribute("conlist", conlist);
+			System.out.println("리스트리스트리스트리스트리스트리스트리스트리스트"+conlist);*/
 			
 			
 		}
