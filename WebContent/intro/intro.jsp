@@ -88,7 +88,7 @@
 		</div>
 		
 		<!-- 댓글 --> 
-		<h4 id="review">Review</h4><hr/>
+		<h4 id="review">Review </h4><hr/>
 		<div class="row">			
 			<form method="get" action="replyWrite.do" class="col-12">
 				<c:forEach var="vo" items="${list}">
