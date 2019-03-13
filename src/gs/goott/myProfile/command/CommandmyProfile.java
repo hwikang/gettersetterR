@@ -11,7 +11,12 @@ import javax.servlet.http.HttpSession;
 import gs.goott.content.ContentDAO;
 import gs.goott.content.ContentVO;
 import gs.goott.controller.CommandService;
+
+import gs.goott.intro.IntroDAO;
 import gs.goott.intro.IntroVO;
+import gs.goott.intro.OrderDAO;
+import gs.goott.intro.OrderVO;
+
 import gs.goott.signup.MemberDAO;
 import gs.goott.signup.MemberVO;
 
@@ -29,6 +34,15 @@ public class CommandmyProfile implements CommandService {
 		//과거에 봤던 introNo들
 		List<IntroVO> list = (List<IntroVO>)session.getAttribute("history");
 		req.setAttribute("historyList", list);
+		
+		OrderDAO dao1 = new OrderDAO();
+		OrderVO vo1 = dao1.orderInfo(userid);
+		
+		IntroDAO dao2 = new IntroDAO();
+		String setterId = vo1.getSetterId();
+		IntroVO vo2 = dao2.selectIntroVO(setterId);
+		req.setAttribute("ordervo", vo1);
+		
 		
 		return "myProfile.jsp";
 	}

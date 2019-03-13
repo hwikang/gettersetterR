@@ -132,7 +132,6 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 				vo.setMyAcorn(rs.getInt("myacorn"));
 				vo.setContentPrice(rs.getInt("contentprice"));
 				vo.setUserLevel(rs.getInt("userlevel"));
-
 				
 			}
 		} catch (Exception e) {
