@@ -32,7 +32,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 			System.out.println(vo.getTitle());
 			pstmt.setString(5, vo.getTitle());
 			System.out.println(vo.getUserid());
-			pstmt.setString(6, "khdrogba49");
+			pstmt.setString(6, "khdrogba55");
 			cnt = pstmt.executeUpdate();
 			
 			if(delFileName!=null && !delFileName.equals("")) {
