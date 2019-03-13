@@ -17,7 +17,8 @@ public class CommandLogout implements CommandService {
 		//System.out.println((String)session.getAttribute("loginStatus"));
 		session.setAttribute("userid", null);
 		session.setAttribute("loginStatus", null);
-
+		session.setAttribute("history", null);
+		
 		return "logout.jsp";
 	}
 
