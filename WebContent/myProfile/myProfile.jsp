@@ -112,52 +112,31 @@
 						
 						</div>
 						<div class="tab-pane fade" id="wishList"><!-- Wish List --></div> <!-- Wish List -->
-						<div class="tab-pane fade" id="history"><!-- History --><div class="media">
+						
+						<div class="tab-pane fade" id="history"><!-- History -->
+							<c:forEach var="introVo" items="${historyList}">
+								<div class="media">
 									<div class="media-left">
-											<img class="media-object thumbnail-img media-click" src="<%=request.getContextPath() %>/img/actingThumb1.jpg"/>
+											<img class="media-object thumbnail-img media-click" src="data:image/jpeg;base64,${introVo.thumbnail }"/>
 											<img class='media-object thumbnail-img media-clock' src='<%=request.getContextPath() %>/img/clock.jpg' data-toggle="tooltip" data-placement="bottom" title="Wish List"/>
 									</div>
 									<div class="media-body media-body-frm media-selected">
 										<div class="media-heading">
 											<img class='media-object thumbnail-img media-close' align='right' src='<%=request.getContextPath() %>/img/close.jpg'data-toggle="tooltip" data-placement="bottom" title="Remove from History"/>
-											<b class="fnt-size-title media-click">Acting_01_A</b>
+											<b class="fnt-size-title media-click">${introVo.title }</b>
 										</div>
-										<span class="fnt-size-content media-click">Instructor : GYEOUNGHO, JI</span>
-										<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i> 3,658</span><br/>
-										<span class="fnt-size-content media-click">It addresses the essential programming problems and solutions that must be taken to successfully view the coding interview (developer interview). There are a total of 21 courses in five minutes per concept. From the concept of OOP to alignment, data structure, algorithm, and other important concepts that the interviewer would like to learn.</span>
+										<span class="fnt-size-content media-click">Setter : ${introVo.userid}</span>
+										<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i>${introVo.follower }</span><br/>
+										<span class="fnt-size-content media-click">${introVo.description }</span>
+									
 									</div>
-								</div><hr class="hr-line"/><div class="media">
-								<div class="media-left">
-										<img class="media-object thumbnail-img media-click" src="<%=request.getContextPath() %>/img/actingThumb2.jpg"/>
-										<img class='media-object thumbnail-img media-clock' src='<%=request.getContextPath() %>/img/clock.jpg' data-toggle="tooltip" data-placement="bottom" title="Wish List"/>
-								</div>
-								<div class="media-body media-body-frm media-selected">
-									<div class="media-heading">
-										<img class='media-object thumbnail-img media-close' align='right' src='<%=request.getContextPath() %>/img/close.jpg'data-toggle="tooltip" data-placement="bottom" title="Remove from History"/>
-										<b class="fnt-size-title media-click">Acting_02_A</b>
-									</div>
-									<span class="fnt-size-content media-click">Instructor : GYEOUNGHO, JI</span>
-									<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i> 51,233</span><br/>
-									<span class="fnt-size-content media-click">It addresses the essential programming problems and solutions that must be taken to successfully view the coding interview (developer interview). There are a total of 21 courses in five minutes per concept. From the concept of OOP to alignment, data structure, algorithm, and other important concepts that the interviewer would like to learn.</span>
-								</div>
-							</div><hr class="hr-line"/><div class="media">
-								<div class="media-left">
-										<img class="media-object thumbnail-img media-click" src="<%=request.getContextPath() %>/img/actingThumb3.jpg"/>
-										<img class='media-object thumbnail-img media-clock' src='<%=request.getContextPath() %>/img/clock.jpg' data-toggle="tooltip" data-placement="bottom" title="Wish List"/>
-								</div>
-								<div class="media-body media-body-frm media-selected">
-									<div class="media-heading">
-										<img class='media-object thumbnail-img media-close' align='right' src='<%=request.getContextPath() %>/img/close.jpg'data-toggle="tooltip" data-placement="bottom" title="Remove from History"/>
-										<b class="fnt-size-title media-click">Acting_03_C</b>
-									</div>
-									<span class="fnt-size-content media-click">Instructor : GYEOUNGHO, JI</span>
-									<span class="fnt-size-content media-click"><i class="fas fa-users fa-xs"></i> 3,506</span><br/>
-									<span class="fnt-size-content media-click">It addresses the essential programming problems and solutions that must be taken to successfully view the coding interview (developer interview). There are a total of 21 courses in five minutes per concept. From the concept of OOP to alignment, data structure, algorithm, and other important concepts that the interviewer would like to learn.</span>
-								</div>
-							</div>
-							
-							
+									
+								</div><hr class="hr-line"/> 
+							</c:forEach>
+															
 							</div> <!-- History -->
+							
+							
 						<div class="tab-pane fade" id="order">
 							
 							My Follow List : ${ordervo.getterId}, ${ordervo.contentPrice}

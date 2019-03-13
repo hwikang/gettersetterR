@@ -22,14 +22,14 @@
 	var pro=localStorage.getItem("profile");
 	$(".avatar").attr('src', pro);
 
-/* 	
+	
 	  $('#myInfo').popover({
 		  html : true,
 		  content: function(){
 			  return $("#myInfoPopover").html();
 		  },
 		  title : "My Info"		  
-	  }); */
+	  }); 
 });
 </script>
 </head>
