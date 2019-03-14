@@ -25,6 +25,8 @@ public class CommandIntro implements CommandService {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
+	
+		
 		int introNo = Integer.parseInt(req.getParameter("introNo"));
 		System.out.println("introNo="+introNo);
 		IntroVO vo = new IntroVO();

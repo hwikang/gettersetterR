@@ -13,6 +13,12 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="intro.css" type="text/css"/>
 </head>
+<c:if test="${loginStatus==null }">
+	<script>
+		alert("you must login");
+		location.href="<%=request.getContextPath()%>/index.do"
+	</script>
+</c:if>
 <body>
 
 <div class="container-fluid">
