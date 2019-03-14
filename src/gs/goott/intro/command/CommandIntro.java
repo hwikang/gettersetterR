@@ -40,8 +40,10 @@ public class CommandIntro implements CommandService {
 		System.out.println("VO="+vo.getUserid());	
 	
 		replyDAO replyDao = new replyDAO();
-		List<replyVO> list = replyDao.getReply(introNo);	
+		List<replyVO> list = replyDao.getReply(introNo);
+		int listSize= list.size();
 		req.setAttribute("list", list);
+		req.setAttribute("listSize", listSize);
 		
 		//헤더의 정보를 업데이트하기 위해 다시 세션설정
 		MemberVO memberVo = new MemberVO();
@@ -51,6 +53,9 @@ public class CommandIntro implements CommandService {
 		memberVo = memberDao.getUserInfo(loginUserid);
 		session.setAttribute("vo", memberVo);
 		
+		//intro 평점 (사람숫자대비평점 퍼센트)
+		IntroVO starRateVO = dao.starRate(introNo);
+		req.setAttribute("starRateVO", starRateVO);
 		//마이프로필에서 history 를위해 session 에 해당 introno 배열 추가
 		
 		List<IntroVO> history = new ArrayList<IntroVO>();

@@ -266,6 +266,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 				vo.setTitle(rs.getString("title"));
 				vo.setFollower(rs.getInt("follower"));
 				vo.setPrice(rs.getDouble("price"));
+				vo.setTotalStar(rs.getInt("totalStar"));
 				System.out.println("get 하고있는 intro userid="+vo.getUserid());
 			}
 					
@@ -277,5 +278,48 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 		}
 		return vo;
 	}
-	
+
+	@Override
+	public void totalStar(String contentid, int star) {
+		try {
+			dbConn();
+			String sql = "update introtbl set totalstar=totalstar+? where userid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, star);
+			pstmt.setString(2, contentid);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("별점 평균값 구하기 에러"+e.getMessage());
+		}finally {
+			dbClose();
+		}
+		
+	}
+
+	@Override
+	public IntroVO starRate(int introNo) {
+		IntroVO vo = new IntroVO();
+		try {
+			dbConn();
+			for(int i=1;i<=5;i++) {
+				String sql = "select count(*) from (select * from replytbl where star="+i+" and introno=(select introno from introtbl where introno=?))";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, introNo);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					if(i==1) {vo.setOneStar(rs.getInt(1));}
+					else if(i==2) {vo.setTwoStar(rs.getInt(1));}
+					else if(i==3) {vo.setThreeStar(rs.getInt(1));}
+					else if(i==4) {vo.setFourStar(rs.getInt(1));}
+					else if(i==5) {vo.setFiveStar(rs.getInt(1));}
+				}
+			}			
+		}catch(Exception e) {
+			System.out.println("스타 퍼센트 에러"+e.getMessage());
+		}finally {
+			dbClose();
+		}
+		return vo;
+	}
+
 }

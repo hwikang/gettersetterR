@@ -15,7 +15,12 @@ public class IntroVO {
 	private Double price;
 	private String beforeFileName;
 	private String beforeThumbnail;
-	
+	private int totalStar;
+	private int oneStar;
+	private int twoStar;
+	private int threeStar;
+	private int fourStar;
+	private int fiveStar;
 	public IntroVO() {}
 	public int getIntroNo() {
 		return introNo;
@@ -110,6 +115,42 @@ public class IntroVO {
 	}
 	public void setBeforeThumbnail(String beforeThumbnail) {
 		this.beforeThumbnail = beforeThumbnail;
+	}
+	public int getTotalStar() {
+		return totalStar;
+	}
+	public void setTotalStar(int totalStar) {
+		this.totalStar = totalStar;
+	}
+	public int getOneStar() {
+		return oneStar;
+	}
+	public void setOneStar(int oneStar) {
+		this.oneStar = oneStar;
+	}
+	public int getTwoStar() {
+		return twoStar;
+	}
+	public void setTwoStar(int twoStar) {
+		this.twoStar = twoStar;
+	}
+	public int getThreeStar() {
+		return threeStar;
+	}
+	public void setThreeStar(int threeStar) {
+		this.threeStar = threeStar;
+	}
+	public int getFourStar() {
+		return fourStar;
+	}
+	public void setFourStar(int fourStar) {
+		this.fourStar = fourStar;
+	}
+	public int getFiveStar() {
+		return fiveStar;
+	}
+	public void setFiveStar(int fiveStar) {
+		this.fiveStar = fiveStar;
 	}
 	
 	
