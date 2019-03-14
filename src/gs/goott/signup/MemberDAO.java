@@ -199,6 +199,40 @@ public class MemberDAO extends DBConnection implements SignupInterface {
 		}
 		return cnt;
 	}
+
+	@Override
+	public List<MemberVO> getAllUser() {
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			dbConn();
+			String sql = "select * from membertbl";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setUserno(rs.getInt("userno"));
+				vo.setUserid(rs.getString("userid"));
+				vo.setUserpwd(rs.getString("userpwd"));
+				vo.setTel(rs.getString("tel"));
+				vo.setEmail(rs.getString("email"));
+				vo.setUserImage(rs.getString("userimage"));
+				vo.setInterestStr(rs.getString("interest"));
+				vo.setMyAcorn(rs.getInt("myacorn"));
+				vo.setContentPrice(rs.getInt("contentprice"));
+				vo.setUserLevel(rs.getInt("userlevel"));	
+				list.add(vo);
+			}
+			
+				
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("get all user error");
+		}finally {
+			dbClose();
+		}
+		return list;
+	}
 	
 }
 

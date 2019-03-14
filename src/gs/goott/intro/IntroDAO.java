@@ -277,5 +277,55 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 		}
 		return vo;
 	}
+
+	@Override
+	public List<IntroVO> getAllIntro() {
+		List<IntroVO> list = new ArrayList<IntroVO>();
+		try {
+			dbConn();
+			String sql = "select* from introtbl";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				IntroVO vo = new IntroVO();
+				vo.setIntroNo(rs.getInt(1));
+				vo.setUserid(rs.getString(2));
+				vo.setFilename(rs.getString(3));
+				vo.setInterestStr(rs.getString(4));
+				vo.setDescription(rs.getString(5));
+				vo.setIntrodate(rs.getString(6));
+				vo.setTitle(rs.getString(7));
+				vo.setFollower(rs.getInt(8));
+				vo.setPrice(rs.getDouble(9));
+				vo.setThumbnail(rs.getString(10));
+				list.add(vo);
+			}
+		}catch(Exception e) {
+			System.out.println("intro select error"+e.getMessage());
+		}finally {
+			dbClose();
+		}
+		return list;
+	}
+
+	@Override
+	public int introDelete(int introNo) {
+		int cnt=0;
+		try {
+			dbConn();
+			String sql = "delete from introtbl where introno=? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, introNo);
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("delete intro error");
+	}finally {
+		dbClose();
+	}
+		return cnt;
+	}
+
 	
 }
