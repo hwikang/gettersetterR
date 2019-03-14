@@ -89,6 +89,9 @@
 					</c:if>
 					<!-- 로그인상태 -->
 					<c:if test="${loginStatus==1 && vo.userImage!=null}">
+						<c:if test="${vo.userLevel==2 }">
+							<li class="nav-item"><a href="<%=request.getContextPath()%>/manager/manager.do" class="nav-link">Manager</a></li>
+						</c:if>
 						<li id="myAcornNum" class="d-flex" >
 							
 							<p class="p-0">${vo.myAcorn}</p>

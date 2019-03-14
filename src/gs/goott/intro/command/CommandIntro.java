@@ -60,16 +60,28 @@ public class CommandIntro implements CommandService {
 		
 		List<IntroVO> history = new ArrayList<IntroVO>();
 		//int[] history = new int[10];
+		
+		System.out.println("session history="+session.getAttribute("history"));
 		if(session.getAttribute("history")!=null) {
 			List<IntroVO> historyList = (List<IntroVO>) session.getAttribute("history");
 			for(int i=0;i<historyList.size();i++) {
 				//System.out.println("historylist="+historyList.get(i));				
 				history.add(historyList.get(i));
 			}
-		}
-		if(!history.contains(introNo)) {  //중복 이면 추가안함 ㅋ
+		}else if(session.getAttribute("history")==null){
 			history.add(dao.getIntro(introNo));
 		}
+		int condition =0;
+		for(int i=0;i<history.size();i++) {  
+			if((history.get(i).getIntroNo() == introNo)) {  //중복 이면 추가안함 ㅋ
+				System.out.println(history.get(i).getIntroNo());  //하나라도 있으면 추가 안함
+				System.out.println(" ==? "+introNo);
+				condition = 1;  //1이면 중복없으니 추가				
+			}
+		}
+		if(condition==0) {  //0 은 history 에 중복 존재
+			history.add(dao.getIntro(introNo));
+		}	
 		session.setAttribute("history", history); 
 		for(int i=0;i<history.size();i++) {
 			System.out.println("history="+history.get(i));

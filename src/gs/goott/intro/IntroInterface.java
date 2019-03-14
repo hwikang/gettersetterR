@@ -17,4 +17,6 @@ public interface IntroInterface {
 	public IntroVO getIntro(int introNo); //해당하는 세터의 인트로 가져오기 , 인트로 페이지용
 	public void totalStar(String contentid, int star); //별 총값 넣기
 	public IntroVO starRate(int introNo); //별 퍼센트
+	public int introDelete(int introNo);	//해당 인트로 삭제하기
+	public List<IntroVO> getAllIntro();  //다뽑기
 }

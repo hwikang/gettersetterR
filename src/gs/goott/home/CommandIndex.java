@@ -28,6 +28,7 @@ public class CommandIndex implements CommandService {
 		MemberDAO dao1 = new MemberDAO();
 		MemberVO vo = dao1.getUserInfo(userid);
 		req.setAttribute("vo",vo);
+		System.out.println("level="+vo.getUserLevel());
 		/////////////////////////////////////
 
 		//6개의 가장핫한세터추천

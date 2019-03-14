@@ -20,6 +20,8 @@ public interface SignupInterface {
 	public int buyAcorn(String userid,int buyAcorn, int myAcorn);	
 	//도토리 차감
 	public int useAcorn(String userid,Double price);
+	//모든 유저들 정보 가져오기
+	public List<MemberVO> getAllUser();
 	
 
 	

@@ -173,7 +173,7 @@
 			</div>
 				<button type=button id="proImgBtn"class="proImg btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add</button>
 			
-			<div id=title>Select your main area of concern up to 3</div> 
+			<div id=title>Select your main area of Interest up to 3</div> 
 			
 			<div id=divtotal><!-- 관심분야설정 start-->
 				<div id=div1 > <!-- 관심분야 선택영역 -->
