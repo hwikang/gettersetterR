@@ -30,7 +30,7 @@
 	<div style="border:0.5px solid #eee;position:absolute;margin-left:-15px;width:100%"></div>
 	<div style="width:50%; margin:30px auto 0 auto;">
 		<div class="embed-responsive embed-responsive-16by9" id="cou">
-			<iframe class="embed-responsive-item" src="<c:url value='getIntro/${introVO.filename }'/>"></iframe>			
+			<iframe class="embed-responsive-item" src="getIntro/${introVO.filename }"></iframe>			
 		</div><br/> <!-- 해당 INTRO 의 VO 는 = introVO 로 부르면됨!! -->
 		
 		<div>
@@ -61,7 +61,7 @@
 		</ul>
 		<c:forEach var="contentVO" items="${cList }">
 			<ul>
-				<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}&interest=${contentVO.interest }'">${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
+				<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8 content_linked" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}&interest=${contentVO.interest }'">${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
 			</ul>
 		</c:forEach>
 		</div>		

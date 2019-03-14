@@ -99,13 +99,13 @@
 			<c:forEach var="iList" items="${interestList }">
 			<div class="media"> <!-- media (1) -->
 				<div class="media-left">
-					<a href="javascript:location.href='${ctx }content/contentView.do?contentNo=${iList.contentNo}&userid=${iList.userid}&interest=${iList.interest }'"><img class="media-object thumbnail-img" src="data:image/jpeg;base64,${iList.thumbnail }"/></a>
+					<a class="next_link" href="javascript:location.href='${ctx }content/contentView.do?contentNo=${iList.contentNo}&userid=${iList.userid}&interest=${iList.interest }'"><img class="media-object thumbnail-img" src="data:image/jpeg;base64,${iList.thumbnail }"/></a>
 				</div>
 				<div class="media-body">
 					<div class="media-heading">
-						<a href="#"><b class="fnt-size-title">${iList.title }</b></a>
+						<a class="next_link" href="javascript:location.href='${ctx }content/contentView.do?contentNo=${iList.contentNo}&userid=${iList.userid}&interest=${iList.interest }'"><b class="fnt-size-title">${iList.title }</b></a>
 					</div>
-						<a href="#">
+						<a class="next_link" href="javascript:location.href='${ctx }content/contentView.do?contentNo=${iList.contentNo}&userid=${iList.userid}&interest=${iList.interest }'">
 						<span class="fnt-size-content">Instructor : ${iList.userid }</span><br/>
 						<span class="fnt-size-content"><i class="fas fa-users fa-xs"></i> ${iList.views }</span>
 						</a>

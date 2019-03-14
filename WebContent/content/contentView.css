@@ -241,7 +241,9 @@
 		outline:none;
 		cursor:pointer;
 	}
-	
+	.next_link:hover{
+		text-decoration:none;
+	}
 	/* */
 	
 	/* 회사정보 */
