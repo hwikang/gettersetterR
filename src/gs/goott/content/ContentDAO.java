@@ -113,6 +113,21 @@ public class ContentDAO extends DBConnection implements ContentInterface {
 		}
 		return list;
 	}
+
+	@Override
+	public void viewCount(int contentNo) {
+		try {
+			dbConn();
+			String sql = "update contenttbl set views=views+1 where contentNo=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, contentNo);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("컨텐츠 조회수 증가 에러"+e.getMessage());
+		}finally {
+			dbClose();
+		}
+	}
 	
 	
 }

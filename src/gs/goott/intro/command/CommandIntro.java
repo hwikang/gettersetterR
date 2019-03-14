@@ -14,6 +14,7 @@ import gs.goott.content.ContentVO;
 import gs.goott.controller.CommandService;
 import gs.goott.intro.IntroDAO;
 import gs.goott.intro.IntroVO;
+import gs.goott.intro.OrderDAO;
 import gs.goott.intro.replyDAO;
 import gs.goott.intro.replyVO;
 import gs.goott.signup.MemberDAO;
@@ -42,8 +43,10 @@ public class CommandIntro implements CommandService {
 		System.out.println("VO="+vo.getUserid());	
 	
 		replyDAO replyDao = new replyDAO();
-		List<replyVO> list = replyDao.getReply(introNo);	
+		List<replyVO> list = replyDao.getReply(introNo);
+		int listSize= list.size();
 		req.setAttribute("list", list);
+		req.setAttribute("listSize", listSize);
 		
 		//헤더의 정보를 업데이트하기 위해 다시 세션설정
 		MemberVO memberVo = new MemberVO();
@@ -53,6 +56,9 @@ public class CommandIntro implements CommandService {
 		memberVo = memberDao.getUserInfo(loginUserid);
 		session.setAttribute("vo", memberVo);
 		
+		//intro 평점 (사람숫자대비평점 퍼센트)
+		IntroVO starRateVO = dao.starRate(introNo);
+		req.setAttribute("starRateVO", starRateVO);
 		//마이프로필에서 history 를위해 session 에 해당 introno 배열 추가
 		
 		List<IntroVO> history = new ArrayList<IntroVO>();
@@ -83,7 +89,9 @@ public class CommandIntro implements CommandService {
 		for(int i=0;i<history.size();i++) {
 			System.out.println("history="+history.get(i));
 		}
-		
+		OrderDAO orderDAO = new OrderDAO();
+		int cnt = orderDAO.orderCheck(userid, (String)session.getAttribute("userid"));
+		req.setAttribute("cnt", cnt);
 		return "intro.jsp";
 	}
 

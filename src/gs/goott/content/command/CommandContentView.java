@@ -17,12 +17,16 @@ public class CommandContentView implements CommandService {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String userid = req.getParameter("userid");
 		int contentNo = Integer.parseInt(req.getParameter("contentNo"));
-		String interest = req.getParameter("interest");
+		String interest = req.getParameter("interest");		
 		
 		ContentDAO contentDAO = new ContentDAO();
+		contentDAO.viewCount(contentNo);
 		ContentVO contentVO = new ContentVO();
 		contentVO = contentDAO.getContent(userid, contentNo);
+		
 		List<ContentVO> interestList = contentDAO.getInterestList(userid, interest, contentNo);
+		
+		
 		req.setAttribute("contentVO", contentVO);
 		req.setAttribute("interestList", interestList);
 		return "contentView.jsp";
