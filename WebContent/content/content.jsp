@@ -68,14 +68,24 @@
 				 	var category = ["All","Bodybuild","Soccer","Climbing","Acting","Dancing","Art","Economy","Philosophy","History"];
 				 	var txt ="<p>";
 				 	for(var i=0;i<category.length;i++){
-				 		txt += "<a href='<%=request.getContextPath()%>/content/content.do?interest="+category[i]+"'><span class='cate'>"+category[i]+"</a></span>"
+				 		txt += "<a href='<%=request.getContextPath()%>/content/content.do?interest="+category[i]+"'><span class='cate'"
+				 			 if(category[i]=="${interest}"){
+				 				txt += "style='font-weight:bold'";
+				 			}
+				 		
+				 			
+				 		txt += ">"+category[i]+"</span></a>"
 				 	}
 				 	txt +="</p>";
 				 	document.getElementById("menuList").innerHTML = txt;
-				 	$(function(){
+				 	
+				 	
+				 /* 	$(function(){
 				 		$("#menuList a:nth-child(1)>span").css("font-weight","bold");
 				 	});
-				 
+				  */
+				  
+				  
 				 </script>	
 			 </div>	 
 			 <!-- dropdown filter-->
@@ -172,7 +182,7 @@
 					txt += "<h5 class='card-title'style='color:gray text-line:bold'>"+searchedData[i][7]+"</h5>";
 					txt += "<p class= 'card-text' style='color:gray;'>"+"Setter : "+searchedData[i][1]+ "</p>";
 					txt += "<p class='card-text'style='color:gray'>"+"Follower : " +searchedData[i][8]+"</p>";
-					txt += "<p class='card-text'style='color:gray'>"+"Price : $ " +searchedData[i][9]+"</p>";
+					txt += "<p class='card-text'style='color:gray'>"+"Price : " +searchedData[i][9]+" Acorn</p>";
 					txt += "<div class='d-flex justify-content-center mt-3'><a href='<%=request.getContextPath() %>/intro/buy.do?introNo="+searchedData[i][0]+"' class='btn btn-primary buyBtn'>Follow</a></div>"
 					txt += "</div></div></a>";
 					if(i%3==2){
