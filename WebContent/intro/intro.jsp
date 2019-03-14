@@ -55,16 +55,30 @@
 			<li>Korea Talent Award</li>			
 		</ul>
 		<h4 id="cur">Curriculum</h4><hr/>
+		<c:if test="${cnt>0}">
 		<div>		
-		<ul>
-			<li class="row"><h5 class="col-sm-2"><label>Interest</label></h5><h5 class="col-sm-8"><label>Title</label></h5><h5 class="col-sm-2"><label>RunningTime</label></h5></li>
-		</ul>
-		<c:forEach var="contentVO" items="${cList }">
 			<ul>
-				<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8 content_linked" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}&interest=${contentVO.interest }'">${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
+				<li class="row"><h5 class="col-sm-2"><label>Interest</label></h5><h5 class="col-sm-8"><label>Title</label></h5><h5 class="col-sm-2"><label>RunningTime</label></h5></li>
+			</ul>
+			<c:forEach var="contentVO" items="${cList }">
+			<ul>
+				<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8 content_linked" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}&interest=${contentVO.interest }'" >${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
 			</ul>
 		</c:forEach>
-		</div>		
+		</div>	
+		</c:if>
+		<c:if test="${cnt==0}">
+		<div style="display:none">		
+			<ul>
+				<li class="row"><h5 class="col-sm-2"><label>Interest</label></h5><h5 class="col-sm-8"><label>Title</label></h5><h5 class="col-sm-2"><label>RunningTime</label></h5></li>
+			</ul>
+			<c:forEach var="contentVO" items="${cList }">
+				<ul>
+					<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8 content_linked" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}&interest=${contentVO.interest }'">${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
+				</ul>
+			</c:forEach>
+		</div>	
+		</c:if>		
 		<h4 id="eva">Instructor Evaluation</h4><hr/><br/>
 		<div class="row">
 			<div class="col-sm-1"></div>

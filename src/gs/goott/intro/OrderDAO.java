@@ -100,4 +100,27 @@ public class OrderDAO extends DBConnection implements OrderInterface{
 		}
 		return list;
 	}
+
+	@Override
+	public int orderCheck(String introid, String userid) {
+			int cnt = 0;
+		try {
+			dbConn();
+			String sql = "select setterid from ordertbl where getterid=? and setterid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, introid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(introid.equals(rs.getObject(1))) {
+					cnt = 1;
+				}
+			}
+		}catch(Exception e) {
+			System.out.println("오더 체크 에러"+e.getMessage());
+		}finally {
+			dbClose();
+		}
+		return cnt;
+	}
 }

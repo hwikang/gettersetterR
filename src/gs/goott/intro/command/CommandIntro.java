@@ -14,6 +14,7 @@ import gs.goott.content.ContentVO;
 import gs.goott.controller.CommandService;
 import gs.goott.intro.IntroDAO;
 import gs.goott.intro.IntroVO;
+import gs.goott.intro.OrderDAO;
 import gs.goott.intro.replyDAO;
 import gs.goott.intro.replyVO;
 import gs.goott.signup.MemberDAO;
@@ -86,7 +87,9 @@ public class CommandIntro implements CommandService {
 		for(int i=0;i<history.size();i++) {
 			System.out.println("history="+history.get(i));
 		}
-		
+		OrderDAO orderDAO = new OrderDAO();
+		int cnt = orderDAO.orderCheck(userid, (String)session.getAttribute("userid"));
+		req.setAttribute("cnt", cnt);
 		return "intro.jsp";
 	}
 
