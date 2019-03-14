@@ -117,7 +117,7 @@
 							<c:forEach var="introVo" items="${historyList}">
 								<div class="media">
 									<div class="media-left">
-											<img class="media-object thumbnail-img media-click" src="data:image/jpeg;base64,${introVo.thumbnail }"/>
+											<img class="media-object thumbnail-img media-click" src="data:image/jpeg;base64,${introVo.thumbnail }" onclick="location.href='<%=request.getContextPath()%>/intro/intro.do?introNo=${introVo.introNo}'"/>
 											<img class='media-object thumbnail-img media-clock' src='<%=request.getContextPath() %>/img/clock.jpg' data-toggle="tooltip" data-placement="bottom" title="Wish List"/>
 									</div>
 									<div class="media-body media-body-frm media-selected">
@@ -138,10 +138,14 @@
 							
 							
 						<div class="tab-pane fade" id="order">
-							
-							My Follow List : ${ordervo.getterId}, ${ordervo.contentPrice}
-							
-							
+							<c:forEach var="ordervo" items="${orderlist}" >
+								<span style="float:left;margin-right:150px"><img src="data:image/jpeg;base64,${ordervo.thumbnail}" style="width:200px;height:120px;cursor:pointer" onclick="location.href='<%=request.getContextPath()%>/intro/intro.do?introNo=${ordervo.introNo}'"><br/>
+								<p style="font-weight:bold">&lt;Instructor&gt;</a></br><a href="<%=request.getContextPath()%>/intro/intro.do?introNo=${ordervo.introNo}">${ordervo.userid}</a></p>
+								<p style="font-weight:bold">&lt;Title&gt;</br>${ordervo.title }</p>
+								<p style="font-weight:bold">&lt;Description&gt;</br>${ordervo.description }</p>
+								<p style="font-weight:bold">&lt;Price&gt;</br>${ordervo.price}</p>
+								</span>
+							</c:forEach>
 						</div>
 					</div><!-- tab-content -->
 				</div><!-- card-body -->

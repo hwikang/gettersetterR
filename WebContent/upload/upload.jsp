@@ -245,7 +245,7 @@
 				<div class="input-group" style="width:100%">
 					<select class="custom-select" id="uploadIst" name="interest">
 					  <option selected>Please select a subject</option>
-					  <c:forTokens var="contentSubject" items="Acting,Art,Bodybuild,Climbing,Dancing,Economy,History,Philosophy,Soccer" delims=",">
+					  <c:forTokens var="contentSubject" items="acting,art,bodybuild,climbing,dancing,economy,history,philosophy,soccer" delims=",">
 						  <option value="${contentSubject }">${contentSubject }</option>
 					  </c:forTokens>
 					</select>

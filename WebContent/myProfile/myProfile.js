@@ -62,6 +62,7 @@ $(function(){
 		$("#wishList:empty").html("<div class=fnt-size-content-empty id='empty_message'>This list has no videos.</div>");
 		
 		
+
 		/*팝오버 실행*/
 		  $('#myInfo').popover({
 			  html : true,

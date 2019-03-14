@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Instructor Introduction</title>
-
 <script type="" src="intro.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -56,10 +55,13 @@
 			<li>Korea Talent Award</li>
 		</ul>
 		<h4 id="cur">Curriculum</h4><hr/>
-		<div>
+		<div>		
+		<ul>
+			<li class="row"><h5 class="col-sm-2"><label>Interest</label></h5><h5 class="col-sm-8"><label>Title</label></h5><h5 class="col-sm-2"><label>RunningTime</label></h5></li>
+		</ul>
 		<c:forEach var="contentVO" items="${cList }">
 			<ul>
-				<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}'">${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
+				<li class="row"><label class="col-sm-2">${contentVO.interest }</label><a class="col-sm-8" href="javascript:location.href='${ctx}content/contentView.do?contentNo=${contentVO.contentNo}&userid=${contentVO.userid}&interest=${contentVO.interest }'">${contentVO.title}</a> <label class="col-sm-2">${contentVO.videoLengthStr }</label></li>
 			</ul>
 		</c:forEach>
 		</div>		

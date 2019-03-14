@@ -10,4 +10,5 @@ public interface OrderInterface  {
 	public List<OrderVO> checkOrderList(String userid);
 	
 	public OrderVO orderInfo(String sertterId);
+	public List<IntroVO> orderList(String userid);
 }

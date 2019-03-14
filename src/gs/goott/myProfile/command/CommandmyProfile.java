@@ -36,12 +36,9 @@ public class CommandmyProfile implements CommandService {
 		req.setAttribute("historyList", list);
 		
 		OrderDAO dao1 = new OrderDAO();
-		OrderVO vo1 = dao1.orderInfo(userid);
+		List<IntroVO> list1 = dao1.orderList(userid);
+		req.setAttribute("orderlist", list1);
 		
-		IntroDAO dao2 = new IntroDAO();
-		String setterId = vo1.getSetterId();
-		IntroVO vo2 = dao2.selectIntroVO(setterId);
-		req.setAttribute("ordervo", vo1);
 		
 		
 		return "myProfile.jsp";
