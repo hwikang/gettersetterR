@@ -151,7 +151,7 @@
 	<br/>
 	<input type="button" id="editProfileButton" value="edit profile" class="btn btn-primary btn-sm" style="position:relative; left:10px">
 	<div id="editProfile" class="container-fluid">
-		<form action="<%=request.getContextPath()%>/upload/introUpdate.do" method="post" enctype="multipart/form-data">
+		<form action="<%=request.getContextPath()%>/upload/introUpdate.do" method="post" enctype="multipart/form-data" id="introForm">
 			<b>Intro Video</b><br/>
 			<input type="file" id="introVideo" name="filename"/><br/>
 			<input type="hidden" id="beforeFileName"value="${introVO.filename}"/>
@@ -279,5 +279,14 @@
 
 
 </body>
+<script>
+	$("#introForm").submit(function(e){
+		if($("#introVideo").val()==""){
+			alert("you must attach Intro video");
+			return false
+		}
+	});
+</script>
+
 <%@ include file="/jspf/footer.jspf" %>
 </html>
