@@ -33,7 +33,7 @@
 				<input type="hidden" name="ischange" value="ok"/><br/>
 				<button type="button" id="proImgBtn" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;"data-toggle="tooltip" data-placement="bottom" title="Photo Size=170*170">Add New Image</button>
 				<br/>
-				<p style="font-weight:bolder;">After You Add Image, Press &lt;Apply to Profile&gt;button to Save your Image.</p><br/>
+				<p style="font-weight:bolder;">After You Add Image, Press &lt;Apply to Profile&gt;button to Save your Image.</p>
 				
 				<button id="apply" style="background:#0056B3;color:white;border-style:outset;font-size:15px;cursor:pointer;border-radius:10px;display:none;margin-left:50px">Apply to Profile</button>
 			</form>

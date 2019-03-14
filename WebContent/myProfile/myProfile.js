@@ -172,6 +172,8 @@ $(function(){
 				bc = "#2F2F2F";
 			}
 			
+			interestArr.push(id);
+			
 			if($("#list1").css("display")=="none"){
 				
 				$("#list1btn1").text(big);
@@ -191,7 +193,6 @@ $(function(){
 				$("#list3").css("display", "block");
 				}
 			
-			interestArr.push(id);
 			});
 			$(".dbutton").on('click', function(){
 				var id = $(this).attr("id");
