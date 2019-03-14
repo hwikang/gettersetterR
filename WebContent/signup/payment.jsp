@@ -164,7 +164,11 @@
 						<div class="row">
 							<div id="total" class="col-lg-6">
 								<div><h5>TOTAL</h5></div>
-								<div><input type="label" id="buyAcorn" name="buyAcorn" value="15"/></div>
+								<div>
+									<input type="label" id="buyAcorn" name="buyAcorn" value="15"/>
+									<span style="font-size:20pt">$</span>									
+								</div>
+								
 							</div>
 							<!--  <a href="paymentOk.html" class="btn btn-primary col-lg-1 btn-sm" id="buyBtn">BUY</a>-->
 							<input type="submit" value="BUY" class="btn btn-primary col-lg-1 btn-sm" id="buyBtn"/>

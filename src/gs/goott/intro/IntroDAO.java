@@ -92,7 +92,7 @@ public class IntroDAO extends DBConnection implements IntroInterface {
 		int cnt = 0;
 		try {
 			dbConn();
-			String sql = "insert into introtbl(introNo, userid, filename, interest, description, introdate) values(introSq.nextVal, ?, 'Please attach the introvideo..', 'basic','(less than 500 letters)', sysdate)";
+			String sql = "insert into introtbl(introNo, userid, filename, interest, description, introdate,follower,price) values(introSq.nextVal, ?, 'Please attach the introvideo..', 'basic','(less than 500 letters)', sysdate,0,0)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userid);
 			cnt = pstmt.executeUpdate();

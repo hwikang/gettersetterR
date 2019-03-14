@@ -26,6 +26,7 @@ public class CommandContent implements CommandService {
 		}
 		List<IntroVO> list = dao.getContent(interest.toLowerCase(),search);
 		req.setAttribute("list", list);
+		req.setAttribute("interest", interest);
 		return "content.jsp";
 	}
 
