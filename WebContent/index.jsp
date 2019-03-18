@@ -2,18 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file ="jspf/header.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Getter Setter</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="main.css"/>
-<script type="text/javascript" src="contentsData.js"></script>
+
 </head>
 <body>
 
@@ -36,53 +33,9 @@ recommendedData.push(
 	
 </c:forEach>
 </script>
-${loginStatus}
+
 
 <!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
-	<nav class="navbar row">
-		<div id="menuDiv" class="container col-md-12">			
-			<!-- 로고가 들어갈 div -->
-			<div id="logoDiv" ><a href="<%=request.getContextPath()%>/index.do"><img src="img/logo.jpg"/></a></div>
-				<!-- 멤버 : 로그인,회원가입 -->													
-			<div id="memberDiv"><!-- 우측정렬 -->
-				<ul class="nav justify-content-end align-items-center">
-	
-					<!-- 미 로그인상태 -->
-					<c:if test="${loginStatus!=1 }">
-						
-						<li id="login" class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">login</a></li>
-						<li id="signUp" class="nav-item"><a href="<%=request.getContextPath()%>/signup/signup.do" class="nav-link">SignUp</a></li>
-					</c:if>
-					<!-- 로그인상태 -->
-					<c:if test="${loginStatus==1}">
-						<li id="myAcorn" class="d-flex" >
-							<p class="p-0">${vo.myAcorn}</p>
-							<img src="img/acorn.png" class="p-0"/>
-							
-						</li>									<!--  수정 -->	
-						<li id="myInfo" class="nav-item">
-							<a href="#" class="nav-link" data-toggle="popover" 
-							data-placement="left" data-title="My Info" 
-							data-popover-content="#myInfoPopover"><img src="img/profile.jpg" class="rounded-circle" id="profile"></a>
-						</li>
-					</c:if>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	
-	<!-- myinfo popover -->
-	<div id="myInfoPopover" style="display:none" >
-		<ul class="nav row">
-
-			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/myProfile/myProfile.do" class="nav-link">My Profile</a>
-			<li class="nav-item col-12"><a href="#"  class="nav-link" id="logOut">log Out</a>
-
-			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/signup/payment.do"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-			<li class="nav-item col-12" ><a href="upload/setter.do" class="nav-link" id="setterMode">Setter Mode</a>
-		</ul>
-	</div>
-
 	
 	<!-- 로그인기능모달 -->
 	<!-- login form  -->
@@ -96,7 +49,7 @@ ${loginStatus}
 			<div class="modal-content">
 				<!-- header -->
 				<div class="modal-header">
-					<h4 class="modal-title">welcome</h4>
+					<h4 class="modal-title">welcome </h4>
 					<button class="close" data-dismiss="modal">&times;</button>
 				</div>
 				
@@ -125,7 +78,7 @@ ${loginStatus}
 				<!-- padding용 -->
 				<div></div>
 				<!-- 검색창DIV -->
-				<form method="get" action="searchResult.html">
+				<form method="get" action="<%=request.getContextPath()%>/content/content.do">
 					<div id="searchInput">
 						<input type="text" placeholder=" Input Keyword" id="searchBar" name="search"/>
 						<input id="searchButton" type="submit" value="GET" class="btn btn-primary btn-sm"/>
@@ -144,7 +97,7 @@ ${loginStatus}
 	
 	<!-- 추천콘텐츠 div  -->
 	<div id="recomendedContentsDiv">
-		<div><h4><b>Recomended Contents</b></h4></div>
+		<div><h4><b>Recomended Contents </b></h4></div>
 		<hr/>
 		<div id="recommendContents" class="row justify-content-around">
 			
@@ -161,7 +114,9 @@ ${loginStatus}
 					<p>You can change to Setter mode on MyInfo. then you are the Setter!
 				</div>
 				<div>
-					<a href="main_setter.html" class="btn btn-outline-primary btn-sm">Change to Setter mode</a>
+				
+				<a href="<%=request.getContextPath()%>/upload/setter.do" class="btn btn-outline-primary btn-sm">Change to Setter mode</a>
+				
 				</div>
 			</div>
 			
@@ -170,7 +125,7 @@ ${loginStatus}
 					<p>Upload your valuable content! 
 				</div>
 				<div>
-					<a href="upload.html" class="btn btn-outline-primary btn-sm">Go to upload file</a>
+					<a href="upload/upload.jsp" class="btn btn-outline-primary btn-sm">Go to upload file</a>
 				</div>
 			</div>
 			
@@ -179,7 +134,7 @@ ${loginStatus}
 					<p>Setter can earn Acorn by purchaser. use your talent on GetterSetter! 
 				</div>
 				<div>
-					<a href="#" class="btn btn-outline-primary btn-sm">Check my Acorn</a>
+					<a href="<%=request.getContextPath()%>/signup/payment.do" class="btn btn-outline-primary btn-sm">Check my Acorn</a>
 				</div>
 			</div>
 		</div>
@@ -205,7 +160,7 @@ ${loginStatus}
 					<p>You need to buy Acorn for watch contents. Before purchasing, you can check reviews from other users.
 				</div>
 				<div>
-					<a href="payment.html" class="btn btn-outline-primary btn-sm">Buy Acorn</a>
+					<a href="<%=request.getContextPath()%>/signup/payment.do" class="btn btn-outline-primary btn-sm">Buy Acorn</a>
 				</div>
 			</div>
 			
@@ -214,7 +169,7 @@ ${loginStatus}
 					<p>you can easily find content you Bought on My Info. <br/>Enjoy GetterSetter! 
 				</div>
 				<div>
-					<a href="my_profile.html" class="btn btn-outline-primary btn-sm">Go to My Info</a>
+					<a href="<%=request.getContextPath()%>/intro/intro.jsp" class="btn btn-outline-primary btn-sm">Go to My Info</a>
 				</div>
 			</div>
 		</div>
@@ -248,7 +203,7 @@ ${loginStatus}
 			var category=["Bodybuild", "Soccer", "Climbing", "Acting", "Dancing", "Art", "Economy", "Philosophy","History"];
 			var txt =  "";			
 			for(var i=0;i<category.length;i++){
-				 txt += "<a href='"+category[i]+".html' class='col-md-1'><div>"+category[i]+"</div></a>";		 
+				 txt += "<a href='<%=request.getContextPath()%>/content/content.do?interest="+category[i]+"' class='col-md-1'><div>"+category[i]+"</div></a>";		 
 			}
 			document.getElementById("categoryDiv").innerHTML=txt;
 			
@@ -260,8 +215,8 @@ ${loginStatus}
 		function createRecomendedContents(){			
 			var txt="";			
 			for(var i =0; i<6; i++){				
-				txt +="<a href='contentOp_01.html' class='col-6 col-sm-4 pb-4'><div class='card w-100'><img src='data:image/jpeg;base64,"+recommendedData[i][6]+"' class='card-img-top'>"
-				txt +="<div class='card-body'><h4 class='card-title'>"+recommendedData[i][7]+"</h4><p class='card-text'>Setter : "+recommendedData[i][1]+"</p><p class='card-text'>Followers : "+recommendedData[i][8]+"</p><p class='card-text'>Price : $"+recommendedData[i][9]+"</p></div></div></a>"	
+				txt +="<a href='<%=request.getContextPath()%>/intro/intro.do?introNo="+recommendedData[i][0]+"' class='col-6 col-sm-4 pb-4'><div class='card w-100'><img src='data:image/jpeg;base64,"+recommendedData[i][6]+"' class='card-img-top'>"
+				txt +="<div class='card-body'><h4 class='card-title'>"+recommendedData[i][7]+"</h4><p class='card-text'>Setter : "+recommendedData[i][1]+"</p><p class='card-text'>Followers : "+recommendedData[i][8]+"</p><p class='card-text'>Price : "+recommendedData[i][9]+" Acorn</p></div></div></a>"	
 			}
 			document.getElementById("recommendContents").innerHTML=txt;	
 		}

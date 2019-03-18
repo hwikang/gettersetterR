@@ -9,10 +9,18 @@ public class IntroVO {
 	private String description;
 	private String introdate;
 	private String thumbnail;
+	private String thumbnailFileName;
 	private String title;
 	private int follower;
-	private Float price;
-	
+	private Double price;
+	private String beforeFileName;
+	private String beforeThumbnail;
+	private int totalStar;
+	private int oneStar;
+	private int twoStar;
+	private int threeStar;
+	private int fourStar;
+	private int fiveStar;
 	public IntroVO() {}
 	public int getIntroNo() {
 		return introNo;
@@ -68,6 +76,7 @@ public class IntroVO {
 	public String getThumbnail() {
 		return thumbnail;
 	}
+	
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
@@ -83,11 +92,65 @@ public class IntroVO {
 	public void setFollower(int follower) {
 		this.follower = follower;
 	}
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(Float price) {
+	public void setPrice(Double price) {
 		this.price = price;
+	}
+	public String getThumbnailFileName() {
+		return thumbnailFileName;
+	}
+	public void setThumbnailFileName(String thumbnailFileName) {
+		this.thumbnailFileName = thumbnailFileName;
+	}
+	public String getBeforeFileName() {
+		return beforeFileName;
+	}
+	public void setBeforeFileName(String beforeFileName) {
+		this.beforeFileName = beforeFileName;
+	}
+	public String getBeforeThumbnail() {
+		return beforeThumbnail;
+	}
+	public void setBeforeThumbnail(String beforeThumbnail) {
+		this.beforeThumbnail = beforeThumbnail;
+	}
+	public int getTotalStar() {
+		return totalStar;
+	}
+	public void setTotalStar(int totalStar) {
+		this.totalStar = totalStar;
+	}
+	public int getOneStar() {
+		return oneStar;
+	}
+	public void setOneStar(int oneStar) {
+		this.oneStar = oneStar;
+	}
+	public int getTwoStar() {
+		return twoStar;
+	}
+	public void setTwoStar(int twoStar) {
+		this.twoStar = twoStar;
+	}
+	public int getThreeStar() {
+		return threeStar;
+	}
+	public void setThreeStar(int threeStar) {
+		this.threeStar = threeStar;
+	}
+	public int getFourStar() {
+		return fourStar;
+	}
+	public void setFourStar(int fourStar) {
+		this.fourStar = fourStar;
+	}
+	public int getFiveStar() {
+		return fiveStar;
+	}
+	public void setFiveStar(int fiveStar) {
+		this.fiveStar = fiveStar;
 	}
 	
 	

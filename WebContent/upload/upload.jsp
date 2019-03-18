@@ -11,6 +11,7 @@
 <title>Setter Upload Page</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
@@ -18,10 +19,7 @@
 	.list-group{width:90%}
 	.list-group-item{border:1px solid white; border-bottom:1px solid lightgray;}
 	body{margin-Top:50px; font-size:0.9em; font-family: 'Montserrat', sans-serif;}
-	#nameTag{width:100%; height:100px; margin-bottom:10px} /* 화면상단 */
-		#nameTag>a>img{width:300px; height:100px;} /* 로고사이즈 */
-		#nameTag>ul>li{padding:0px; text-align:center}
-	#myInfo img{width:50px; height:50px;}
+	
 	.nav-link{color:black;}
 	.nav-link:hover{font-weight:bolder;}
 		
@@ -52,7 +50,7 @@
 	.proFrm{position:relative; width:100%; height:300px; border:1px solid #eee}
 	#proImgUpload{position: absolute; left:-9999px;}
 	
-	.proImg{width:50%; cursor:pointer; border:0px solid white; position:relative; top:130px}
+	.proImg{width:50%; cursor:pointer; border:0px solid white; position:absolute; top:110px; right:100px}
 	#proImgBtn{width:100px;	height:30px; line-height:1; margin-top:5px; cursor:pointer; font-size:0.8em;}
 	
 	/* content2 */
@@ -97,14 +95,16 @@
 		$("#content2>div:nth-child(2)").css("position","relative").css("left","20px");
 		
 		/* upload 모달 */
-		
-		/* $(".file-upload").on("change", function(){
-			$("#video-element source").attr("src",URL.createObjectURL($("#proImgUpload").prop("files")[0]));
-		}); */
+
+		$(".file-upload").on("change", function(){
+			$("#imgUpload").attr("src","");
+			$("#imgUpload").css("display","none");
+			$("#video-element source").attr("src", URL.createObjectURL($("#proImgUpload").prop("files")[0]));
+		});
 		
 		
 		$("#uploadFrm").submit(function(){  //업로드 input 값에 따른 제한 설정
-			if($("#imgUpload").attr("src")=="../img/click.jpg"){
+			if($("#proImgUpload").val()==null || $("#proImgUpload").val()==""){
 				swal("Please attach the video!", "You clicked the button!", "error");
 				return false;
 			}
@@ -123,48 +123,25 @@
 			swal("Good job!", "You clicked the button!", "success");
 			return true;
 		});		
-		
-		
-		$('.proImg').on('click', function() {
+		$("#imgUpload").on('click', function() {
 	        $('#proImgUpload').click();
 	    });
 		
+		$("input[name=interest]:checkbox").on("change",function(){ //변수 차단
+			if($("input[name=interest]:checkbox:checked").length==3){
+				$(":checkbox:not(:checked)").attr("disabled","disabled");
+			}else{
+				$("input[name=interest]:checkbox").removeAttr("disabled");
+			}
+		});
 		
 	});
 </script>
 </head>
 <body>
-<nav class="navbar">
-	<div id="nameTag" class="row">
-		<a href="main.html" class="col-4 p-0"><img src="../img/logo.jpg"></a> <!-- 로고 -->
-		<div class="col-1 col-xl-3 p-0"></div>		
-		<ul class="nav justify-content-end col-12 col-md-6 col-xl-4 p-0 row align-items-center"> 
-			<li class="nav-item col-2"><a href="main.html" class="nav-link">getter</a></li>
-			<li class="nav-item col-2"><a href="main_setter.html" class="nav-link">setter</a></li>
-			<li class="nav-item col-2"><a href="#" class="nav-link" data-toggle="modal" data-target="#uploadModal">upload</a></li> 
-			<li id="myAcorn" class="d-flex" >
-						<img src="../img/acorn.png" class="p-0"/>
-						<p class="p-0"></p>
-					</li>		
-			<li id="myInfo" class="nav-item col-2">
-				<a href="#" class="nav-link" data-toggle="popover" 
-				data-placement="left" data-title="My Info" 
-				data-popover-content="#myInfoPopover"><img src="../img/profile.jpg" class="rounded-circle" id="profile"></a>
-			</li>
-		</ul>
-	
-	</div>
-</nav><br/><br/>
 
-<!-- myinfo popover -->
-<div id="myInfoPopover" style="display:none" >
-	<ul class="nav row">
-		<li class="nav-item col-12"><a href="my_profile_html" class="nav-link">My Profile</a>
-		<li class="nav-item col-12"><a href="main.html"  class="nav-link" id="logOut">LogOut</a>
-		<li class="nav-item col-12"><a href="payment.html"  class="nav-link" id="buyAcorn">Buy Acorn</a>
-		<li class="nav-item col-12" ><a href="main.html" class="nav-link getterMode">Getter Mode</a>
-	</ul>
-</div>
+<%@include file="../jspf/SearchbarHeader.jspf" %>
+
 
 
 <!-- 첫번째 콘텐츠 -->
@@ -174,28 +151,42 @@
 	<br/>
 	<input type="button" id="editProfileButton" value="edit profile" class="btn btn-primary btn-sm" style="position:relative; left:10px">
 	<div id="editProfile" class="container-fluid">
-		<form action="<%=request.getContextPath()%>/upload/introUpdate.do" method="post" enctype="multipart/form-data">
+		<form action="<%=request.getContextPath()%>/upload/introUpdate.do" method="post" enctype="multipart/form-data" id="introForm">
 			<b>Intro Video</b><br/>
 			<input type="file" id="introVideo" name="filename"/><br/>
+			<input type="hidden" id="beforeFileName"value="${introVO.filename}"/>
 			<b>Thumbnail</b><br/>
 			<input type="file" id="thumbnail" name="thumbnail"/><br/>
+			<input type="hidden" id="beforeThumbnail" value="${introVO.thumbnailFileName}"/>
 			<b>Title</b><br/>
-			<input type="text" id="title" name="title" maxlength="30"><br/>
+			<input type="text" id="title" name="title" value="${introVO.title }"maxlength="30"><br/>
 			
 			<b>Name</b><br/>
-			<input type="text" id="profileName" name="userid" readonly value="${vo.userid }" maxlength="20"><br/>
+			<input type="text" id="profileName" name="userid" value="${introVO.userid }" readonly value="${vo.userid }" maxlength="20"><br/>
 			<b>Teaching Subject</b><br/>
-			<c:forTokens var="ts" items="Acting,Art,Bodybuild,Climbing,Dancing,Economy,History,Philosophy,Soccer" delims=",">
+			<c:set var="num" value="0" scope="page"/>
+			<c:forTokens var="ts" items="acting,art,bodybuild,climbing,dancing,economy,history,philosophy,soccer" delims=",">
 				<input type="checkbox" id="${ts }" name="interest" value="${ts }"
-					<c:forTokens var="ss" items="${vo.interestStr }" delims="/">
-						<c:if test="${ts==ss}">
-							checked
-						</c:if>
-					</c:forTokens>
-				/>${ts }
-			</c:forTokens><br/>
+					<c:forTokens var="ss" items="${introVO.interestStr }" delims="/">
+							<c:if test="${ts==ss }">
+								checked <c:set var="num2" value="${num+1}" scope="page"/>
+							</c:if>	
+					</c:forTokens>	
+						<c:if test="${interLength==3}">	
+							<c:choose>	
+							<c:when test="${num2==0}">
+								disabled
+							</c:when>
+							<c:when test="${num2>0}">
+								<c:set var="num2" value="0" scope="page"/>	
+							</c:when>
+							</c:choose>
+						</c:if>	
+				/>${ts } 
+			</c:forTokens>			
+			<br/> 
 			<b>Your Profile</b><br/>
-			<textarea id="profileTxt" name="description" maxlength="500" >${vo.description}</textarea>
+			<textarea id="profileTxt" name="description" maxlength="500" >${introVO.description}</textarea>
 			<input type="submit" class="btn btn-primary btn-sm" value="done"/>	
 		</form>
 	</div>
@@ -208,13 +199,13 @@
 	<!-- 업로드 -->
 	<div class="row">
 		<div id="load" class="col-lg-7 row">
-			<a href="#" class="col-sm-12 justify-content-center"><img src="../img/upload2.jpg" data-toggle="modal" data-target="#uploadModal"></a>
+			<a href="#" class="col-sm-12 justify-content-center"><img src="<%=request.getContextPath()%>/img/upload2.jpg" data-toggle="modal" data-target="#uploadModal"></a>
 		</div>
 		<!-- 강의 리스트 -->
 		<div id="list" class="col-lg-5">
 			<ul class="list-group">
 				<li class="list-group-item">
-					<div>
+					<div>					
 						<a href="contentOp_01.html"><img src="../img/actingThumb1.jpg"></a>
 						<div><b>Class for Action</b></div>
 						<div>
@@ -229,29 +220,9 @@
 							<div>12:45</div>
 							<div>09:13</div>
 							<a href="contentOp_01.html"><button class="btn btn-sm btn-primary">more</button></a>
-						</div>
-						
+						</div>						
 					</div>
-				</li>
-				<li class="list-group-item">
-					<div>
-						<a href="contentOp_02.html"><img src="../img/actingThumb2.jpg"></a>
-						<div><b>About Speech</b></div>
-						<div>
-							<div><a href="#">chap1. orientation</a></div>
-							<div><a href="#">chap2. pronunciation</a></div>
-							<div><a href="#">chap3. facial stretches</a></div>
-							<div><a href="#">chap4. shoulder stretches</a></div>
-						</div>
-						<div>
-							<div>01:58</div>
-							<div>21:03</div>
-							<div>15:23</div>
-							<div>14:34</div>
-							<a href="contentOp_02.html"><button class="btn btn-sm btn-primary">more</button></a>
-						</div>
-					</div>
-				</li>
+				</li>				
 			</ul>
 		</div>
 	</div>
@@ -266,19 +237,17 @@
 				<button class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body">
-				<div class="text-center proFrm">
-				<!-- <video id="video-element" controls>
-					<source src=""/>
-				</video> -->
-				<canvas id="canvas-element"></canvas>
-				<img src="../img/click.jpg" class=" proImg img-thumbnail img-fluid file-upload avatar" id="imgUpload" alt="avatar"/>
+
+				<div class="text-center proFrm">				
+				<img src="<%=request.getContextPath()%>/img/click.jpg" class="proImg img-thumbnail img-fluid file-upload" id="imgUpload"/>  
+
 				<input type="file" name="filename"id="proImgUpload"class="text-enter center-block file-upload hidden"/>
 				</div>
 				<hr/>
 				<div class="input-group" style="width:100%">
 					<select class="custom-select" id="uploadIst" name="interest">
 					  <option selected>Please select a subject</option>
-					  <c:forTokens var="contentSubject" items="Acting,Art,Bodybuild,Climbing,Dancing,Economy,History,Philosophy,Soccer" delims=",">
+					  <c:forTokens var="contentSubject" items="acting,art,bodybuild,climbing,dancing,economy,history,philosophy,soccer" delims=",">
 						  <option value="${contentSubject }">${contentSubject }</option>
 					  </c:forTokens>
 					</select>
@@ -304,13 +273,22 @@
 </div>
 <!-- 두번째 컨텐츠 -->
 <div id="content2" class="row">
-	<div class="col-lg-4"><img src="../img/achievement.jpg"></div>
+	<div class="col-lg-4"><img src="<%=request.getContextPath()%>/img/achievement.jpg"></div>
 	<div class="col-lg-4"></div>
 	<div class="col-lg-4"></div>
 </div>
-<div id="graph"><br/><img src="../img/graph.jpg"></div>
+<div id="graph"><br/><img src="<%=request.getContextPath()%>/img/graph.jpg"></div>
 
 
 </body>
+<script>
+	$("#introForm").submit(function(e){
+		if($("#introVideo").val()==""){
+			alert("you must attach Intro video");
+			return false
+		}
+	});
+</script>
+
 <%@ include file="/jspf/footer.jspf" %>
 </html>

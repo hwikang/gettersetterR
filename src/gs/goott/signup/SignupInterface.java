@@ -18,11 +18,11 @@ public interface SignupInterface {
 	public MemberVO getUserInfo(String userid);
 	//도토리충전		
 	public int buyAcorn(String userid,int buyAcorn, int myAcorn);	
+	//도토리 차감
+	public int useAcorn(String userid,Double price);
+	//모든 유저들 정보 가져오기
+	public List<MemberVO> getAllUser();
 	
-	
-	//도토리구매
-	
-	public MemberVO getMemberRecord(String userid);
 
 	
 	

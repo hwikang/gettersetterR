@@ -1,3 +1,4 @@
+<%@page import="gs.goott.signup.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -11,16 +12,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script>
  $(function(){
-	$("#clickLogo").on("click", function(){		
-		location.href="main.html"
-	});			
-
-	var pro=localStorage.getItem("profile");
-	$(".avatar").attr('src', pro);
-
 	/*팝오버 실행*/
 	  $('#myInfo').popover({
 		  html : true,
@@ -70,31 +66,70 @@
 		width:50px;
 		height:50px;	
 	}
+	#myAcornNum img{
+		width:20px;
+		height:20px;
+	}
 </style>
 <header>
-<nav class="navbar row">
+<!-- 로그인 회원가입 ,로고 등등 들어갈 메뉴nav -->
+	<nav class="navbar row">
 		<div id="menuDiv" class="container col-md-12">			
 			<!-- 로고가 들어갈 div -->
-			<div id="logoDiv" ><a href="${ctx }index.do"><img src="img/logo.jpg"/></a></div>
+			<div id="logoDiv" ><a href="<%=request.getContextPath()%>/index.do"><img src="<%=request.getContextPath() %>/img/logo.jpg"/></a></div>
 				<!-- 멤버 : 로그인,회원가입 -->													
 			<div id="memberDiv"><!-- 우측정렬 -->
 				<ul class="nav justify-content-end align-items-center">
-					<li id="myInfo" class="nav-item">
-					<!-- 아이디값주기 -->
-						<a href="#" class="nav-link nav-link-blk" data-toggle="popover" 
-						data-placement="left" data-title="My Info" 
-						data-popover-content="#myInfoPopover"><img src="img/profile.jpg" class="rounded-circle avatar" id="profile"></a></li>
+	
+					<!-- 미 로그인상태 -->
+					<c:if test="${loginStatus!=1 }">
+						
+						<li id="login" class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">login</a></li>
+						<li id="signUp" class="nav-item"><a href="<%=request.getContextPath()%>/signup/signup.do" class="nav-link">SignUp</a></li>
+					</c:if>
+					<!-- 로그인상태 -->
+					<c:if test="${loginStatus==1 && vo.userImage!=null}">
+						<c:if test="${vo.userLevel==2 }">
+							<li class="nav-item"><a href="<%=request.getContextPath()%>/manager/manager.do" class="nav-link">Manager</a></li>
+						</c:if>
+						<li id="myAcornNum" class="d-flex" >
+							
+							<p class="p-0">${vo.myAcorn}</p>
+							<img src="<%=request.getContextPath() %>/img/acorn.png" class="p-0"/>
+							
+						</li>									<!--  수정 -->	
+						<li id="myInfo" class="nav-item">
+							<a href="#" class="nav-link" data-toggle="popover" 
+							data-placement="left" data-title="My Info" 
+							data-popover-content="#myInfoPopover"><img src="data:image/jpeg;base64,${vo.userImage}" class="rounded-circle" id="profile"></a>
+						</li>
+					</c:if>
+					<c:if test="${loginStatus==1 && vo.userImage==null}">
+						<li id="myAcornNum" class="d-flex" >
+							
+							<p class="p-0">${vo.myAcorn}</p>
+							<img src="<%=request.getContextPath() %>/img/acorn.png" class="p-0"/>
+							
+						</li>									<!--  수정 -->	
+						<li id="myInfo" class="nav-item">
+							<a href="#" class="nav-link" data-toggle="popover" 
+							data-placement="left" data-title="My Info" 
+							data-popover-content="#myInfoPopover"><img src="<%=request.getContextPath()%>/img/profile-picture.jpg" class="rounded-circle" id="profile"></a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<!-- myinfo popover -->
+	
 	<div id="myInfoPopover" style="display:none" >
 		<ul class="nav row">
-			<li class="nav-item col-12"><a href="my_profile.html" class="nav-link nav-link-blk">My Profile</a>
-			<li class="nav-item col-12"><a href="main.html"  class="nav-link nav-link-blk" id="logOut">Log Out</a>
-			<li class="nav-item col-12" ><a href="main_setter.html" class="nav-link nav-link-blk" id="setterMode">Setter Mode</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/myProfile/myProfile.do" class="nav-link">My Profile</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/logout.do"  class="nav-link" id="logOut">log Out</a>
+			<li class="nav-item col-12"><a href="<%=request.getContextPath()%>/signup/payment.do"  class="nav-link" id="payment">Buy Acorn</a>
+			<li class="nav-item col-12" ><a href="<%=request.getContextPath()%>/upload/setter.do" class="nav-link" id="setterMode">Setter Mode</a>
 		</ul>
 	</div>
+
 </header>
 </html>

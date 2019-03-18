@@ -52,7 +52,6 @@
 	}
 	.media{
 		margin-bottom:8px;
-		cursor:pointer;
 	}
 	.thumbnail-img{
 		width:170px;
@@ -71,7 +70,6 @@
 	}
 	.fnt-size-ins-content{
 		font-size:0.8em;
-		margin-left:-30px;
 		line-height:30px;
 	}
 	.media-head{
@@ -105,15 +103,13 @@
 		margin-top:10px;
 		margin-left:14px;
 		width:70%;
+		height:100%;
 	}
 	.ins-content{
-		margin-left:-30px;
 		line-height:15px;
 	}
 	.instructor-content{
 		width:100%;
-		margin-left:-30px;
-		padding-left:30px;
 		overflow:hidden;
 	}
 	.like-btn{
@@ -245,7 +241,9 @@
 		outline:none;
 		cursor:pointer;
 	}
-	
+	.next_link:hover{
+		text-decoration:none;
+	}
 	/* */
 	
 	/* 회사정보 */

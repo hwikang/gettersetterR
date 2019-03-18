@@ -1,13 +1,8 @@
-/*$(function(){
-		$("#clickLogo").on("click", function(){		
-			location.href="main.html"
-		});			
-	});*/
 var interestArr = [];
 $(function(){
-		$('[data-toggle="tooltip"]').tooltip(); //툴 팁 경로 설정
-		/*var pro=localStorage.getItem("profile");
-		$(".avatar").attr('src', pro);*/
+		/*$('[data-toggle="tooltip"]').tooltip(); //툴 팁 경로 설정
+		var pro=localStorage.getItem("profile");
+		$(".avatar").attr('src', pro);
 		
 		var readURL = function(input) { //프로필 이미지 input 경로 변경
 	        if (input.files && input.files[0]) {
@@ -23,13 +18,17 @@ $(function(){
 	    }
 		$(".file-upload").on('change', function(){
 	        readURL(this);
+	        $("#apply").css("display", "block")
+	        alert("d")
 	    });
 		$('.proImg').on('click', function() {
-	        $('#proImgUpload').click();
-	    });
+			alert("g")
+	       $('#proImgUpload').click();
+		});
 		$('#proImgBtn').on('click', function() {
-	        $('#proImgUpload').click();
-	    });
+			alert("d")
+			$('#proImgUpload').click();
+	    }); 바로바로 안먹어서 myProfile.jsp에 옮김*/
 		$(".media").mouseenter(function(){
 			var clock = $(this).children('.media-left').children('.media-clock');
 			var close = $(this).children('.media-body').children('.media-heading').children('.media-close');
@@ -63,17 +62,7 @@ $(function(){
 		$("#wishList:empty").html("<div class=fnt-size-content-empty id='empty_message'>This list has no videos.</div>");
 		
 		
-		$(".media:eq(0) .media-click").on('click',function(){
-			location.href=("contentOp_01.html");
-		});
-		$(".media:eq(1) .media-click").on('click',function(){
-			location.href=("contentOp_02.html");
-		});
-		$(".media:eq(2) .media-click").on('click',function(){
-			location.href=("contentOp_03.html");
-		});
-		
-		
+
 		/*팝오버 실행*/
 		  $('#myInfo').popover({
 			  html : true,
@@ -150,7 +139,6 @@ $(function(){
 			var type = id.substr(id.length-1,1); // id가 soccer1 => '1'
 			id = id.substr(0, id.length-1); // id가 soccer1 => 'soccer'
 			
-			interestArr.push(id);
 			var big;
 			var bc;
 			var list1val;
@@ -183,6 +171,8 @@ $(function(){
 				big = "HUMANITIES";
 				bc = "#2F2F2F";
 			}
+			
+			interestArr.push(id);
 			
 			if($("#list1").css("display")=="none"){
 				
@@ -224,6 +214,5 @@ $(function(){
 			
 			//관심사 선택end=======================================================================
 		  
-			  //로그아웃기능
 			  
 });
