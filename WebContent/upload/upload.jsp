@@ -98,9 +98,9 @@
 		
 		/* upload 모달 */
 		
-		$(".file-upload").on("change", function(){
+		/* $(".file-upload").on("change", function(){
 			$("#video-element source").attr("src",URL.createObjectURL($("#proImgUpload").prop("files")[0]));
-		});
+		}); */
 		
 		
 		$("#uploadFrm").submit(function(){  //업로드 input 값에 따른 제한 설정
@@ -267,9 +267,9 @@
 			</div>
 			<div class="modal-body">
 				<div class="text-center proFrm">
-				<video id="video-element" controls>
+				<!-- <video id="video-element" controls>
 					<source src=""/>
-				</video>
+				</video> -->
 				<canvas id="canvas-element"></canvas>
 				<img src="../img/click.jpg" class=" proImg img-thumbnail img-fluid file-upload avatar" id="imgUpload" alt="avatar"/>
 				<input type="file" name="filename"id="proImgUpload"class="text-enter center-block file-upload hidden"/>
